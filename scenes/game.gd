@@ -20,6 +20,6 @@ func _process(delta: float) -> void:
 		
 		var asteroid = asteroid_scene.instantiate()
 		add_child(asteroid)
-		asteroid.launch(Vector2(randi_range(-10, 10), 200), randi_range(10, screen_size.x-10), randf_range(1, 5))
+		asteroid.launch(Vector2(randi_range(-10, 10), 200), Vector2(randi_range(10, screen_size.x-10),-20), randf_range(1, 5))
 	pass
 	
