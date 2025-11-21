@@ -23,7 +23,7 @@ func fire_weapon(parent) -> bool:
 func _fire(parent) -> void:
 	var bullet = bullet_scene.instantiate()
 	parent.get_tree().current_scene.add_child(bullet)
-	bullet.launch(Vector2(0, -500), parent.owner.position, 1)
+	bullet.launch(Vector2(0, -500), parent.owner.position, 1, self.base_damage)
 	
 func cooldown_weapon(amount) -> void:
 	_cooldown -= amount
