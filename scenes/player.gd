@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 200
+@export var speed = 300
 @export var y_pos = 0.2 #as a percentage of the screen size (bottom up)
 
 # Called when the node enters the scene tree for the first time.
@@ -16,12 +16,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var velocity = Vector2(0, 0)
 	if Input.is_action_pressed("move_left"):
-		velocity.x = -1
+		velocity.x = -1 * speed
 	elif Input.is_action_pressed("move_right"):
-		velocity.x = 1
-	pass
-	
-	position += velocity.normalized() * speed * delta
+		velocity.x = 1 * speed
+	else:
+		var mouse_pos = get_viewport().get_mouse_position()
+		var difference = mouse_pos - position
+		
+		velocity = (difference.normalized()*speed*delta)
+		var max_speed = difference.length()
+		
+		velocity = velocity.limit_length(max_speed)/delta
+		
+	position += velocity * delta
 	
 
 func _on_player_collide(area: Area2D):
