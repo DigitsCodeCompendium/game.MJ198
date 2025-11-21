@@ -15,20 +15,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Vector2(0, 0)
-	if Input.is_action_pressed("move_left"):
-		velocity.x = -1 * speed
-	elif Input.is_action_pressed("move_right"):
-		velocity.x = 1 * speed
-	else:
-		var mouse_pos = get_viewport().get_mouse_position()
-		var difference = mouse_pos - position
+	var mouse_pos = get_viewport().get_mouse_position()
+	var difference = mouse_pos - position
+	var max_speed = difference.length()
+	
+	velocity = (difference.normalized()*speed*delta)
+	velocity = velocity.limit_length(max_speed)
 		
-		velocity = (difference.normalized()*speed*delta)
-		var max_speed = difference.length()
-		
-		velocity = velocity.limit_length(max_speed)/delta
-		
-	position += velocity * delta
+	position += velocity
 	
 
 func _on_player_collide(area: Area2D):
