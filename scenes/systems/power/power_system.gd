@@ -39,8 +39,9 @@ var free_power: int:
 
 
 # Power consumers need to have:
-# is_passive() -> bool
-# getter/setter for current_power
+# is_passive_consumer() -> bool
+# getter for current_power
+# reduce_power(amount) -> int
 var _power_consumers: Array
 
 var power_consumers: Array:
@@ -61,24 +62,25 @@ func request_power(consumer, delta: int) -> bool:
 	assert(_power_consumers.find(consumer) >= 0, "Must be a registered consumer")
 	
 	if free_power >= delta:
-		consumer.current_power += delta
-		if consumer.is_passive():
+		if consumer.is_passive_consumer():
 			_passive_power_use += delta
 		else:
 			_active_power_use += delta
 		return true
 	else:
 		return false
-		
+
+
 func _update_power_use():
 	_passive_power_use = 0
 	_active_power_use = 0
 	
 	for consumer in _power_consumers:
-		if consumer.is_passive():
+		if consumer.is_passive_consumer():
 			_passive_power_use += consumer.current_power
 		else:
 			_active_power_use += consumer.current_power
+
 
 func _check_power_loss():
 	var i = len(_power_consumers) - 1
@@ -91,17 +93,12 @@ func _check_power_loss():
 			i -= 1
 			continue
 		
-		if last_consumer.is_passive(): # Passive consumers can be de-powered unit by unit
-			if last_consumer.current_power >= -free_power: # Decreasing power will restore balance to the force
-				last_consumer.current_power += free_power
-				_passive_power_use += free_power
-				break
-			else:
-				_passive_power_use -= last_consumer.current_power
-				last_consumer.current_power = 0
-		else: # Active consumers is all-or-nothing
-			_active_power_use -= last_consumer.current_power
-			last_consumer.current_power = 0
+		var reduce_power_request = min(-free_power, last_consumer.current_power)
+		var reduce_power_result = last_consumer.reduce_power(reduce_power_request)
+		if last_consumer.is_passive_consumer():
+			_passive_power_use -= reduce_power_result
+		else:
+			_active_power_use -= reduce_power_result
 		
 		# Move on to the next upgrade
 		i -= 1
