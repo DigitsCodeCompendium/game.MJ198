@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdoqsejbi7fcx"]
 
-[ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/asteroid.gd" id="1_6mo6b"]
+[ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_akfqu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
