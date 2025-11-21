@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdoqsejbi7fcx"]
+[gd_scene load_steps=7 format=3 uid="uid://cdoqsejbi7fcx"]
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_akfqu"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/enemies/pickup_drop_source.gd" id="3_08eb2"]
+[ext_resource type="Resource" uid="uid://d7tayalcdvkw" path="res://scenes/pickups/pickup_content_power.tres" id="5_j2n00"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
@@ -28,3 +30,10 @@ sprite_frames = SubResource("SpriteFrames_6mo6b")
 shape = SubResource("CircleShape2D_t4se3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("3_08eb2")
+drop_table = Dictionary[Resource, int]({
+null: 80,
+ExtResource("5_j2n00"): 20
+})

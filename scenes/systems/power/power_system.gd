@@ -1,4 +1,5 @@
 extends Node
+class_name PowerSystem
 
 @export var _base_max_power: int = 5
 var _current_max_power: int

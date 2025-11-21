@@ -45,6 +45,12 @@ func death():
 			var fragment = self.duplicate()
 			fragment.launch(new_velocity,new_position,self.scale.x/fragments)
 			get_parent().call_deferred("add_child",fragment)
+			
+	var pickup = $PickupDropSource.create_pickup()
+	if pickup != null:
+		pickup.position = self.position + Vector2(10*self.scale.x*randf_range(-1,1),10*self.scale.x*randf_range(-1,1))
+		pickup.velocity = Vector2(self.velocity.x*randf_range(-0.5,0.5)*ang_velocity*10,self.velocity.y*randf_range(0.5,0.8))
+		get_parent().call_deferred("add_child", pickup)
 	#Play some sort of explosion effect
 	self.queue_free()
 	

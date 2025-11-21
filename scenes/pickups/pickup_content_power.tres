@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PickupContentPower" load_steps=2 format=3 uid="uid://d7tayalcdvkw"]
+
+[ext_resource type="Script" uid="uid://dbd03sbe3mcjm" path="res://scenes/pickups/pickup_content_power.gd" id="1_nmhr7"]
+
+[resource]
+script = ExtResource("1_nmhr7")
+metadata/_custom_type_script = "uid://dbd03sbe3mcjm"

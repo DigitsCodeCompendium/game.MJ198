@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ntnaxnnlcjqe"]
+
+[ext_resource type="Script" uid="uid://bpyuwi7g0f01h" path="res://scenes/pickups/pickup.gd" id="1_p3l0o"]
+[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="2_itxnx"]
+[ext_resource type="Texture2D" uid="uid://cfr0rhexv1n2a" path="res://assets/icon.svg" id="3_0oso7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3l0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_itxnx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3l0o"]
+
+[node name="Pickup" type="Area2D" groups=["pickup"]]
+script = ExtResource("1_p3l0o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6.16312e-05, -0.03125167)
+scale = Vector2(0.03044159, 0.03836042)
+sprite_frames = SubResource("SpriteFrames_p3l0o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.16312e-05, -0.03125167)
+scale = Vector2(0.07812597, 0.0786133)
+texture = ExtResource("3_0oso7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p3l0o")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
