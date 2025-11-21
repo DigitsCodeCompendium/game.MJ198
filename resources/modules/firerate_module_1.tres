@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BaseModule" load_steps=2 format=3 uid="uid://d27ym6sj8ysaq"]
 
-[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/upgrades/base_module.gd" id="1_mfwak"]
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="1_mfwak"]
 
 [resource]
 script = ExtResource("1_mfwak")
