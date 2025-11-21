@@ -1,12 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=4 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://berc3u26dbt5n" path="res://scenes/wep_eng_module.tscn" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://dpq1gen5yq0lc" path="res://scenes/PassiveModule.tscn" id="3_lnu2h"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
-bg_color = Color(0.6, 0.93333334, 0.6, 1)
+[ext_resource type="PackedScene" uid="uid://bw2b7f2rjeelw" path="res://scenes/user_interface.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -15,72 +11,4 @@ script = ExtResource("1_yqjtg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-z_index = -1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_behavior_recursive = 1
-
-[node name="LeftPanel" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.125
-anchor_bottom = 1.0
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel"]
-layout_mode = 2
-
-[node name="WepEngModule2" parent="CanvasLayer/Control/LeftPanel/VBoxContainer" instance=ExtResource("3_lbhrr")]
-layout_mode = 2
-size_flags_vertical = 1
-
-[node name="WepEngModule" parent="CanvasLayer/Control/LeftPanel/VBoxContainer" instance=ExtResource("3_lbhrr")]
-layout_mode = 2
-size_flags_vertical = 1
-
-[node name="Container" type="MarginContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Container"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/fill = SubResource("StyleBoxFlat_iywne")
-max_value = 20.0
-step = 1.0
-value = 10.0
-fill_mode = 3
-show_percentage = false
-
-[node name="RightPanel" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.875
-anchor_right = 1.0
-anchor_bottom = 1.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Modules" type="VBoxContainer" parent="CanvasLayer/Control/RightPanel"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="PanelContainer" parent="CanvasLayer/Control/RightPanel/Modules" instance=ExtResource("3_lnu2h")]
-layout_mode = 2
-
-[node name="PanelContainer2" parent="CanvasLayer/Control/RightPanel/Modules" instance=ExtResource("3_lnu2h")]
-layout_mode = 2
-
-[node name="PanelContainer3" parent="CanvasLayer/Control/RightPanel/Modules" instance=ExtResource("3_lnu2h")]
-layout_mode = 2
-
-[node name="PanelContainer4" parent="CanvasLayer/Control/RightPanel/Modules" instance=ExtResource("3_lnu2h")]
-layout_mode = 2
-
-[node name="PanelContainer5" parent="CanvasLayer/Control/RightPanel/Modules" instance=ExtResource("3_lnu2h")]
-layout_mode = 2
+[node name="Control" parent="CanvasLayer" instance=ExtResource("3_lnu2h")]
