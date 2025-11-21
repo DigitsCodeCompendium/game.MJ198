@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_g2els")
 
 [node name="WeaponSystem" parent="Systems" instance=ExtResource("3_dqkch")]
 
-[node name="ModuleSystem" parent="Systems" instance=ExtResource("4_qlg0r")]
+[node name="ModuleSystem" parent="Systems" node_paths=PackedStringArray("power_system") instance=ExtResource("4_qlg0r")]
+power_system = NodePath("../PowerSystem")
 
 [node name="PowerSystem" parent="Systems" instance=ExtResource("5_qlg0r")]

@@ -10,18 +10,37 @@ func _ready() -> void:
 	for i in range(self.num_module_slots):
 		module_slots.append(null)
 
-func add_module(module: BaseModule) -> bool:
-	for idx in range(num_module_slots):
-		if module_slots[idx] == null:
-			module_slots[idx] = module
-			print("added module")
-			print(module_slots)
-			return true
-	return false
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("power_up_module_1"):
+		increase_module_power(0)
+	elif Input.is_action_just_pressed("power_down_module_1"):
+		decrease_module_power(0)
+	elif Input.is_action_just_pressed("power_up_module_2"):
+		increase_module_power(1)
+	elif Input.is_action_just_pressed("power_down_module_2"):
+		decrease_module_power(1)
+	elif Input.is_action_just_pressed("power_up_module_3"):
+		increase_module_power(2)
+	elif Input.is_action_just_pressed("power_down_module_3"):
+		decrease_module_power(2)
+	elif Input.is_action_just_pressed("power_up_module_4"):
+		increase_module_power(3)
+	elif Input.is_action_just_pressed("power_down_module_4"):
+		decrease_module_power(3)
+	elif Input.is_action_just_pressed("power_up_module_5"):
+		increase_module_power(4)
+	elif Input.is_action_just_pressed("power_down_module_5"):
+		decrease_module_power(4)
 
 func set_module(module: BaseModule, slot:int) -> bool:
 	if slot < num_module_slots:
 		module_slots[slot] = module
+		
+		var power_consumers = []
+		for module_slot in module_slots:
+			if module_slot != null:
+				power_consumers.append(module_slot)
+		power_system.power_consumers = power_consumers
 		return true
 	return false
 
@@ -57,7 +76,7 @@ func decrease_module_power(slot: int) -> bool:
 	assert(slot < num_module_slots)
 	if slot_has_module(slot):
 		var module = module_slots[slot]
-		var returned_power = module.reduce_power()
-		power_system.request_power(module, returned_power)
+		var returned_power = module.reduce_power(1)
+		power_system.request_power(module, -1 * returned_power)
 		return true
 	return false

@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_mfwak")
-base_activation_power = 2
-base_scaling_power = null
-base_passive_properties = Dictionary[String, float]({
-"weapon_firerate": 1.0
+activation_power = 2
+max_extra_power = 2
+active_properties = Dictionary[String, float]({
+"weapon_firerate": 2.0
 })
-base_active_properties = null
-base_scaling_properties = null
-metadata/_custom_type_script = "uid://b1s4rvdy8fmc1"
+scaling_properties = Dictionary[String, float]({
+"weapon_firerate": 4.0
+})

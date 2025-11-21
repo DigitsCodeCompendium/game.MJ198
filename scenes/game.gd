@@ -23,8 +23,7 @@ func _process(delta: float) -> void:
 		var asteroid = asteroid_scene.instantiate()
 		add_child(asteroid)
 		asteroid.launch(Vector2(randi_range(-10, 10), 200), Vector2(randi_range(playable_margins, screen_size.x-playable_margins),-20), randf_range(1, 5))
-	pass
 	
-	if Input.is_action_just_pressed("active_1"):
-		get_node("Player/Systems/ModuleSystem").add_module(load("res://resources/modules/firerate_module_1.tres"))
+	if Input.is_action_just_pressed("test_key"):
+		get_node("Player/Systems/ModuleSystem").set_module(load("res://resources/modules/firerate_module_1.tres"), 0)
 	

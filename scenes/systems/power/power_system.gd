@@ -1,6 +1,6 @@
 extends Node
 
-@export var _base_max_power: int = 3
+@export var _base_max_power: int = 5
 var _current_max_power: int
 var _current_power_loss: int # Power lost because of environmental influences
 
