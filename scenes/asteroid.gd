@@ -7,6 +7,7 @@ var base_health = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	connect("area_entered",_on_asteroid_collision)
 	$VisibleOnScreenNotifier2D.connect("screen_exited", _on_leave_screen)
 	pass # Replace with function body.
 
@@ -24,3 +25,23 @@ func _process(delta: float) -> void:
 
 func _on_leave_screen():
 	self.queue_free()
+
+func _on_asteroid_collision(area: Area2D):
+	if area.is_in_group("player"):
+		self.health -= 200
+		
+		if self.health <= 0:
+			death()
+	
+func death():
+	if self.scale.x > 3:
+		var fragments = floor(self.scale.length()) - 2
+		for i in fragments:
+			var new_velocity = Vector2(self.velocity.x*randf_range(-0.5,0.5)*ang_velocity*10,self.velocity.y*randf_range(0.5,0.8))
+			var new_position = self.position + Vector2(10*self.scale.x*randf_range(-1,1),10*self.scale.x*randf_range(-1,1))
+			var fragment = self.duplicate()
+			fragment.launch(new_velocity,new_position,self.scale.x/fragments)
+			self.get_parent().add_child(fragment)
+	#Play some sort of explosion effect
+	self.queue_free()
+	
