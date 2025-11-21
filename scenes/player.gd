@@ -8,7 +8,7 @@ func _ready() -> void:
 	connect("area_entered", _on_player_collide)
 	
 	# set default pos on the screen on startup
-	var screen_size = get_viewport_rect().size
+	var screen_size = get_viewport().size
 	position.y = screen_size.y * (1 - y_pos)
 	position.x = screen_size.x/2
 
@@ -21,10 +21,13 @@ func _process(delta: float) -> void:
 	
 	velocity = (difference.normalized()*speed*delta)
 	velocity = velocity.limit_length(max_speed)
-		
+	
 	position += velocity
 	
-
+	#Clamp player to the screen
+	position.x = clamp(position.x,0,get_viewport().size.x)
+	position.y = clamp(position.y,0,get_viewport().size.y)
+	
 func _on_player_collide(area: Area2D):
 	if area.is_in_group("enemy"):
 		print("AAAAHHHHH")
