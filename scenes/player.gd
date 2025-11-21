@@ -23,9 +23,9 @@ func _process(delta: float) -> void:
 	velocity = velocity.limit_length(max_speed)
 	
 	position += velocity
-	
+	var margins = get_parent().playable_margins
 	#Clamp player to the screen
-	position.x = clamp(position.x,0,get_viewport().size.x)
+	position.x = clamp(position.x,margins,get_viewport().size.x-margins)
 	position.y = clamp(position.y,0,get_viewport().size.y)
 	
 func _on_player_collide(area: Area2D):
