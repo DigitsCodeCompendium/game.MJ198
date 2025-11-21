@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://berc3u26dbt5n"]
+
+[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_hdwdf"]
+
+[node name="WepEngModule" type="PanelContainer"]
+offset_right = 133.0
+offset_bottom = 124.0
+size_flags_vertical = 3
+
+[node name="ModuleSprite" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_hdwdf")
+expand_mode = 2
