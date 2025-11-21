@@ -44,7 +44,7 @@ func death():
 			var new_position = self.position + Vector2(10*self.scale.x*randf_range(-1,1),10*self.scale.x*randf_range(-1,1))
 			var fragment = self.duplicate()
 			fragment.launch(new_velocity,new_position,self.scale.x/fragments)
-			self.get_parent().add_child(fragment)
+			get_parent().call_deferred("add_child",fragment)
 	#Play some sort of explosion effect
 	self.queue_free()
 	
