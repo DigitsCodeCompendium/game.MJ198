@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=7 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cfr0rhexv1n2a" path="res://assets/icon.svg" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://877ev3fikfat" path="res://scenes/systems/upgrades/upgrade_system.tscn" id="4_qlg0r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
@@ -27,3 +29,9 @@ sprite_frames = SubResource("SpriteFrames_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Systems" type="Node2D" parent="."]
+
+[node name="WeaponSystem" parent="Systems" instance=ExtResource("3_dqkch")]
+
+[node name="UpgradeSystem" parent="Systems" instance=ExtResource("4_qlg0r")]

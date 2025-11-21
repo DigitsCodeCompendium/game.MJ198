@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=2 format=3 uid="uid://b1xeh35fgd78s"]
+
+[ext_resource type="Script" uid="uid://cueeg24waj6we" path="res://scenes/systems/weapons/base_weapon.gd" id="2_n3wyw"]
+
+[resource]
+script = ExtResource("2_n3wyw")
+base_fire_rate = null
+base_damage = null
+base_projectile_velocity = null
+base_projectile_size = null
+base_projectile_count = null
+base_projectile_spread = null
+base_inacuracy = null
+metadata/_custom_type_script = "uid://cueeg24waj6we"

@@ -27,7 +27,10 @@ func _on_leave_screen():
 	self.queue_free()
 
 func _on_asteroid_collision(area: Area2D):
-	if area.is_in_group("player"):
+	if area.is_in_group("player") or area.is_in_group("player_projectile"):
+		if area.is_in_group("player_projectile"):
+			area.hit()
+		
 		self.health -= 200
 		
 		if self.health <= 0:
