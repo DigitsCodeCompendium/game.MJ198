@@ -21,5 +21,5 @@ func update_module(mod:BaseModule) -> void:
 	else:
 		installed_module.visible = true
 		power_bar.value = mod.current_power
-		upgrade_bar.value = mod.upgrade_progress
+		#upgrade_bar.value = mod.upgrade_progress
 		#mod_icon.texture = mod.
