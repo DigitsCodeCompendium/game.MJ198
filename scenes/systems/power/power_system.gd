@@ -2,6 +2,7 @@ extends Node
 class_name PowerSystem
 
 @export var _base_max_power: int = 5
+@export var _power_limit: int = 20
 var _current_max_power: int
 var _current_power_loss: int # Power lost because of environmental influences
 
@@ -13,7 +14,7 @@ var current_max_power: int:
 		return _current_max_power
 	set(value):
 		assert(value >= _current_max_power)
-		_current_max_power = value
+		_current_max_power = min(value, _power_limit)
 		_dirty = true
 		
 var current_power_loss: int:
