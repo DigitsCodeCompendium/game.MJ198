@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=14 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="Script" uid="uid://cvklcq5dvemhq" path="res://scenes/speed_control.gd" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bw2b7f2rjeelw" path="res://scenes/user_interface/user_interface.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://c76gyrf6d7soo" path="res://scenes/user_interface/ui_event_bus.gd" id="4_iywne"]
+[ext_resource type="Script" uid="uid://bmr07kofgmiyi" path="res://scenes/music_player.gd" id="4_p57ef"]
+[ext_resource type="AudioStream" uid="uid://dgpfdmpuf5msg" path="res://assets/loop_v1_7_stages/game loop 1.mp3" id="5_kvuet"]
+[ext_resource type="AudioStream" uid="uid://dp6elfj1pe8lk" path="res://assets/loop_v1_7_stages/game loop 2.mp3" id="6_trtic"]
+[ext_resource type="AudioStream" uid="uid://dnkr3ff5ilv4j" path="res://assets/loop_v1_7_stages/game loop 3.mp3" id="7_ir15t"]
+[ext_resource type="AudioStream" uid="uid://bl5oij6sdeoxn" path="res://assets/loop_v1_7_stages/game loop 4.mp3" id="8_ca42v"]
+[ext_resource type="AudioStream" uid="uid://cwms8qaubtj3r" path="res://assets/loop_v1_7_stages/game loop 5.mp3" id="9_rysoc"]
+[ext_resource type="AudioStream" uid="uid://7dtqix14vxdd" path="res://assets/loop_v1_7_stages/game loop 6.mp3" id="10_ssvqc"]
+[ext_resource type="AudioStream" uid="uid://r7nykiy285hq" path="res://assets/loop_v1_7_stages/game loop 7.mp3" id="11_264po"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -14,6 +22,13 @@ unique_name_in_owner = true
 
 [node name="SpeedControl" type="Node" parent="."]
 script = ExtResource("3_lbhrr")
+linear_acceleration = 0.05
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("speed_control")]
+volume_db = -10.0
+script = ExtResource("4_p57ef")
+speed_control = NodePath("../SpeedControl")
+music_sections = Array[AudioStream]([ExtResource("5_kvuet"), ExtResource("6_trtic"), ExtResource("7_ir15t"), ExtResource("8_ca42v"), ExtResource("9_rysoc"), ExtResource("10_ssvqc"), ExtResource("11_264po")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("4_iywne")
