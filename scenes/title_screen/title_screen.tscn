@@ -4,10 +4,10 @@
 [ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
 [ext_resource type="PackedScene" uid="uid://dstd3l06i0olc" path="res://scenes/game.tscn" id="3_mgrm8"]
 [ext_resource type="Texture2D" uid="uid://b246vg0bnqb6g" path="res://assets/Background_GJ.png" id="3_s4lrb"]
-[ext_resource type="Script" uid="uid://bm3xs6j5ni3ww" path="res://scenes/title_screen/audio_slider.gd" id="5_5uxxq"]
 [ext_resource type="AudioStream" uid="uid://cobmll7e6ayf6" path="res://assets/title screen.mp3" id="5_cxcmr"]
 [ext_resource type="AudioStream" uid="uid://15dcvx6lt7ee" path="res://assets/menu_sounds/menu_option.mp3" id="6_j12ko"]
 [ext_resource type="AudioStream" uid="uid://cl63greqlj22u" path="res://assets/menu_sounds/menu_select.mp3" id="7_yegqs"]
+[ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
 font_size = 48
@@ -148,101 +148,29 @@ layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="MasterAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="MasterAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
-theme_type_variation = &"SliderContainer"
-script = ExtResource("5_5uxxq")
-bus_name = "Master"
 
-[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
-custom_minimum_size = Vector2(100, 0)
+[node name="MusicAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
-theme_type_variation = &"SliderLabel"
-text = "Master"
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "50%"
-horizontal_alignment = 2
-
-[node name="MusicAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"SliderContainer"
-script = ExtResource("5_5uxxq")
 bus_name = "Music"
 
-[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_type_variation = &"SliderLabel"
+[node name="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio" index="0"]
 text = "Music"
-vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
+[node name="SoundEffectsAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "50%"
-horizontal_alignment = 2
-
-[node name="SoundEffectsAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"SliderContainer"
-script = ExtResource("5_5uxxq")
 bus_name = "Sound Effects"
 
-[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_type_variation = &"SliderLabel"
+[node name="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio" index="0"]
 text = "SFX"
-vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
+[node name="UserInterfaceAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "50%"
-horizontal_alignment = 2
-
-[node name="UIAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"SliderContainer"
-script = ExtResource("5_5uxxq")
 bus_name = "User Interface"
 
-[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UIAudio"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_type_variation = &"SliderLabel"
+[node name="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UserInterfaceAudio" index="0"]
 text = "UI"
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UIAudio"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UIAudio"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "50%"
-horizontal_alignment = 2
 
 [node name="BackButton" type="Button" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -268,3 +196,8 @@ bus = &"User Interface"
 [connection signal="mouse_entered" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton/HoverSound" method="play"]
 [connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_open_main_menu"]
 [connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton/ClickSound" method="play"]
+
+[editable path="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
+[editable path="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
+[editable path="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
+[editable path="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UserInterfaceAudio"]
