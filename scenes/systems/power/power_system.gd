@@ -83,6 +83,8 @@ func _update_power_use():
 	_active_power_use = 0
 	
 	for consumer in _power_consumers:
+		if consumer == null:
+			continue
 		if consumer.is_passive_consumer():
 			_passive_power_use += consumer.current_power
 		else:
