@@ -2,11 +2,11 @@ extends Shootable
 class_name CannonWeapon
 
 @export var bullet_scene = preload("res://scenes/systems/weapons/cannon/basic_bullet.tscn")
-@export var base_fire_rate = 1
-@export var base_damage = 1
-@export var base_projectile_velocity = 1000
-@export var base_projectile_size = 1
-const MAX_COOLDOWN = 1
+@export var base_fire_rate: float = 1
+@export var base_damage: float = 1
+@export var base_projectile_velocity: float = 1000
+@export var base_projectile_size: float = 1
+const MAX_COOLDOWN: float = 1
 
 @export var weapon_icon: Texture2D
 

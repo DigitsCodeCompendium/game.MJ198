@@ -6,5 +6,7 @@
 
 [resource]
 script = ExtResource("2_f0xoq")
+base_fire_rate = 2.0
+base_damage = 10.0
 weapon_icon = ExtResource("3_f0xoq")
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"
