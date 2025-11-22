@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name BaseModule
 
 @export var activation_power: int
