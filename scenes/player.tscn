@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=12 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cfr0rhexv1n2a" path="res://assets/icon.svg" id="2_g2els"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5k51vab0hjpc" path="res://scenes/systems/modules/module_system.tscn" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://ckkccjr144hjs" path="res://scenes/systems/power/power_system.tscn" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="7_smehm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
@@ -46,5 +47,9 @@ module_system = NodePath("../ModuleSystem")
 
 [node name="ModuleSystem" parent="Systems" node_paths=PackedStringArray("power_system") instance=ExtResource("4_qlg0r")]
 power_system = NodePath("../PowerSystem")
+
+[node name="ModuleInsertionSystem" type="Node" parent="Systems" node_paths=PackedStringArray("module_system")]
+script = ExtResource("7_smehm")
+module_system = NodePath("../ModuleSystem")
 
 [node name="PowerSystem" parent="Systems" instance=ExtResource("5_qlg0r")]

@@ -7,4 +7,4 @@ func get_icon():
 	return module.module_icon
 
 func apply_to_player(player: Node):
-	player.get_node("Systems/ModuleSystem/ModuleInsertionSystem").insert_module(module)
+	player.get_node("Systems/ModuleInsertionSystem").insert_module(module)

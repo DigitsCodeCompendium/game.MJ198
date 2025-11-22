@@ -3,7 +3,7 @@ extends Node
 @export var pickup_keep_time: float = 5
 @export var discard_time: float = 0.5
 
-var module_system: ModuleSystem
+@export var module_system: ModuleSystem
 
 var _pending_module: BaseModule
 var _pending_remaining_time: float
@@ -21,7 +21,6 @@ var discard_progress: # Array of 5 float|null values, for each slot
 		return _discard_progress
 
 func _ready():
-	module_system = get_parent()
 	_reset_pending_module()
 	_reset_discard_progress()
 
