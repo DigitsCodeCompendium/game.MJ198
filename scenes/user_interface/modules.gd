@@ -14,5 +14,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_module_updated(slot:int,mod:BaseModule) -> void:
+func _on_module_updated(slot:int, mod:ModuleSlot) -> void:
 	modules[slot].update_module(mod)

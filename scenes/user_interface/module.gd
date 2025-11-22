@@ -28,9 +28,9 @@ func set_slot(slot: int):
 	power_up_button.text = increase_power_binding.as_text().substr(0, 1)
 	power_down_button.text = decrease_power_binding.as_text().substr(0, 1)
 
-func update_module(mod:BaseModule) -> void:
+func update_module(mod: ModuleSlot) -> void:
 	print("received module update")
-	if mod == null:
+	if mod.module == null:
 		mod_icon.texture = empty_sprite
 	else:
 		mod_icon.texture = mod.module_icon

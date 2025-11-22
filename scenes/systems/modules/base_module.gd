@@ -3,59 +3,15 @@ class_name BaseModule
 
 @export var is_passive_module: bool
 @export var activation_power: int
-@export var max_extra_power: int
+@export var base_extra_power_limit: int
+@export var level_extra_power_limit_scaling: Array[int] = [0, 0, 0, 0]
 @export var passive_properties: Dictionary[String, float] = {} #properties that are provided all the time
 @export var active_properties: Dictionary[String, float] = {} #properties that are provided when activated
 @export var scaling_properties: Dictionary[String, float] = {} #properties that provide aditional scaling amounts based on extra power given
+@export var level_property_scaling: Array[float] = [1, 1.3, 1.6, 2] #property multiplier based on level
 
 @export var module_icon: Texture2D
 
 #interface functions for power system
 func is_passive_consumer():
 	return true
-	
-var is_active: bool = false
-var _extra_power: int = 0
-var current_power: int:
-	get:
-		if is_active:
-			return activation_power + _extra_power
-		return 0
-
-# interface for power system, power system requests we reduce the power level
-# but if the module gets deactivated we return the full activation cost
-func reduce_power(amount: int) -> int:
-	if is_active:
-		if amount <= _extra_power:
-			_extra_power -= amount
-			return amount
-		else:
-			print("module deactivated")
-			is_active = false
-			_extra_power = 0
-			return activation_power + _extra_power
-	return 0
-
-# return value of the requested property
-func get_module_property(property: String) -> float:
-	var value = 0
-	value += passive_properties.get(property, 0)
-	if is_active:
-		value += active_properties.get(property, 0)
-		value += scaling_properties.get(property, 0) * _extra_power
-	return value
-
-# tries to increase the extra power of the 
-func required_increase_power() -> int:
-	if not is_active:
-		return activation_power
-	elif _extra_power < max_extra_power:
-		return 1
-	return 0
-	
-func increase_power() -> void:
-	if not is_active:
-		print("module activated")
-		is_active = true
-	elif _extra_power < max_extra_power:
-		_extra_power += 1
