@@ -46,7 +46,11 @@ func _reset_discard_progress():
 		Input.action_release("discard_module_%d" % (i+1))
 
 func insert_module(module: BaseModule):
-	# TODO handle duplicates upgrading existing modules
+	for module_slot in module_system.module_slots:
+		if module_slot.module == module:
+			module_slot.add_level_progress(1)
+			return
+
 	_pending_module = module
 	_pending_remaining_time = pickup_keep_time
 	_reset_discard_progress()
