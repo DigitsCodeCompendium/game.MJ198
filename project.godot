@@ -19,6 +19,12 @@ config/icon="res://assets/icon.svg"
 
 UiEventBus="*res://scenes/user_interface/ui_event_bus.gd"
 
+[display]
+
+window/size/viewport_width=1422
+window/size/viewport_height=800
+window/stretch/mode="viewport"
+
 [input]
 
 shoot={
