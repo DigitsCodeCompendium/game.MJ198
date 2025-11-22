@@ -17,7 +17,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-UiEventBus="*res://scenes/ui_event_bus.gd"
+UiEventBus="*res://scenes/user_interface/ui_event_bus.gd"
 
 [input]
 
