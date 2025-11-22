@@ -21,7 +21,7 @@ func launch(vel:Vector2, pos:Vector2, size:float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += velocity * delta
-	rotation += ang_velocity * delta
+	$AnimatedSprite2D.rotation += ang_velocity * delta
 
 func _on_leave_screen():
 	self.queue_free()

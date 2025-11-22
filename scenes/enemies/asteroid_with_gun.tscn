@@ -39,8 +39,19 @@ shape = SubResource("CircleShape2D_t4se3")
 script = ExtResource("3_oum58")
 drop_table = ExtResource("4_mgijr")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("5_yhr8k")
+health_bar = NodePath("../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.999999
+offset_top = -10.999999
+offset_right = 189.99998
+offset_bottom = -1.0000143
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+value = 1.0
+show_percentage = false
 
 [node name="Systems" type="Node" parent="."]
 
