@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var pickup_item_scene: PackedScene = preload("res://scenes/pickups/pickup.tscn")
-@export var drop_table: Dictionary[Resource, int]
+@export var drop_table: PickupDropTable
 
 func create_pickup() -> Pickup:
 	var random = RandomNumberGenerator.new()
-	var contents = drop_table.keys()
-	var weights = contents.map(func(content): return drop_table[content])
+	var contents = drop_table.weights.keys()
+	var weights = contents.map(func(content): return drop_table.weights[content])
 	var drop_content = contents[random.rand_weighted(weights)]
 	
 	if drop_content == null:

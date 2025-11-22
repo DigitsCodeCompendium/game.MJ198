@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://wc042h4gthjf"]
+[gd_scene load_steps=11 format=3 uid="uid://wc042h4gthjf"]
 
-[ext_resource type="Script" uid="uid://c1phu48j835uk" path="res://scenes/enemies/asteroid_with_gun.gd" id="1_qaisc"]
+[ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_mgijr"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="2_5rpwm"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_5rpwm"]
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/enemies/pickup_drop_source.gd" id="3_oum58"]
 [ext_resource type="PackedScene" uid="uid://bovffx1tta0x7" path="res://scenes/systems/enemy_ai/basic_shoot_ai.tscn" id="4_lsygd"]
-[ext_resource type="Resource" uid="uid://d7tayalcdvkw" path="res://scenes/pickups/pickup_content_power.tres" id="4_mgijr"]
+[ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_mgijr"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_yhr8k"]
 [ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/basic_player_cannon.tres" id="6_mgijr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
@@ -22,7 +23,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4se3"]
 
 [node name="AsteroidWithGun" type="Area2D" groups=["enemy"]]
-script = ExtResource("1_qaisc")
+script = ExtResource("1_mgijr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6.16312e-05, -0.03125167)
@@ -36,10 +37,21 @@ shape = SubResource("CircleShape2D_t4se3")
 
 [node name="PickupDropSource" type="Node2D" parent="."]
 script = ExtResource("3_oum58")
-drop_table = Dictionary[Resource, int]({
-null: 80,
-ExtResource("4_mgijr"): 20
-})
+drop_table = ExtResource("4_mgijr")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("5_yhr8k")
+health_bar = NodePath("../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.999999
+offset_top = -10.999999
+offset_right = 189.99998
+offset_bottom = -1.0000143
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+value = 1.0
+show_percentage = false
 
 [node name="Systems" type="Node" parent="."]
 

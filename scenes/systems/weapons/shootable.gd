@@ -3,6 +3,9 @@ extends Resource
 class_name Shootable
 
 @abstract
+func get_icon() -> Texture2D
+
+@abstract
 func fire_weapon(dir: Vector2, weapon_system:WeaponSystem, weapon_state:ShootableState) -> bool
 
 @abstract

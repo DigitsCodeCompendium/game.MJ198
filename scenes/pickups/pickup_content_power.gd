@@ -1,5 +1,6 @@
-extends Resource
+extends PickupContent
 class_name PickupContentPower
+
 @export var amount: int = 1
 @export var icon: Texture2D
 

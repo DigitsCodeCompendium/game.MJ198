@@ -1,9 +1,9 @@
 extends Node
 
+@export var module_system: ModuleSystem
+
 @export var pickup_keep_time: float = 5
 @export var discard_time: float = 0.5
-
-var module_system: ModuleSystem
 
 var _pending_module: BaseModule
 var _pending_remaining_time: float
@@ -11,6 +11,14 @@ var _pending_remaining_time: float
 # float means how long the player has held the discard button, null means discard button is not held
 var _discard_pending_progress # float or null
 var _discard_progress: Array # array of float or null
+
+var pending_module: BaseModule:
+	get:
+		return _pending_module
+
+var pending_remaining_time: float:
+	get:
+		return _pending_remaining_time
 
 var discard_pending_progress:
 	get:
@@ -21,7 +29,6 @@ var discard_progress: # Array of 5 float|null values, for each slot
 		return _discard_progress
 
 func _ready():
-	module_system = get_parent()
 	_reset_pending_module()
 	_reset_discard_progress()
 
@@ -53,7 +60,6 @@ func _replace_module(i):
 	module_system.set_module(i, _pending_module)
 	_discard_progress[i] = null
 	Input.action_release("discard_module_%d" % (i+1))
-	_reset_pending_module()
 
 func _process(delta):
 	var any_discard = false
@@ -63,6 +69,8 @@ func _process(delta):
 			_discard_progress[i] = _discard_progress[i] + delta if _discard_progress[i] != null else delta
 			if _discard_progress[i] > discard_time:
 				_replace_module(i)
+				UiEventBus.emit_signal("module_pending_applied", i, _pending_module)
+				_reset_pending_module()
 			any_discard = true
 		else:
 			_discard_progress[i] = null
