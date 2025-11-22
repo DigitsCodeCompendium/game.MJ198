@@ -63,7 +63,6 @@ func _ready():
 	_active_power_use = 0
 	_power_consumers = []
 	_dirty = true
-	print("sent")
 
 func request_power(consumer, delta: int) -> bool:
 	assert(_power_consumers.find(consumer) >= 0, "Must be a registered consumer")

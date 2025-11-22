@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 	pass 
 
 func update_module(mod:BaseModule) -> void:
-	print("received module update")
 	if mod == null:
 		installed_module.visible = false
 	else:
