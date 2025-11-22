@@ -20,12 +20,6 @@ var discard_progress: # Array of 5 float|null values, for each slot
 	get:
 		return _discard_progress
 
-signal module_pending_picked_up(module: BaseModule) # When a module is picked up and waiting for the player to react
-signal module_pending_lost() # When a pending module is lost or replaced by new pickup
-signal module_pending_discarded() # When a pending module is discarded
-signal module_replaced(index: int) # When a module is discarded or replaced by an incoming module
-signal module_upgraded(index: int) # When a module pickup goes directly to upgrading an existing module
-
 func _ready():
 	module_system = get_parent()
 	_reset_pending_module()
@@ -35,12 +29,14 @@ func _reset_pending_module():
 	_pending_module = null
 	_pending_remaining_time = 0
 	_discard_pending_progress = null
+	Input.action_release("discard_module_pending")
 
 func _reset_discard_progress():
 	_discard_pending_progress = null
 	_discard_progress = []
 	for i in range(module_system.num_module_slots):
 		_discard_progress.append(null)
+		Input.action_release("discard_module_%d" % (i+1))
 
 func insert_module(module: BaseModule):
 	# TODO handle duplicates upgrading existing modules
@@ -50,12 +46,13 @@ func insert_module(module: BaseModule):
 	
 	print("picked up module %s" % module)
 
-	module_pending_picked_up.emit(module)
+	UiEventBus.emit_signal("module_pending_added", module)
 	
 func _replace_module(i):
 	print("Replacing module at %d with %s" % [i, _pending_module])
 	module_system.set_module(i, _pending_module)
 	_discard_progress[i] = null
+	Input.action_release("discard_module_%d" % (i+1))
 	_reset_pending_module()
 
 func _process(delta):
@@ -66,7 +63,6 @@ func _process(delta):
 			_discard_progress[i] = _discard_progress[i] + delta if _discard_progress[i] != null else delta
 			if _discard_progress[i] > discard_time:
 				_replace_module(i)
-				module_replaced.emit(i)
 			any_discard = true
 		else:
 			_discard_progress[i] = null
@@ -76,7 +72,7 @@ func _process(delta):
 			_discard_pending_progress = _discard_pending_progress + delta if _discard_pending_progress != null else delta
 			if _discard_pending_progress > discard_time:
 				_reset_pending_module()
-				module_pending_discarded.emit()
+				UiEventBus.emit_signal("module_pending_discarded")
 		else:
 			_discard_pending_progress = null
 
@@ -85,5 +81,5 @@ func _process(delta):
 		if _pending_remaining_time <= 0 and not any_discard:
 			_reset_pending_module()
 			_reset_discard_progress()
-			module_pending_lost.emit()
+			UiEventBus.emit_signal("module_pending_lost")
 			

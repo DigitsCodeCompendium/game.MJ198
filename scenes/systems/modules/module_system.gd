@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name ModuleSystem
 
 @export var num_module_slots = 5

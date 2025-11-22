@@ -10,6 +10,7 @@
 script = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("2_lnu2h")]
+unique_name_in_owner = true
 
 [node name="SpeedControl" type="Node" parent="."]
 script = ExtResource("3_lbhrr")
