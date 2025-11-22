@@ -60,7 +60,6 @@ func _replace_module(i):
 	module_system.set_module(i, _pending_module)
 	_discard_progress[i] = null
 	Input.action_release("discard_module_%d" % (i+1))
-	_reset_pending_module()
 
 func _process(delta):
 	var any_discard = false
@@ -70,6 +69,8 @@ func _process(delta):
 			_discard_progress[i] = _discard_progress[i] + delta if _discard_progress[i] != null else delta
 			if _discard_progress[i] > discard_time:
 				_replace_module(i)
+				UiEventBus.emit_signal("module_pending_applied", i, _pending_module)
+				_reset_pending_module()
 			any_discard = true
 		else:
 			_discard_progress[i] = null

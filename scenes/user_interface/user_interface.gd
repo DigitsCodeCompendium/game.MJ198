@@ -22,10 +22,12 @@ func _ready() -> void:
 	UiEventBus.connect("current_speed",_on_speed_update)
 	
 	UiEventBus.connect("module_pending_added",_on_module_added)
+	UiEventBus.connect("module_pending_applied",_on_module_applied)
 	UiEventBus.connect("module_pending_lost",_on_module_lost)
 	UiEventBus.connect("module_pending_discarded",_on_module_lost)
 	
 	UiEventBus.connect("weapon_pending_added",_on_weapon_added)
+	UiEventBus.connect("weapon_pending_applied",_on_weapon_applied)
 	UiEventBus.connect("weapon_pending_discarded",_on_weapon_lost)
 	UiEventBus.connect("weapon_pending_lost",_on_weapon_lost)
 
@@ -47,6 +49,10 @@ func _on_speed_update(speed_str:String):
 func _on_module_added(module:BaseModule):
 	pending_module.visible = true
 	pending_module_timer.start(5)
+
+func _on_module_applied(slot: int, module: BaseModule):
+	pending_module.visible = false
+	pending_module_timer.stop()
 	
 func _on_module_lost():
 	pending_module.visible = false
@@ -55,6 +61,11 @@ func _on_module_lost():
 func _on_weapon_added(weapon: Shootable):
 	pending_wep_eng.visible = true
 	pending_wep_eng_timer.start(5)
+	
+func _on_weapon_applied(weapon: Shootable):
+	pending_wep_eng.visible = false
+	pending_wep_eng_timer.stop()
+	
 func _on_weapon_lost():
 	pending_wep_eng.visible = false
 	pending_wep_eng_timer.stop()

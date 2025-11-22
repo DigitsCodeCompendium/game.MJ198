@@ -26,6 +26,7 @@ func _process(delta):
 	if _pending_weapon != null:
 		if Input.is_action_just_pressed("replace_weapon"):
 			weapon_system.set_weapon(_pending_weapon)
+			UiEventBus.emit_signal("weapon_pending_applied", _pending_weapon)
 			_reset_pending_weapon()
 		elif Input.is_action_just_pressed("discard_weapon"):
 			_reset_pending_weapon()
