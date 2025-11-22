@@ -1,4 +1,4 @@
-extends Resource
+extends PickupContent
 class_name PickupContentModule
 
 @export var module: BaseModule
