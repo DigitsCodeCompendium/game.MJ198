@@ -25,5 +25,5 @@ func _process(delta: float) -> void:
 		asteroid.launch(Vector2(randi_range(-10, 10), 200), Vector2(randi_range(playable_margins, screen_size.x-playable_margins),-20), randf_range(1, 5))
 	
 	if Input.is_action_just_pressed("test_key"):
-		get_node("Player/Systems/ModuleSystem").set_module(load("res://resources/modules/firerate_module_1.tres"), 0)
+		get_node("Player/Systems/ModuleSystem").set_module(0, load("res://resources/modules/firerate_module_1.tres"))
 	
