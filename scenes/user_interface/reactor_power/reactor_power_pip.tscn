@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7wdh8x7yiyhu"]
+
+[ext_resource type="Texture2D" uid="uid://pxkgs5d3vj1p" path="res://assets/power_icons/active_power.png" id="1_5y1v5"]
+
+[node name="TextureRect" type="TextureRect"]
+size_flags_horizontal = 3
+texture = ExtResource("1_5y1v5")
+expand_mode = 5

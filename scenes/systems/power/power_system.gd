@@ -116,5 +116,5 @@ func _check_power_loss():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if _dirty:
-		UiEventBus.emit_signal("reactor_updated",current_max_power,free_power)
+		UiEventBus.emit_signal("reactor_updated", self)
 		_dirty = false

@@ -1,6 +1,6 @@
 extends Node
 
-signal reactor_updated(max_power:int, free_power:int)
+signal reactor_updated(power_system: PowerSystem)
 signal module_updated(slot:int, module:BaseModule)
 signal module_pending_added(module: BaseModule)
 signal module_pending_applied(slot: int, module: BaseModule)

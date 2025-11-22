@@ -2,7 +2,6 @@ extends Control
 
 @onready var weapon_icon = get_node("%Weapon")
 @onready var engine_icon = get_node("%Engine")
-@onready var free_power_bar = get_node("%ReactorPower")
 
 @onready var speed_label = get_node("%SpeedLabel")
 @onready var speed_bar = get_node("%SpeedProgressBar")
@@ -16,9 +15,7 @@ extends Control
 @onready var pending_wep_eng_bar = get_node("%EngWepDiscardProgressBar")
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	UiEventBus.connect("reactor_updated",_on_power_changed)
-	
+func _ready() -> void:	
 	UiEventBus.connect("current_speed",_on_speed_update)
 	
 	UiEventBus.connect("module_pending_added",_on_module_added)
@@ -38,9 +35,6 @@ func _process(delta: float) -> void:
 	
 	if not pending_wep_eng_timer.is_stopped():
 		pending_wep_eng_bar.value = pending_wep_eng_timer.get_time_left()
-
-func _on_power_changed(curent_max_power:int,free_power:int):
-	free_power_bar.value = free_power
 	
 func _on_speed_update(speed_str:String):
 	speed_label.text = speed_str
