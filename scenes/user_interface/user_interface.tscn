@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=9 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://berc3u26dbt5n" path="res://scenes/user_interface/wep_eng_module.tscn" id="1_l2bgj"]
 [ext_resource type="PackedScene" uid="uid://dbb5ocp6biqt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
 [ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/modules.gd" id="2_y1h3b"]
+[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="5_f1hci"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.6, 0.93333334, 0.6, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dtu1"]
 bg_color = Color(0.5086386, 0.10218536, 0.72161824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvt6f"]
+bg_color = Color(0.86123204, 0.11902132, 0.1504344, 1)
 
 [node name="Control" type="Control"]
 z_index = -1
@@ -86,7 +90,7 @@ layout_mode = 2
 [node name="Module5" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="SpeedBarContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
@@ -94,14 +98,14 @@ anchor_right = 0.875
 offset_bottom = 27.0
 grow_horizontal = 2
 
-[node name="SpeedProgressBar" type="ProgressBar" parent="PanelContainer"]
+[node name="SpeedProgressBar" type="ProgressBar" parent="SpeedBarContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_2dtu1")
 show_percentage = false
 
-[node name="SpeedLabel" type="Label" parent="PanelContainer/SpeedProgressBar"]
+[node name="SpeedLabel" type="Label" parent="SpeedBarContainer/SpeedProgressBar"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -118,3 +122,37 @@ grow_vertical = 2
 text = "ttest"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PickedUpModule" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.05
+anchor_right = 0.875
+anchor_bottom = 0.25
+
+[node name="TextureRect" type="TextureRect" parent="PickedUpModule"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("5_f1hci")
+expand_mode = 4
+
+[node name="ModuleDiscardProgressBar" type="ProgressBar" parent="PickedUpModule"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvt6f")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="ModuleDiscardButton" type="Button" parent="PickedUpModule"]
+layout_mode = 2
+text = "X"
+
+[node name="ModuleTimer" type="Timer" parent="PickedUpModule"]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
