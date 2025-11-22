@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://wc042h4gthjf"]
+[gd_scene load_steps=12 format=3 uid="uid://wc042h4gthjf"]
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_mgijr"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="2_5rpwm"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_5rpwm"]
+[ext_resource type="Texture2D" uid="uid://b33jwphp47wl3" path="res://assets/Screenshot 2025-11-22 140321.png" id="3_f4g4s"]
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/enemies/pickup_drop_source.gd" id="3_oum58"]
 [ext_resource type="PackedScene" uid="uid://bovffx1tta0x7" path="res://scenes/systems/enemy_ai/basic_shoot_ai.tscn" id="4_lsygd"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_mgijr"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_yhr8k"]
-[ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/basic_player_cannon.tres" id="6_mgijr"]
+[ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/player/basic_player_cannon.tres" id="6_mgijr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
@@ -29,6 +30,11 @@ script = ExtResource("1_mgijr")
 position = Vector2(-6.16312e-05, -0.03125167)
 scale = Vector2(0.03044159, 0.03836042)
 sprite_frames = SubResource("SpriteFrames_6mo6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 3)
+scale = Vector2(0.074074075, 0.074074075)
+texture = ExtResource("3_f4g4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t4se3")
