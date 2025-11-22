@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xtgo77dwc7ui"]
+
+[ext_resource type="Script" uid="uid://l6nhix37ie83" path="res://scenes/background/background.gd" id="1_y0upk"]
+[ext_resource type="Texture2D" uid="uid://b246vg0bnqb6g" path="res://assets/Background_GJ.png" id="2_jougr"]
+
+[node name="Background" type="Node2D" node_paths=PackedStringArray("scrolling_backgrounds")]
+script = ExtResource("1_y0upk")
+scrolling_backgrounds = [NodePath("Parallax2D")]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(0, 1)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(715.75, 953.6667)
+scale = Vector2(2.3841667, 2.3841667)
+texture = ExtResource("2_jougr")

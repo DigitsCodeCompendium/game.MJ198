@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6k4yokkjgfxh"
-path="res://.godot/imported/cannon_weapon.png-93ef3d9bf10c6f570b4fbfc51be060a8.ctex"
+uid="uid://cyaeeuexyixmg"
+path="res://.godot/imported/pellet.png-dfcb49c91214c23bb5cc7ee3dd38f2d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapon_icons/cannon_weapon.png"
-dest_files=["res://.godot/imported/cannon_weapon.png-93ef3d9bf10c6f570b4fbfc51be060a8.ctex"]
+source_file="res://assets/weapon_icons/shotgun/pellet.png"
+dest_files=["res://.godot/imported/pellet.png-dfcb49c91214c23bb5cc7ee3dd38f2d5.ctex"]
 
 [params]
 

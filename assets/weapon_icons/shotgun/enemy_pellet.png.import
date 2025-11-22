@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyaeeuexyixmg"
-path="res://.godot/imported/pellet.png-292a4cf055ad3af780212df7736e0315.ctex"
+uid="uid://dxqt1ixdalrdm"
+path="res://.godot/imported/enemy_pellet.png-dd2af1c950952fd4615f5681d7be9b59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapon_icons/pellet.png"
-dest_files=["res://.godot/imported/pellet.png-292a4cf055ad3af780212df7736e0315.ctex"]
+source_file="res://assets/weapon_icons/shotgun/enemy_pellet.png"
+dest_files=["res://.godot/imported/enemy_pellet.png-dd2af1c950952fd4615f5681d7be9b59.ctex"]
 
 [params]
 

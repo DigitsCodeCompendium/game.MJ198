@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfr6dshc1ngsh"]
 
 [ext_resource type="Script" uid="uid://mxhhnccuqqmg" path="res://scenes/systems/weapons/cannon/basic_bullet.gd" id="1_kewi4"]
-[ext_resource type="Texture2D" uid="uid://dcrv4pav0knde" path="res://assets/weapon_icons/cannon_shell.png" id="2_m1xnm"]
+[ext_resource type="Texture2D" uid="uid://dcrv4pav0knde" path="res://assets/weapon_icons/cannon/cannon_shell.png" id="2_m1xnm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvbig"]
 radius = 6.0

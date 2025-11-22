@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj88es3out02f"
-path="res://.godot/imported/spent_casing.png-e69397560dfa67cb76a185f5a723ba03.ctex"
+uid="uid://bmjup3kf0q3cs"
+path="res://.godot/imported/he_rocket_weapon_icon.png-90ef2d3bc9fbe9d1b22adb327f8d5349.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapon_icons/spent_casing.png"
-dest_files=["res://.godot/imported/spent_casing.png-e69397560dfa67cb76a185f5a723ba03.ctex"]
+source_file="res://assets/weapon_icons/rocket/he_rocket_weapon_icon.png"
+dest_files=["res://.godot/imported/he_rocket_weapon_icon.png-90ef2d3bc9fbe9d1b22adb327f8d5349.ctex"]
 
 [params]
 

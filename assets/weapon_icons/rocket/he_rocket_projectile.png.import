@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4dkonbji6dyx"
-path="res://.godot/imported/enemy_cannon_shell.png-536e04654d6583d90dec1c96a22313b0.ctex"
+uid="uid://80kc4ib0lk23"
+path="res://.godot/imported/he_rocket_projectile.png-3a1fba4e05163eed369df58de1b45db1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapon_icons/enemy_cannon_shell.png"
-dest_files=["res://.godot/imported/enemy_cannon_shell.png-536e04654d6583d90dec1c96a22313b0.ctex"]
+source_file="res://assets/weapon_icons/rocket/he_rocket_projectile.png"
+dest_files=["res://.godot/imported/he_rocket_projectile.png-3a1fba4e05163eed369df58de1b45db1.ctex"]
 
 [params]
 

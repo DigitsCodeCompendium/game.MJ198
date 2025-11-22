@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dmp444rnoaysk"]
 
 [ext_resource type="Script" uid="uid://c8mft5t13fw1b" path="res://scenes/systems/weapons/rocket_launcher/basic_rocket.gd" id="1_hvo1y"]
-[ext_resource type="Texture2D" uid="uid://80kc4ib0lk23" path="res://assets/weapon_icons/rocket_projectile.png" id="2_6u23y"]
+[ext_resource type="Texture2D" uid="uid://80kc4ib0lk23" path="res://assets/weapon_icons/rocket/he_rocket_projectile.png" id="2_6u23y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvbig"]
 radius = 5.0
