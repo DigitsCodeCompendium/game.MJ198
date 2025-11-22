@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b54uo5otbvimt"]
+[gd_scene load_steps=6 format=3 uid="uid://gybi4rrr8u4f"]
 
-[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_mfpw2"]
-[ext_resource type="Script" uid="uid://1xgxtcrnhjnk" path="res://scenes/user_interface/module.gd" id="1_raokp"]
-[ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="2_7vxq3"]
+[ext_resource type="Script" uid="uid://1xgxtcrnhjnk" path="res://scenes/user_interface/module.gd" id="1_52kyf"]
+[ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="2_p6w3k"]
+[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="3_0cyw4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
 
@@ -14,7 +14,7 @@ custom_minimum_size = Vector2(160, 160)
 offset_right = 124.0
 offset_bottom = 124.0
 size_flags_vertical = 3
-script = ExtResource("1_raokp")
+script = ExtResource("1_52kyf")
 
 [node name="EmptyModule" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -23,12 +23,11 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="EmptyModule"]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("2_7vxq3")
+texture = ExtResource("2_p6w3k")
 stretch_mode = 5
 
 [node name="FilledModule" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -66,7 +65,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(86, 86)
 layout_mode = 2
-texture = ExtResource("1_mfpw2")
+texture = ExtResource("3_0cyw4")
 expand_mode = 2
 
 [node name="EnergyProgressBar" type="ProgressBar" parent="FilledModule/VBoxContainer2"]
