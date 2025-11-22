@@ -3,7 +3,10 @@ extends Resource
 class_name Shootable
 
 @abstract
-func fire_weapon(weapon_system:WeaponSystem, module_system:ModuleSystem) -> bool
+func fire_weapon(dir: Vector2, weapon_system:WeaponSystem, weapon_state:ShootableState) -> bool
 
 @abstract
-func cooldown_weapon(amount: float) -> void
+func cooldown_weapon(delta: float, weapon_state:ShootableState) -> void
+
+@abstract
+func init_weapon_state() -> ShootableState

@@ -1,14 +1,9 @@
 extends Node2D
 
-var asteroid_scene = preload("res://scenes/enemies/asteroid.tscn")
+var asteroid_scene = preload("res://scenes/enemies/asteroid_with_gun.tscn")
 var playable_margins: float
 @export var spawn_timer = 0.5 #spawn timer of asteroids in seconds
 var spawn_timer_time = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

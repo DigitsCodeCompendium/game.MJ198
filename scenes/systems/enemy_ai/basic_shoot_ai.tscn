@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bovffx1tta0x7"]
+
+[ext_resource type="Script" uid="uid://bctmbdqje3k8t" path="res://scenes/systems/enemy_ai/basic_shoot_ai.gd" id="1_o4f8h"]
+
+[node name="BasicShootAi" type="Node"]
+script = ExtResource("1_o4f8h")

@@ -12,7 +12,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += velocity * delta
 
-func launch(vel:Vector2, pos:Vector2, size:float, dmg:int) -> void:
+func launch(vel:Vector2, pos:Vector2, size:float, dmg:int, group:String) -> void:
+	self.add_to_group(group)
 	self.position = pos
 	self.velocity = vel
 	self.scale = Vector2(size, size)

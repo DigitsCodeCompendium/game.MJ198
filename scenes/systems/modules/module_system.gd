@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name ModuleSystem
 
 signal module_updated(slot: int, module: ModuleSystem)

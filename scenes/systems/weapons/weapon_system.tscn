@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bhkigmfchqy7d" path="res://scenes/systems/weapons/weapon_system.gd" id="1_iwijl"]
 
-[node name="WeaponSystem" type="Node2D"]
+[node name="WeaponSystem" type="Node"]
 script = ExtResource("1_iwijl")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=11 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cfr0rhexv1n2a" path="res://assets/icon.svg" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://cfr6dshc1ngsh" path="res://scenes/systems/weapons/cannon/basic_bullet.tscn" id="4_fjrip"]
 [ext_resource type="PackedScene" uid="uid://b5k51vab0hjpc" path="res://scenes/systems/modules/module_system.tscn" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://ckkccjr144hjs" path="res://scenes/systems/power/power_system.tscn" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="5_smehm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
@@ -20,6 +22,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(50, 50)
 
+[sub_resource type="Resource" id="Resource_ur7pv"]
+script = ExtResource("5_smehm")
+metadata/_custom_type_script = "uid://ci7we2a0ieoim"
+
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_3vyb7")
 
@@ -31,9 +37,12 @@ sprite_frames = SubResource("SpriteFrames_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")
 
-[node name="Systems" type="Node2D" parent="."]
+[node name="Systems" type="Node" parent="."]
 
-[node name="WeaponSystem" parent="Systems" instance=ExtResource("3_dqkch")]
+[node name="WeaponSystem" parent="Systems" node_paths=PackedStringArray("module_system") instance=ExtResource("3_dqkch")]
+belongs_to_player = true
+current_weapon = SubResource("Resource_ur7pv")
+module_system = NodePath("../ModuleSystem")
 
 [node name="ModuleSystem" parent="Systems" node_paths=PackedStringArray("power_system") instance=ExtResource("4_qlg0r")]
 power_system = NodePath("../PowerSystem")

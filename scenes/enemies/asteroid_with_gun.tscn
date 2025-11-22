@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://wc042h4gthjf"]
+
+[ext_resource type="Script" uid="uid://c1phu48j835uk" path="res://scenes/enemies/asteroid_with_gun.gd" id="1_qaisc"]
+[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="2_5rpwm"]
+[ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_5rpwm"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/enemies/pickup_drop_source.gd" id="3_oum58"]
+[ext_resource type="PackedScene" uid="uid://bovffx1tta0x7" path="res://scenes/systems/enemy_ai/basic_shoot_ai.tscn" id="4_lsygd"]
+[ext_resource type="Resource" uid="uid://d7tayalcdvkw" path="res://scenes/pickups/pickup_content_power.tres" id="4_mgijr"]
+[ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/basic_player_cannon.tres" id="6_mgijr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5rpwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4se3"]
+
+[node name="AsteroidWithGun" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_qaisc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6.16312e-05, -0.03125167)
+scale = Vector2(0.03044159, 0.03836042)
+sprite_frames = SubResource("SpriteFrames_6mo6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t4se3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("3_oum58")
+drop_table = Dictionary[Resource, int]({
+null: 80,
+ExtResource("4_mgijr"): 20
+})
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="WeaponSystem" parent="Systems" instance=ExtResource("3_5rpwm")]
+current_weapon = ExtResource("6_mgijr")
+
+[node name="BasicShootAi" parent="Systems" node_paths=PackedStringArray("weapon_system") instance=ExtResource("4_lsygd")]
+weapon_system = NodePath("../WeaponSystem")
