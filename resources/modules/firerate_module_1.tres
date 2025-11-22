@@ -1,16 +1,13 @@
 [gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://d27ym6sj8ysaq"]
 
-[ext_resource type="Texture2D" uid="uid://nudri3plh6vd" path="res://assets/module_icons/module_icon_fire_rate_1.png" id="1_lbycx"]
+[ext_resource type="Texture2D" uid="uid://snd367ajo3hp" path="res://assets/module_icons/firerate_module.png" id="1_lbycx"]
 [ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="1_mfwak"]
 
 [resource]
 script = ExtResource("1_mfwak")
-activation_power = 2
-max_extra_power = 2
+is_passive_module = true
+activation_power = 4
 active_properties = Dictionary[String, float]({
-"weapon_firerate": 2.0
-})
-scaling_properties = Dictionary[String, float]({
-"weapon_firerate": 4.0
+"weapon_firerate": 0.5
 })
 module_icon = ExtResource("1_lbycx")

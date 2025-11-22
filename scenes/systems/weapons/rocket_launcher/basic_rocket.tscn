@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmp444rnoaysk"]
+
+[ext_resource type="Script" uid="uid://c8mft5t13fw1b" path="res://scenes/systems/weapons/rocket_launcher/basic_rocket.gd" id="1_hvo1y"]
+[ext_resource type="Texture2D" uid="uid://80kc4ib0lk23" path="res://assets/weapon_icons/rocket_projectile.png" id="2_6u23y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvbig"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvvoj"]
+atlas = ExtResource("2_6u23y")
+region = Rect2(0, 0, 12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0gt6"]
+atlas = ExtResource("2_6u23y")
+region = Rect2(12, 0, 12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3igy"]
+atlas = ExtResource("2_6u23y")
+region = Rect2(24, 0, 12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjn12"]
+atlas = ExtResource("2_6u23y")
+region = Rect2(36, 0, 12, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvo1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvvoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0gt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3igy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjn12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicRocket" type="Area2D"]
+script = ExtResource("1_hvo1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kvbig")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 2)
+rect = Rect2(-6, -10, 12, 22)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_hvo1y")
+autoplay = "default"
+frame_progress = 0.066496596

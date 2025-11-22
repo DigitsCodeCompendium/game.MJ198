@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://v85pwhlifr3v"]
+
+[ext_resource type="Texture2D" uid="uid://catncgpk14ds0" path="res://assets/module_icons/projectile_velocty_module.png" id="1_rsd40"]
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="2_81ftu"]
+
+[resource]
+script = ExtResource("2_81ftu")
+activation_power = 1
+max_extra_power = 5
+active_properties = Dictionary[String, float]({
+"weapon_velocity": 0.5
+})
+module_icon = ExtResource("1_rsd40")

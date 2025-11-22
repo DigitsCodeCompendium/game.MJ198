@@ -1,6 +1,7 @@
 extends Resource
 class_name BaseModule
 
+@export var is_passive_module: bool
 @export var activation_power: int
 @export var max_extra_power: int
 @export var passive_properties: Dictionary[String, float] = {} #properties that are provided all the time

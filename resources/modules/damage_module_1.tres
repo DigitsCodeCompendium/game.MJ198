@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://cyhtqle2r2ilt"]
+
+[ext_resource type="Texture2D" uid="uid://df36fm4vd23xu" path="res://assets/module_icons/damage_module.png" id="1_2yxww"]
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="2_d3yp2"]
+
+[resource]
+script = ExtResource("2_d3yp2")
+is_passive_module = true
+activation_power = 4
+active_properties = Dictionary[String, float]({
+"weapon_damage": 1.0
+})
+module_icon = ExtResource("1_2yxww")

@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="PickupDropTable" load_steps=10 format=3 uid="uid://f6x6m4dqec2"]
+[gd_resource type="Resource" script_class="PickupDropTable" load_steps=18 format=3 uid="uid://f6x6m4dqec2"]
 
-[ext_resource type="Script" uid="uid://cc3nlj4geu6ce" path="res://scenes/pickups/pickup_content.gd" id="1_qrb3g"]
-[ext_resource type="Script" uid="uid://cjk7x2h4383nf" path="res://scenes/enemies/pickup_drop_table.gd" id="2_bsrxx"]
+[ext_resource type="Script" path="res://scenes/pickups/pickup_content.gd" id="1_qrb3g"]
+[ext_resource type="Script" path="res://scenes/enemies/pickup_drop_table.gd" id="2_bsrxx"]
 [ext_resource type="Resource" uid="uid://d7tayalcdvkw" path="res://scenes/pickups/pickup_content_power.tres" id="3_2ehe6"]
 [ext_resource type="Resource" uid="uid://d27ym6sj8ysaq" path="res://resources/modules/firerate_module_1.tres" id="4_hecxd"]
 [ext_resource type="Script" uid="uid://cc7vsq5nveskd" path="res://scenes/pickups/pickup_content_module.gd" id="5_fhf8e"]
-[ext_resource type="Script" uid="uid://dh634rqw5sh5y" path="res://scenes/pickups/pickup_content_weapon.gd" id="6_fhf8e"]
-[ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/basic_player_cannon.tres" id="7_ftebs"]
+[ext_resource type="Script" path="res://scenes/pickups/pickup_content_weapon.gd" id="6_fhf8e"]
+[ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/player/basic_player_cannon.tres" id="7_ftebs"]
+[ext_resource type="Resource" uid="uid://bl3r4vf5yq0wp" path="res://resources/weapons/player/basic_player_rocket_weapon.tres" id="8_ly78s"]
+[ext_resource type="Resource" uid="uid://ci0klvqfo2xc3" path="res://resources/weapons/player/basic_player_shotgun.tres" id="9_hwpxa"]
+[ext_resource type="Resource" uid="uid://cyhtqle2r2ilt" path="res://resources/modules/damage_module_1.tres" id="10_erlq7"]
+[ext_resource type="Resource" uid="uid://cf2nwk38ipenx" path="res://resources/modules/size_module_1.tres" id="11_iwep5"]
 
 [sub_resource type="Resource" id="Resource_ftebs"]
 script = ExtResource("5_fhf8e")
@@ -18,11 +22,35 @@ script = ExtResource("6_fhf8e")
 weapon = ExtResource("7_ftebs")
 metadata/_custom_type_script = "uid://dh634rqw5sh5y"
 
+[sub_resource type="Resource" id="Resource_fhf8e"]
+script = ExtResource("6_fhf8e")
+weapon = ExtResource("8_ly78s")
+metadata/_custom_type_script = "uid://dh634rqw5sh5y"
+
+[sub_resource type="Resource" id="Resource_q852r"]
+script = ExtResource("6_fhf8e")
+weapon = ExtResource("9_hwpxa")
+metadata/_custom_type_script = "uid://dh634rqw5sh5y"
+
+[sub_resource type="Resource" id="Resource_e8rf3"]
+script = ExtResource("5_fhf8e")
+module = ExtResource("10_erlq7")
+metadata/_custom_type_script = "uid://cc7vsq5nveskd"
+
+[sub_resource type="Resource" id="Resource_0lytd"]
+script = ExtResource("5_fhf8e")
+module = ExtResource("11_iwep5")
+metadata/_custom_type_script = "uid://cc7vsq5nveskd"
+
 [resource]
 script = ExtResource("2_bsrxx")
 weights = Dictionary[ExtResource("1_qrb3g"), float]({
 null: 40.0,
 ExtResource("3_2ehe6"): 20.0,
 SubResource("Resource_ftebs"): 20.0,
-SubResource("Resource_6ulkq"): 20.0
+SubResource("Resource_6ulkq"): 20.0,
+SubResource("Resource_fhf8e"): 20.0,
+SubResource("Resource_q852r"): 20.0,
+SubResource("Resource_e8rf3"): 20.0,
+SubResource("Resource_0lytd"): 20.0
 })

@@ -1,5 +1,7 @@
 extends Area2D
 
+var accel_accel = Vector2.ZERO
+var acceleration = Vector2.ZERO
 var velocity = Vector2.ZERO
 var damage: float
 
@@ -10,12 +12,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	acceleration += accel_accel * delta
+	velocity += acceleration * delta
 	position += velocity * delta
 
-func launch(vel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
+func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
 	self.add_to_group(group)
 	self.position = pos
-	self.velocity = vel
+	self.acceleration = accel
 	self.scale = Vector2(size, size)
 	self.damage = dmg
 

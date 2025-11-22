@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://c0i3lu7iqnbw8"]
+
+[ext_resource type="Texture2D" uid="uid://bwoopdl0hu8es" path="res://assets/module_icons/peircing_module.png" id="1_ngrd5"]
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="2_jft4l"]
+
+[resource]
+script = ExtResource("2_jft4l")
+is_passive_module = true
+activation_power = 4
+max_extra_power = 1
+active_properties = Dictionary[String, float]({
+"weapon_pierce": 1.0
+})
+module_icon = ExtResource("1_ngrd5")

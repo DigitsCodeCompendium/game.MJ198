@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://caotn0iibmj20"]
+
+[ext_resource type="Script" uid="uid://mxhhnccuqqmg" path="res://scenes/systems/weapons/cannon/basic_bullet.gd" id="1_bq4eg"]
+[ext_resource type="Texture2D" uid="uid://c4dkonbji6dyx" path="res://assets/weapon_icons/enemy_cannon_shell.png" id="2_bq4eg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvbig"]
+radius = 6.0
+height = 20.0
+
+[node name="BasicBullet" type="Area2D"]
+script = ExtResource("1_bq4eg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.239062, 2.239062)
+texture = ExtResource("2_bq4eg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kvbig")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-6, -10, 12, 20)

@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 
 func set_module(slot:int, module: BaseModule) -> bool:
 	if slot < num_module_slots:
-		module_slots[slot] = module
+		module_slots[slot] = module.duplicate()
 		
 		var power_consumers = []
 		for module_slot in module_slots:
