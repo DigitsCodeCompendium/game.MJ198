@@ -1,12 +1,18 @@
 extends PanelContainer
 
 var empty_sprite = preload("res://assets/module_icons/emptyslot.png")
-
+var backgrounds = [
+	preload("res://assets/module_icons/basic_background.png"),
+	preload("res://assets/module_icons/advanced_background.png"),
+	preload("res://assets/module_icons/master_background.png"),
+	preload("res://assets/module_icons/ultimate_background.png")
+]
 @onready var power_bar = get_node("%EnergyBar")
 @onready var upgrade_bar = get_node("%UpgradeBar")
 @onready var power_up_button = get_node("%IncreasePower")
 @onready var power_down_button = get_node("%DecreasePower")
 @onready var mod_icon = get_node("%ModuleSprite")
+@onready var mod_background = get_node("%ModuleBackground")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,5 +35,6 @@ func update_module(mod:BaseModule) -> void:
 	else:
 		mod_icon.texture = mod.module_icon
 		power_bar.value = mod.current_power
+		mod_background.texture = backgrounds[0]
 		#upgrade_bar.value = mod.upgrade_progress
 		#mod_icon.texture = mod.
