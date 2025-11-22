@@ -33,7 +33,7 @@ func update_module(mod: ModuleSlot) -> void:
 	if mod.module == null:
 		mod_icon.texture = empty_sprite
 	else:
-		mod_icon.texture = mod.module_icon
+		mod_icon.texture = mod.module.module_icon
 		power_bar.value = mod.current_power
 		mod_background.texture = backgrounds[0]
 		#upgrade_bar.value = mod.upgrade_progress

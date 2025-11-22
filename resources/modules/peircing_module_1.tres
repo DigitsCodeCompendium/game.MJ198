@@ -7,7 +7,7 @@
 script = ExtResource("2_jft4l")
 is_passive_module = true
 activation_power = 4
-max_extra_power = 1
+base_extra_power_limit = 1
 active_properties = Dictionary[String, float]({
 "weapon_pierce": 1.0
 })

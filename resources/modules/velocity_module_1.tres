@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_81ftu")
 activation_power = 1
-max_extra_power = 5
+base_extra_power_limit = 5
 active_properties = Dictionary[String, float]({
 "weapon_velocity": 0.5
 })
