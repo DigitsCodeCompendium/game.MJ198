@@ -156,3 +156,37 @@ text = "X"
 unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
+
+[node name="PickedUpEngWep" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.05
+anchor_right = 0.25
+anchor_bottom = 0.25
+
+[node name="TextureRect" type="TextureRect" parent="PickedUpEngWep"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("5_f1hci")
+expand_mode = 4
+
+[node name="EngWepDiscardProgressBar" type="ProgressBar" parent="PickedUpEngWep"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvt6f")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="EngWepDiscardButton" type="Button" parent="PickedUpEngWep"]
+layout_mode = 2
+text = "Z"
+
+[node name="EngWepTimer" type="Timer" parent="PickedUpEngWep"]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
