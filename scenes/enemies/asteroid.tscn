@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdoqsejbi7fcx"]
+[gd_scene load_steps=8 format=3 uid="uid://cdoqsejbi7fcx"]
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_akfqu"]
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/enemies/pickup_drop_source.gd" id="3_08eb2"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_2h6hj"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_j2n00"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
@@ -34,3 +35,6 @@ shape = SubResource("CircleShape2D_t4se3")
 [node name="PickupDropSource" type="Node2D" parent="."]
 script = ExtResource("3_08eb2")
 drop_table = ExtResource("4_2h6hj")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_j2n00")
