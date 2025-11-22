@@ -75,8 +75,9 @@ func get_module_property(property: String) -> float:
 
 func add_level_progress(progress: int):
 	assert(_module != null)
+	
 	_level_progress += progress
-	while _level_progress > _current_level + 1:
+	while _current_level < 3 and _level_progress > _current_level + 1:
 		_current_level += 1
 		_level_progress -= _current_level
 
