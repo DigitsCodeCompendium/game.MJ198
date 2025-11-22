@@ -21,3 +21,6 @@ func _open_options_menu():
 func _open_main_menu():
 	main_menu.visible = true
 	options_menu.visible = false
+
+func _quit():
+	get_tree().quit()

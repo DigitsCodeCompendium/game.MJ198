@@ -192,6 +192,7 @@ bus = &"User Interface"
 [connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_open_options_menu"]
 [connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton/ClickSound" method="play"]
 [connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton/HoverSound" method="play"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_quit"]
 [connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton/ClickSound" method="play"]
 [connection signal="mouse_entered" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton/HoverSound" method="play"]
 [connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_open_main_menu"]
