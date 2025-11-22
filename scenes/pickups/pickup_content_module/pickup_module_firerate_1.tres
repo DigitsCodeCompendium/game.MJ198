@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PickupContentModule" load_steps=3 format=3 uid="uid://3eobmcja6cjx"]
+
+[ext_resource type="Resource" uid="uid://d27ym6sj8ysaq" path="res://resources/modules/firerate_module_1.tres" id="1_fcppx"]
+[ext_resource type="Script" uid="uid://cc7vsq5nveskd" path="res://scenes/pickups/pickup_content_module.gd" id="2_11djn"]
+
+[resource]
+script = ExtResource("2_11djn")
+module = ExtResource("1_fcppx")
+metadata/_custom_type_script = "uid://cc7vsq5nveskd"
