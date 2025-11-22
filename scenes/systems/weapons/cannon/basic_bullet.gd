@@ -11,6 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += velocity * delta
+	rotation = velocity.angle() + PI/2
 
 func launch(vel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
 	self.add_to_group(group)

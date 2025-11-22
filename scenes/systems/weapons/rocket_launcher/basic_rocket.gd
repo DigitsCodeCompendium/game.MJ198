@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	acceleration += accel_accel * delta
 	velocity += acceleration * delta
 	position += velocity * delta
+	rotation = velocity.angle() + PI/2
 
 func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
 	self.add_to_group(group)
