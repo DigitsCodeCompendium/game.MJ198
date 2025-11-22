@@ -42,7 +42,7 @@ var free_power: int:
 
 var _dirty: bool
 
-signal power_changed()
+signal power_changed(power_system: PowerSystem)
 
 # Power consumers need to have:
 # is_passive_consumer() -> bool
@@ -115,5 +115,5 @@ func _check_power_loss():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if _dirty:
-		power_changed.emit()
+		power_changed.emit(self)
 		_dirty = false
