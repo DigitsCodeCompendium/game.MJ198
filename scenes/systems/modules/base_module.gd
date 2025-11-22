@@ -7,6 +7,8 @@ class_name BaseModule
 @export var active_properties: Dictionary[String, float] = {} #properties that are provided when activated
 @export var scaling_properties: Dictionary[String, float] = {} #properties that provide aditional scaling amounts based on extra power given
 
+@export var module_icon: Texture2D
+
 #interface functions for power system
 func is_passive_consumer():
 	return true

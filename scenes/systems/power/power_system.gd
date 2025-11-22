@@ -2,6 +2,7 @@ extends Node
 class_name PowerSystem
 
 @export var _base_max_power: int = 5
+@export var _power_limit: int = 20
 var _current_max_power: int
 var _current_power_loss: int # Power lost because of environmental influences
 
@@ -13,7 +14,8 @@ var current_max_power: int:
 		return _current_max_power
 	set(value):
 		assert(value >= _current_max_power)
-		_current_max_power = value
+		_current_max_power = min(value, _power_limit)
+		_dirty = true
 		
 var current_power_loss: int:
 	get:
@@ -21,6 +23,7 @@ var current_power_loss: int:
 	set(value):
 		_current_power_loss = value
 		_check_power_loss()
+		_dirty = true
 
 var effective_max_power: int:
 	get:
@@ -38,6 +41,7 @@ var free_power: int:
 	get:
 		return effective_max_power - passive_power_use - active_power_use
 
+var _dirty: bool
 
 # Power consumers need to have:
 # is_passive_consumer() -> bool
@@ -50,6 +54,7 @@ var power_consumers: Array:
 		_power_consumers = value
 		_update_power_use()
 		_check_power_loss()
+		_dirty = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,6 +63,7 @@ func _ready():
 	_passive_power_use = 0
 	_active_power_use = 0
 	_power_consumers = []
+	_dirty = true
 
 func request_power(consumer, delta: int) -> bool:
 	assert(_power_consumers.find(consumer) >= 0, "Must be a registered consumer")
@@ -67,6 +73,7 @@ func request_power(consumer, delta: int) -> bool:
 			_passive_power_use += delta
 		else:
 			_active_power_use += delta
+		_dirty = true
 		return true
 	else:
 		return false
@@ -77,6 +84,8 @@ func _update_power_use():
 	_active_power_use = 0
 	
 	for consumer in _power_consumers:
+		if consumer == null:
+			continue
 		if consumer.is_passive_consumer():
 			_passive_power_use += consumer.current_power
 		else:
@@ -105,5 +114,7 @@ func _check_power_loss():
 		i -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	if _dirty:
+		UiEventBus.emit_signal("reactor_updated",current_max_power,free_power)
+		_dirty = false

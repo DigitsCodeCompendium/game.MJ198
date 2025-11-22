@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5k51vab0hjpc"]
+[gd_scene load_steps=3 format=3 uid="uid://b5k51vab0hjpc"]
 
 [ext_resource type="Script" uid="uid://bdefd5knu3tue" path="res://scenes/systems/modules/module_system.gd" id="1_x0fty"]
+[ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="2_hhvhk"]
 
 [node name="ModuleSystem" type="Node"]
 script = ExtResource("1_x0fty")
+
+[node name="ModuleInsertionSystem" type="Node" parent="."]
+script = ExtResource("2_hhvhk")

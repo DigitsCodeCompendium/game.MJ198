@@ -1,8 +1,6 @@
 extends Node
 class_name ModuleSystem
 
-signal module_updated(slot: int, module: ModuleSystem)
-
 @export var num_module_slots = 5
 var module_slots: Array
 @export
@@ -43,7 +41,7 @@ func set_module(slot:int, module: BaseModule) -> bool:
 			if module_slot != null:
 				power_consumers.append(module_slot)
 		power_system.power_consumers = power_consumers
-		emit_signal("module_updated", slot, module)
+		UiEventBus.emit_signal("module_updated", slot, module)
 		return true
 	return false
 
@@ -72,7 +70,7 @@ func increase_module_power(slot: int) -> bool:
 		var required_power = module.required_increase_power()
 		if power_system.request_power(module, required_power):
 			module.increase_power()
-			emit_signal("module_updated", slot, module)
+			UiEventBus.emit_signal("module_updated", slot, module)
 			return true
 	return false
 
@@ -82,6 +80,6 @@ func decrease_module_power(slot: int) -> bool:
 		var module = module_slots[slot]
 		var returned_power = module.reduce_power(1)
 		power_system.request_power(module, -1 * returned_power)
-		emit_signal("module_updated", slot, module)
+		UiEventBus.emit_signal("module_updated", slot, module)
 		return true
 	return false

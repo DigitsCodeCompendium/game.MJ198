@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw2b7f2rjeelw"]
+
+[ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
+[ext_resource type="PackedScene" uid="uid://berc3u26dbt5n" path="res://scenes/user_interface/wep_eng_module.tscn" id="1_l2bgj"]
+[ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
+[ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/modules.gd" id="2_y1h3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0.6, 0.93333334, 0.6, 1)
+
+[node name="Control" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+script = ExtResource("1_jbsfc")
+
+[node name="LeftPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.125
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel"]
+layout_mode = 2
+
+[node name="Weapon" parent="LeftPanel/VBoxContainer" instance=ExtResource("1_l2bgj")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="Engine" parent="LeftPanel/VBoxContainer" instance=ExtResource("1_l2bgj")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="Container" type="MarginContainer" parent="LeftPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ReactorPower" type="ProgressBar" parent="LeftPanel/VBoxContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_iywne")
+max_value = 20.0
+step = 1.0
+value = 10.0
+fill_mode = 3
+show_percentage = false
+
+[node name="RightPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.875
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Modules" type="VBoxContainer" parent="RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_y1h3b")
+
+[node name="Module1" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
+layout_mode = 2
+
+[node name="Module2" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
+layout_mode = 2
+
+[node name="Module3" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
+layout_mode = 2
+
+[node name="Module4" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
+layout_mode = 2
+
+[node name="Module5" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
+layout_mode = 2
