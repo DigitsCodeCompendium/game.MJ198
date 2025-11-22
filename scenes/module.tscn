@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://b54uo5otbvimt"]
+
+[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_mfpw2"]
+[ext_resource type="Script" uid="uid://1xgxtcrnhjnk" path="res://scenes/module.gd" id="1_raokp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+bg_color = Color(0.34379414, 0.99598175, 0.46769476, 1)
+
+[node name="Module" type="PanelContainer"]
+offset_right = 133.0
+offset_bottom = 124.0
+size_flags_vertical = 3
+script = ExtResource("1_raokp")
+
+[node name="EmptyModule" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="TextureRect" type="TextureRect" parent="EmptyModule"]
+layout_mode = 2
+texture = ExtResource("1_mfpw2")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="EmptyModule"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Empty"
+horizontal_alignment = 1
+
+[node name="FilledModule" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container" type="PanelContainer" parent="FilledModule"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="IncreasePower" type="Button" parent="FilledModule/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 22
+button_mask = 0
+text = "Q"
+
+[node name="DecreasePower" type="Button" parent="FilledModule/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 22
+button_mask = 0
+text = "A"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="FilledModule"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FilledModule/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ModuleSprite" type="TextureRect" parent="FilledModule/VBoxContainer2/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_mfpw2")
+expand_mode = 2
+
+[node name="EnergyProgressBar" type="ProgressBar" parent="FilledModule/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_p57ef")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u5sy4")
+max_value = 6.0
+step = 1.0
+value = 3.0
+rounded = true
+show_percentage = false
+
+[node name="UpgradeProgressBar" type="ProgressBar" parent="FilledModule"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 5.0
+value = 3.0
+rounded = true
+fill_mode = 3
+show_percentage = false
