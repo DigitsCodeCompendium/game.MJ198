@@ -1,9 +1,9 @@
 extends Node
 
+@export var module_system: ModuleSystem
+
 @export var pickup_keep_time: float = 5
 @export var discard_time: float = 0.5
-
-@export var module_system: ModuleSystem
 
 var _pending_module: BaseModule
 var _pending_remaining_time: float
@@ -11,6 +11,14 @@ var _pending_remaining_time: float
 # float means how long the player has held the discard button, null means discard button is not held
 var _discard_pending_progress # float or null
 var _discard_progress: Array # array of float or null
+
+var pending_module: BaseModule:
+	get:
+		return _pending_module
+
+var pending_remaining_time: float:
+	get:
+		return _pending_remaining_time
 
 var discard_pending_progress:
 	get:

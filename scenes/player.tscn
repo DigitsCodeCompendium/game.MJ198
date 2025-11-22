@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=13 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cfr0rhexv1n2a" path="res://assets/icon.svg" id="2_g2els"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5k51vab0hjpc" path="res://scenes/systems/modules/module_system.tscn" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://ckkccjr144hjs" path="res://scenes/systems/power/power_system.tscn" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="5_smehm"]
+[ext_resource type="Script" uid="uid://co5ipeiddhp0g" path="res://scenes/weapon_insertion_system.gd" id="6_ur7pv"]
 [ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="7_smehm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
@@ -44,6 +45,10 @@ shape = SubResource("RectangleShape2D_g2els")
 belongs_to_player = true
 current_weapon = SubResource("Resource_ur7pv")
 module_system = NodePath("../ModuleSystem")
+
+[node name="WeaponInsertionSystem" type="Node" parent="Systems" node_paths=PackedStringArray("weapon_system")]
+script = ExtResource("6_ur7pv")
+weapon_system = NodePath("../WeaponSystem")
 
 [node name="ModuleSystem" parent="Systems" node_paths=PackedStringArray("power_system") instance=ExtResource("4_qlg0r")]
 power_system = NodePath("../PowerSystem")

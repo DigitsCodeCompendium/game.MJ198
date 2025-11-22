@@ -8,6 +8,11 @@ class_name CannonWeapon
 @export var base_projectile_size = 1
 const MAX_COOLDOWN = 1
 
+@export var weapon_icon: Texture2D
+
+func get_icon():
+	return weapon_icon
+
 func init_weapon_state() -> ShootableState:
 	return CannonState.new()
 
