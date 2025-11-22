@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=7 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://berc3u26dbt5n" path="res://scenes/user_interface/wep_eng_module.tscn" id="1_l2bgj"]
-[ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
+[ext_resource type="PackedScene" uid="uid://dbb5ocp6biqt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
 [ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/modules.gd" id="2_y1h3b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 bg_color = Color(0.6, 0.93333334, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dtu1"]
+bg_color = Color(0.5086386, 0.10218536, 0.72161824, 1)
 
 [node name="Control" type="Control"]
 z_index = -1
@@ -82,3 +85,36 @@ layout_mode = 2
 
 [node name="Module5" parent="RightPanel/Modules" instance=ExtResource("2_l2bgj")]
 layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.875
+offset_bottom = 27.0
+grow_horizontal = 2
+
+[node name="SpeedProgressBar" type="ProgressBar" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/fill = SubResource("StyleBoxFlat_2dtu1")
+show_percentage = false
+
+[node name="SpeedLabel" type="Label" parent="PanelContainer/SpeedProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ttest"
+horizontal_alignment = 1
+vertical_alignment = 1

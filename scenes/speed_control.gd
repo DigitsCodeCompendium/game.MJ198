@@ -21,3 +21,4 @@ func get_speed_display() -> String:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	linear_speed += linear_acceleration * delta
+	UiEventBus.emit_signal("current_speed",get_speed_display())
