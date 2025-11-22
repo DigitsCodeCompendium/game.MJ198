@@ -26,6 +26,7 @@ linear_acceleration = 0.05
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("speed_control")]
 volume_db = -10.0
+bus = &"Music"
 script = ExtResource("4_p57ef")
 speed_control = NodePath("../SpeedControl")
 music_sections = Array[AudioStream]([ExtResource("5_kvuet"), ExtResource("6_trtic"), ExtResource("7_ir15t"), ExtResource("8_ca42v"), ExtResource("9_rysoc"), ExtResource("10_ssvqc"), ExtResource("11_264po")])

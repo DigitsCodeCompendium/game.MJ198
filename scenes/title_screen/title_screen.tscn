@@ -1,0 +1,200 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxqj4iktbgvcj"]
+
+[ext_resource type="Script" uid="uid://bnledk4h17ac4" path="res://scenes/title_screen/title_screen.gd" id="1_fgkus"]
+[ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
+[ext_resource type="PackedScene" uid="uid://dstd3l06i0olc" path="res://scenes/game.tscn" id="3_mgrm8"]
+[ext_resource type="Texture2D" uid="uid://b246vg0bnqb6g" path="res://assets/Background_GJ.png" id="3_s4lrb"]
+[ext_resource type="Script" uid="uid://bm3xs6j5ni3ww" path="res://scenes/title_screen/audio_slider.gd" id="5_5uxxq"]
+[ext_resource type="AudioStream" uid="uid://cobmll7e6ayf6" path="res://assets/title screen.mp3" id="5_cxcmr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_mgrm8"]
+font_size = 32
+
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("main_menu", "options_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sa3yf")
+script = ExtResource("1_fgkus")
+game_scene = ExtResource("3_mgrm8")
+main_menu = NodePath("MainMenu")
+options_menu = NodePath("OptionsMenu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_s4lrb")
+expand_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cxcmr")
+autoplay = true
+bus = &"Music"
+parameters/looping = false
+
+[node name="MainMenu" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenu"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "I don't know"
+label_settings = SubResource("LabelSettings_fgkus")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="StartGameButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsMenu" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 400.0
+offset_right = 711.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="OptionsMenu"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="AudioSection" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_mgrm8")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+
+[node name="MasterAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SliderContainer"
+script = ExtResource("5_5uxxq")
+bus_name = "Master"
+
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SliderLabel"
+text = "Master"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MasterAudio"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50%"
+horizontal_alignment = 2
+
+[node name="MusicAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SliderContainer"
+script = ExtResource("5_5uxxq")
+bus_name = "Music"
+
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SliderLabel"
+text = "Music"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50%"
+horizontal_alignment = 2
+
+[node name="SoundEffectsAudio" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SliderContainer"
+script = ExtResource("5_5uxxq")
+bus_name = "Sound Effects"
+
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SliderLabel"
+text = "SFX"
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Percentage" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50%"
+horizontal_alignment = 2
+
+[node name="BackButton" type="Button" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="." method="_start_game"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_open_options_menu"]
+[connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_open_main_menu"]
