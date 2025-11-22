@@ -42,8 +42,6 @@ var free_power: int:
 
 var _dirty: bool
 
-signal power_changed(power_system: PowerSystem)
-
 # Power consumers need to have:
 # is_passive_consumer() -> bool
 # getter for current_power
@@ -64,7 +62,8 @@ func _ready():
 	_passive_power_use = 0
 	_active_power_use = 0
 	_power_consumers = []
-	_dirty = false
+	_dirty = true
+	print("sent")
 
 func request_power(consumer, delta: int) -> bool:
 	assert(_power_consumers.find(consumer) >= 0, "Must be a registered consumer")
@@ -115,5 +114,5 @@ func _check_power_loss():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if _dirty:
-		power_changed.emit(self)
+		UiEventBus.emit_signal("reactor_updated",current_max_power,free_power)
 		_dirty = false
