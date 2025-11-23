@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=13 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
-[ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
-[ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/modules.gd" id="2_y1h3b"]
+[ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module/module.tscn" id="2_l2bgj"]
+[ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/module/modules.gd" id="2_y1h3b"]
 [ext_resource type="Script" uid="uid://dimvenxw1wkw3" path="res://scenes/user_interface/reactor_power/reactor_power_grid.gd" id="3_6xuti"]
 [ext_resource type="Texture2D" uid="uid://pxkgs5d3vj1p" path="res://assets/power_icons/active_power.png" id="3_pvt6f"]
+[ext_resource type="Texture2D" uid="uid://b15xy6aves4lb" path="res://assets/menu_icons/gray_background.png" id="3_tfswy"]
 [ext_resource type="PackedScene" uid="uid://b7wdh8x7yiyhu" path="res://scenes/user_interface/reactor_power/reactor_power_pip.tscn" id="4_flq3v"]
 [ext_resource type="Texture2D" uid="uid://7rbgkhea3qms" path="res://assets/power_icons/reserved_power.png" id="5_axgoa"]
 [ext_resource type="Texture2D" uid="uid://bdxfwbwlnlf2j" path="res://assets/power_icons/empty_power.png" id="6_tfswy"]
@@ -37,14 +38,37 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="WeaponSprite" type="TextureRect" parent="LeftPanel/VBoxContainer"]
+[node name="Panel" type="Panel" parent="LeftPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LeftPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_tfswy")
+
+[node name="WeaponSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="EngineSprite" type="TextureRect" parent="LeftPanel/VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="LeftPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="EngineBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_tfswy")
+
+[node name="EngineSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
@@ -115,6 +139,7 @@ grow_horizontal = 2
 
 [node name="SpeedProgressBar" type="ProgressBar" parent="SpeedBarContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_2dtu1")
@@ -143,24 +168,25 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.75
-anchor_top = 0.05
+anchor_left = 0.875
 anchor_right = 0.875
-anchor_bottom = 0.25
+offset_left = -96.0
+offset_top = 32.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PickedUpModule"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="PendingModuleSprite" type="TextureRect" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("10_axgoa")
 expand_mode = 4
 
 [node name="ModuleDiscardProgressBar" type="ProgressBar" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_pvt6f")
 max_value = 5.0
@@ -182,24 +208,25 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
-anchor_top = 0.05
-anchor_right = 0.25
-anchor_bottom = 0.25
-offset_bottom = 81.0
+anchor_right = 0.125
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 167.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PickedUpEngWep"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="PendingWepEngSprite" type="TextureRect" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("10_axgoa")
 expand_mode = 4
 
 [node name="EngWepDiscardProgressBar" type="ProgressBar" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_pvt6f")
 max_value = 5.0

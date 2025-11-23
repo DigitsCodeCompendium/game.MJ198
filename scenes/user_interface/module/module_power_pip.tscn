@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckdmfdg4r2kw"]
+
+[ext_resource type="Texture2D" uid="uid://f6scy61vu7ns" path="res://assets/module_icons/active_extra_power.png" id="1_g0evo"]
+
+[node name="NinePatchRect" type="TextureRect"]
+custom_minimum_size = Vector2(10, 24)
+offset_right = 32.0
+offset_bottom = 24.0
+size_flags_vertical = 4
+texture = ExtResource("1_g0evo")
+stretch_mode = 2

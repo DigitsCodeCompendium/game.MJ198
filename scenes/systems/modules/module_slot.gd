@@ -9,12 +9,17 @@ var module: BaseModule:
 var is_active: bool = false
 var _extra_power: int = 0
 var _current_level: int = 0 #level is 0,1,2,3
-var _level_progress: int = 0 #module levels up when progress = level + 1 (so requires 1 dup to level 0->1, 2 dups to level 1->2, and so on)
+var _upgrade_progress: int = 0
 
 var current_power: int:
 	get:
 		if is_active:
 			return module.activation_power + _extra_power
+		return 0
+var current_extra_power: int:
+	get:
+		if is_active:
+			return _extra_power
 		return 0
 var activation_power: int:
 	get:
@@ -28,9 +33,15 @@ var max_power: int:
 var current_level: int:
 	get:
 		return _current_level
-var level_progress: int:
+var is_max_level: int:
 	get:
-		return _level_progress
+		return _current_level >= 3
+var upgrade_cost: int: #module levels up when progress = level + 1 (so requires 1 dup to level 0->1, 2 dups to level 1->2, and so on)
+	get:
+		return _current_level + 1
+var upgrade_progress: int:
+	get:
+		return _upgrade_progress
 
 
 #interface functions for power system
@@ -43,7 +54,7 @@ func set_module(new_module: BaseModule):
 	is_active = false
 	_extra_power = 0
 	_current_level = 0
-	_level_progress = 0
+	_upgrade_progress = 0
 
 # interface for power system, power system requests we reduce the power level
 # but if the module gets deactivated we return the full activation cost
@@ -76,10 +87,10 @@ func get_module_property(property: String) -> float:
 func add_level_progress(progress: int):
 	assert(_module != null)
 	
-	_level_progress += progress
-	while _current_level < 3 and _level_progress > _current_level + 1:
+	_upgrade_progress += progress
+	while not is_max_level and _upgrade_progress >= upgrade_cost:
+		_upgrade_progress -= upgrade_cost
 		_current_level += 1
-		_level_progress -= _current_level
 
 
 # tries to increase the extra power of the 
