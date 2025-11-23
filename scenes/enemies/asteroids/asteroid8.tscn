@@ -1,14 +1,77 @@
-[gd_scene load_steps=9 format=3 uid="uid://ik02g12suy1x"]
+[gd_scene load_steps=19 format=3 uid="uid://ik02g12suy1x"]
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroids/asteroid.gd" id="1_4wr75"]
+[ext_resource type="Texture2D" uid="uid://dv2qfemowfoa3" path="res://assets/enemies/death animations/Deathroid-0001.png" id="2_0xmk0"]
 [ext_resource type="Texture2D" uid="uid://sojlyiqf5q0b" path="res://assets/enemies/smallroid.png" id="2_4wr75"]
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="3_j8qk6"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_1hgwe"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_3dgoi"]
 [ext_resource type="AudioStream" uid="uid://3ksjw4ekeo3l" path="res://assets/sound_effects/asteroid destruction.mp3" id="6_yy8sv"]
+[ext_resource type="Script" path="res://scenes/systems/enemies/health_death.gd" id="8_j8qk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8qk6"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hgwe"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dgoi"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy8sv"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4qrv"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10lj8"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpt7f"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhu36"]
+atlas = ExtResource("2_0xmk0")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8qk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hgwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dgoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy8sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4qrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10lj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpt7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhu36")
+}],
+"loop": false,
+"name": &"death",
+"speed": 14.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_4wr75")
@@ -16,28 +79,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgpov"]
 radius = 5.0
 height = 16.0
 
-[node name="Asteroid" type="Area2D" groups=["enemy"]]
+[node name="Asteroid2" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_4wr75")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.1525574e-07, 1.1368684e-13)
-scale = Vector2(0.7243564, 0.7243564)
+scale = Vector2(1.0158999, 1.0284323)
 sprite_frames = SubResource("SpriteFrames_6mo6b")
+animation = &"death"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 rotation = 1.5707964
+scale = Vector2(1.4024862, 1.4197876)
 shape = SubResource("CapsuleShape2D_jgpov")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -65,3 +126,9 @@ unique_name_in_owner = true
 stream = ExtResource("6_yy8sv")
 volume_db = -3.0
 bus = &"Sound Effects"
+
+[node name="HealthDeath" type="Node" parent="." node_paths=PackedStringArray("health", "animated_sprite")]
+script = ExtResource("8_j8qk6")
+health = NodePath("../Health")
+animated_sprite = NodePath("../AnimatedSprite2D")
+fade_away_time = 0.5

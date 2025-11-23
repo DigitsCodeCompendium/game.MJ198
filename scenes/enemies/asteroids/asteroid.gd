@@ -55,7 +55,6 @@ func _on_asteroid_collision(area: Area2D):
 	
 func _death():
 	#Hide sprite
-	$AnimatedSprite2D.visible = false
 	$CollisionShape2D.queue_free()
 	
 	#Spawn Fragments
@@ -82,3 +81,7 @@ func _death():
 	
 	_marked_for_death = true
 	
+
+
+func _on_health_death_on_death_finish() -> void:
+	pass # Replace with function body.
