@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bovffx1tta0x7" path="res://scenes/systems/enemy_ai/basic_shoot_ai.tscn" id="4_lsygd"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_mgijr"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_yhr8k"]
-[ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/player/basic_player_cannon.tres" id="6_mgijr"]
-[ext_resource type="Script" uid="uid://c3niecotneg53" path="res://scenes/systems/enemy_ai/shoot_at_player_ai.gd" id="9_f4g4s"]
+[ext_resource type="Resource" uid="uid://cdmps7x5mqlvm" path="res://resources/weapons/enemy/enemy_basic_cannon.tres" id="8_2bymh"]
+[ext_resource type="Script" path="res://scenes/systems/enemy_ai/shoot_at_player_ai.gd" id="9_f4g4s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
@@ -63,7 +63,7 @@ show_percentage = false
 [node name="Systems" type="Node" parent="."]
 
 [node name="WeaponSystem" parent="Systems" instance=ExtResource("3_5rpwm")]
-current_weapon = ExtResource("6_mgijr")
+current_weapon = ExtResource("8_2bymh")
 
 [node name="BasicShootAi" parent="Systems" node_paths=PackedStringArray("weapon_system") instance=ExtResource("4_lsygd")]
 script = ExtResource("9_f4g4s")

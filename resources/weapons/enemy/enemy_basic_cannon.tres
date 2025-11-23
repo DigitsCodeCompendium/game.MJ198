@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CannonWeapon" load_steps=3 format=3 uid="uid://cdmps7x5mqlvm"]
+
+[ext_resource type="PackedScene" uid="uid://caotn0iibmj20" path="res://scenes/systems/weapons/cannon/enemy_bullet.tscn" id="1_futr8"]
+[ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="2_vnber"]
+
+[resource]
+script = ExtResource("2_vnber")
+bullet_scene = ExtResource("1_futr8")
+base_fire_rate = 0.1
+base_projectile_velocity = 200.0
+metadata/_custom_type_script = "uid://ci7we2a0ieoim"
