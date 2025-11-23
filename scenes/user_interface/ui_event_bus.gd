@@ -1,18 +1,30 @@
 extends Node
 
+@warning_ignore("unused_signal")
 signal reactor_updated(power_system: PowerSystem)
-
+@warning_ignore("unused_signal")
 signal module_updated(slot: int, module: ModuleSlot)
+@warning_ignore("unused_signal")
 signal module_pending_added(module: BaseModule)
+@warning_ignore("unused_signal")
 signal module_pending_applied(slot: int, module: BaseModule)
+@warning_ignore("unused_signal")
 signal module_pending_lost()
+@warning_ignore("unused_signal")
 signal module_pending_discarded()
 
+@warning_ignore("unused_signal")
 signal weapon_updated(weapon)
+@warning_ignore("unused_signal")
 signal weapon_pending_added(weapon: Shootable)
+@warning_ignore("unused_signal")
 signal weapon_pending_applied(weapon: Shootable)
+@warning_ignore("unused_signal")
 signal weapon_pending_lost()
+@warning_ignore("unused_signal")
 signal weapon_pending_discarded()
 
+@warning_ignore("unused_signal")
 signal engine_updated(engine)
+@warning_ignore("unused_signal")
 signal current_speed(speed:String)

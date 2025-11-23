@@ -31,7 +31,7 @@ func _ready() -> void:
 	UiEventBus.connect("weapon_pending_lost",_on_weapon_lost)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not pending_module_timer.is_stopped():
 		pending_module_bar.value = pending_module_timer.get_time_left()
 	
@@ -47,7 +47,7 @@ func _on_module_added(module:BaseModule):
 	pending_module.visible = true
 	pending_module_timer.start(5)
 
-func _on_module_applied(slot: int, module: BaseModule):
+func _on_module_applied(_slot: int, _module: BaseModule):
 	pending_module.visible = false
 	pending_module_timer.stop()
 	

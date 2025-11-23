@@ -64,11 +64,11 @@ func set_weapon_style(style:int) -> void:
 func set_body_style(style:int) -> void:
 	$PlayerVisual.set_body_style(style)
 
-func _on_module_picked_up(module: BaseModule):
+func _on_module_picked_up(_module: BaseModule):
 	sfx_module_pickup.play()
 	
-func _on_weapon_picked_up(weapon: Shootable):
+func _on_weapon_picked_up(_weapon: Shootable):
 	sfx_module_pickup.play()
 
-func _on_weapon_switched(weapon_system:WeaponSystem) -> void:
+func _on_weapon_switched(_weapon_system:WeaponSystem) -> void:
 	set_weapon_style(weapon_system.current_weapon.weapon_id)

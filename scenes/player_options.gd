@@ -17,14 +17,14 @@ func save():
 	var options_file = FileAccess.open(options_file_path, FileAccess.WRITE)
 	options_file.store_string(JSON.stringify(_options))
 
-func get_option(name: String, default: Variant) -> Variant:
+func get_option(option_name: String, default: Variant) -> Variant:
 	if _options.has(name):
-		return _options[name]
+		return _options[option_name]
 	else:
 		_options[name] = default
 		return default
 
-func set_option(name: String, value: Variant, do_save: bool = true):
-	_options[name] = value
+func set_option(option_name: String, value: Variant, do_save: bool = true):
+	_options[option_name] = value
 	if do_save:
 		save()
