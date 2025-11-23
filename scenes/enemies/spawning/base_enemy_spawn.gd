@@ -4,4 +4,4 @@ extends Resource
 class_name BaseEnemySpawn
 
 @abstract
-func instantiate_enemy(rand: RandomNumberGenerator) -> Node2D
+func instantiate_enemy(rand: RandomNumberGenerator, params: EnemySpawnParams) -> Node2D

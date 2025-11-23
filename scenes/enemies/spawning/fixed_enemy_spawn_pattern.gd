@@ -5,9 +5,9 @@ class_name FixedEnemySpawnPattern
 
 @export var pattern: Array[EnemySpawnPatternEntry] = []
 
-func do_spawn(parent: Node2D, position: Vector2, rand: RandomNumberGenerator):
+func do_spawn(parent: Node2D, position: Vector2, rand: RandomNumberGenerator, params: EnemySpawnParams):
 	for entry in pattern:
-		var enemy = entry.enemy_spawn.instantiate_enemy(rand)
+		var enemy = entry.enemy_spawn.instantiate_enemy(rand, params)
 		if enemy == null:
 			continue
 		

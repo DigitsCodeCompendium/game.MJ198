@@ -3,7 +3,7 @@ class_name RandomEnemySpawn
 
 @export var spawn_table: Dictionary[PackedScene, float] = {}
 
-func instantiate_enemy(rand: RandomNumberGenerator):
+func instantiate_enemy(rand: RandomNumberGenerator, _params: EnemySpawnParams):
 	assert(len(spawn_table) > 0)
 	var enemies = spawn_table.keys()
 	var weights = enemies.map(func(e): return spawn_table[e])
