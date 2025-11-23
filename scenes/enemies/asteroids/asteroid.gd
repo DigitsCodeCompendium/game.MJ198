@@ -35,6 +35,10 @@ func launch(vel:Vector2, pos:Vector2, size:float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if $AnimatedSprite2D.self_modulate.a < 1:
+		$AnimatedSprite2D.self_modulate.a += delta
+	
+	
 	position += velocity * delta
 	$AnimatedSprite2D.rotation += ang_velocity * delta
 	
@@ -65,6 +69,7 @@ func _death():
 			var new_position = self.position + Vector2(10*self.scale.x*randf_range(-1,1),10*self.scale.x*randf_range(-1,1))
 			var fragment = possible_fragment_scene.pick_random().instantiate()
 			fragment.launch(new_velocity,new_position,self.scale.x/fragments)
+			fragment.get_node("AnimatedSprite2D").self_modulate.a = 0
 			get_parent().call_deferred("add_child",fragment)
 		
 	#Spawn Pickup	
