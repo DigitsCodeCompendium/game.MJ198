@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=18 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bmr07kofgmiyi" path="res://scenes/music_player.gd" id="4_p57ef"]
 [ext_resource type="Resource" uid="uid://ckbj4ecgkde82" path="res://resources/enemy_spawn/asteroid_spawn.tres" id="5_ca42v"]
 [ext_resource type="AudioStream" uid="uid://dgpfdmpuf5msg" path="res://assets/music_loop_v1_7_stages/game loop 1.mp3" id="5_kvuet"]
+[ext_resource type="Resource" uid="uid://80ic4djnxtie" path="res://resources/enemy_spawn/beginner_enemy_spawn.tres" id="6_rysoc"]
 [ext_resource type="AudioStream" uid="uid://dp6elfj1pe8lk" path="res://assets/music_loop_v1_7_stages/game loop 2.mp3" id="6_trtic"]
 [ext_resource type="AudioStream" uid="uid://dnkr3ff5ilv4j" path="res://assets/music_loop_v1_7_stages/game loop 3.mp3" id="7_ir15t"]
 [ext_resource type="AudioStream" uid="uid://bl5oij6sdeoxn" path="res://assets/music_loop_v1_7_stages/game loop 4.mp3" id="8_ca42v"]
@@ -28,6 +29,7 @@ unique_name_in_owner = true
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource("4_ir15t")
 asteroid_spawn_pattern = ExtResource("5_ca42v")
+beginner_enemy_spawn_pattern = ExtResource("6_rysoc")
 
 [node name="SpeedControl" type="Node" parent="."]
 script = ExtResource("3_lbhrr")
