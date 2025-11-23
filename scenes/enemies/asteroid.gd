@@ -6,6 +6,7 @@ var base_health = 10
 var _marked_for_death = false
 
 @onready var death_sound = get_node("%DeathSoundPlayer")
+@onready var fragment_scene = preload("res://scenes/enemies/asteroid.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,6 +45,7 @@ func _on_asteroid_collision(area: Area2D):
 func _death():
 	#Hide sprite
 	$AnimatedSprite2D.visible = false
+	$CollisionShape2D.queue_free()
 	
 	#Spawn Fragments
 	if self.scale.x > 3:
@@ -51,7 +53,7 @@ func _death():
 		for i in fragments:
 			var new_velocity = Vector2(self.velocity.x*randf_range(-0.5,0.5)*ang_velocity*10,self.velocity.y*randf_range(0.5,0.8))
 			var new_position = self.position + Vector2(10*self.scale.x*randf_range(-1,1),10*self.scale.x*randf_range(-1,1))
-			var fragment = self.duplicate()
+			var fragment = fragment_scene.instantiate()
 			fragment.launch(new_velocity,new_position,self.scale.x/fragments)
 			get_parent().call_deferred("add_child",fragment)
 		

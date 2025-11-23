@@ -1,6 +1,6 @@
 extends Node2D
 
-var asteroid_scene = preload("res://scenes/enemies/asteroid_with_gun.tscn")
+var asteroid_scene = preload("res://scenes/enemies/asteroid.tscn")
 var playable_margins: float
 @export var spawn_timer = 0.5 #spawn timer of asteroids in seconds
 var spawn_timer_time = 0
