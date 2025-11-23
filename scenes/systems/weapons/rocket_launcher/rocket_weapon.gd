@@ -72,4 +72,4 @@ func _fire(dir:Vector2, weapon_system: WeaponSystem) -> void:
 func cooldown_weapon(delta:float, weapon_system:WeaponSystem) -> void:
 	var weapon_state = weapon_system.weapon_state
 	weapon_state.cooldown -= delta
-	weapon_state.cooldown = clamp(weapon_state.cooldown, 0 , MAX_COOLDOWN)
+	weapon_state.cooldown = clamp(weapon_state.cooldown, 0 , 9999)

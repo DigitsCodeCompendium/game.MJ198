@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://du4el3d28wwn1"]
+
+[ext_resource type="Texture2D" uid="uid://vo05ako830y4" path="res://assets/power_icons/power_pickup.png" id="1_f0k1x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn6x6"]
+atlas = ExtResource("1_f0k1x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nulf"]
+atlas = ExtResource("1_f0k1x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ckcd"]
+atlas = ExtResource("1_f0k1x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkuej"]
+atlas = ExtResource("1_f0k1x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkv3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn6x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nulf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ckcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkuej")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PowerPickupVisu" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_hkv3h")
+autoplay = "default"
+frame_progress = 0.57392937

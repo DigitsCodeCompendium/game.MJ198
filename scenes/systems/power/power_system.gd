@@ -19,7 +19,11 @@ var current_max_power: int:
 		_current_max_power = min(value, _power_limit)
 		_dirty = true
 		sfx_reactor_pickup.play()
-		
+
+var is_max_power_at_limit: bool:
+	get:
+		return _current_max_power == _power_limit
+
 var current_power_loss: int:
 	get:
 		return _current_power_loss

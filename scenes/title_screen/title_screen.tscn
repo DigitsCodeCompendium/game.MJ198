@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxqj4iktbgvcj"]
+[gd_scene load_steps=13 format=3 uid="uid://bxqj4iktbgvcj"]
 
 [ext_resource type="Script" uid="uid://bnledk4h17ac4" path="res://scenes/title_screen/title_screen.gd" id="1_fgkus"]
 [ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
 [ext_resource type="Script" uid="uid://bl24lb5nr04o6" path="res://scenes/title_screen/customize_player.gd" id="9_xoykc"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="10_ju3lf"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
-font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgrm8"]
 font_size = 32
@@ -50,7 +47,6 @@ bus = &"Music"
 parameters/looping = false
 
 [node name="MainMenu" type="CenterContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,52 +63,59 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "I don't know"
-label_settings = SubResource("LabelSettings_fgkus")
+bbcode_enabled = true
+text = "[font_size=48][s]Super[/s]luminal[/font_size]"
+fit_content = true
+autowrap_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 8
 
-[node name="StartGameButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="StartGameButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Start Game"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton"]
+[node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton"]
 stream = ExtResource("6_j12ko")
 bus = &"User Interface"
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton"]
+[node name="ClickSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton"]
 stream = ExtResource("7_yegqs")
 bus = &"User Interface"
 
-[node name="OptionsButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton"]
+[node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton"]
 stream = ExtResource("6_j12ko")
 bus = &"User Interface"
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton"]
+[node name="ClickSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton"]
 stream = ExtResource("7_yegqs")
 bus = &"User Interface"
 
-[node name="QuitButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton"]
+[node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton"]
 stream = ExtResource("6_j12ko")
 bus = &"User Interface"
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton"]
+[node name="ClickSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton"]
 stream = ExtResource("7_yegqs")
 bus = &"User Interface"
 
 [node name="OptionsMenu" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 711.0
 offset_top = 400.0
@@ -252,15 +255,15 @@ bus = &"User Interface"
 stream = ExtResource("7_yegqs")
 bus = &"User Interface"
 
-[connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton/HoverSound" method="play"]
-[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="." method="_start_game"]
-[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton/ClickSound" method="play"]
-[connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton/HoverSound" method="play"]
-[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_open_options_menu"]
-[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton/ClickSound" method="play"]
-[connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton/HoverSound" method="play"]
-[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_quit"]
-[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton/ClickSound" method="play"]
+[connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton/HoverSound" method="play"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton" to="." method="_start_game"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton/ClickSound" method="play"]
+[connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton/HoverSound" method="play"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_open_options_menu"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton/ClickSound" method="play"]
+[connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton/HoverSound" method="play"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_quit"]
+[connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton/ClickSound" method="play"]
 [connection signal="item_selected" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/VBoxContainer/EngineSelect/OptionButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent" method="_on_select_engine"]
 [connection signal="mouse_entered" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton/HoverSound" method="play"]
 [connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_open_main_menu"]

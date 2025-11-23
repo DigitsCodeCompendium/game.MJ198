@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=17 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module/module.tscn" id="2_l2bgj"]
@@ -10,6 +10,45 @@
 [ext_resource type="Texture2D" uid="uid://7rbgkhea3qms" path="res://assets/power_icons/reserved_power.png" id="5_axgoa"]
 [ext_resource type="Texture2D" uid="uid://bdxfwbwlnlf2j" path="res://assets/power_icons/empty_power.png" id="6_tfswy"]
 [ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="10_axgoa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_axgoa"]
+
+[sub_resource type="Animation" id="Animation_axgoa"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tfswy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6pv1"]
+_data = {
+&"RESET": SubResource("Animation_tfswy"),
+&"default": SubResource("Animation_axgoa")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dtu1"]
 bg_color = Color(0.5086386, 0.10218536, 0.72161824, 1)
@@ -86,13 +125,26 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 alignment = 2
 
-[node name="ReactorPowerGrid" type="GridContainer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer"]
+[node name="MaxLabel" type="Label" parent="LeftPanel/VBoxContainer/Container/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Max!"
+label_settings = SubResource("LabelSettings_axgoa")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer/MaxLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_g6pv1")
+}
+
+[node name="ReactorPowerGrid" type="GridContainer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer" node_paths=PackedStringArray("max_power_label")]
 layout_direction = 3
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 script = ExtResource("3_6xuti")
+max_power_label = NodePath("../MaxLabel")
 power_pip_scene = ExtResource("4_flq3v")
 lost_power_texture = ExtResource("5_axgoa")
 used_power_texture = ExtResource("6_tfswy")

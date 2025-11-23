@@ -22,6 +22,7 @@ var blue_upgrade_tex: Texture2D = preload("res://assets/module_icons/blue_upgrad
 
 @onready var power_container = get_node("%EnergyContainer")
 @onready var upgrade_container = get_node("%UpgradeContainer")
+@onready var upgrade_max_label = get_node("%MaxLevelLabel")
 @onready var power_up_button = get_node("%IncreasePower")
 @onready var power_down_button = get_node("%DecreasePower")
 @onready var mod_icon = get_node("%ModuleSprite")
@@ -46,6 +47,7 @@ func update_module(mod: ModuleSlot) -> void:
 			power_container.get_child(i).queue_free()
 		for child in upgrade_container.get_children():
 			child.free()
+		upgrade_max_label.visible = false
 
 	else:
 		mod_icon.texture = mod.module.module_icon
@@ -75,6 +77,7 @@ func update_module(mod: ModuleSlot) -> void:
 				var pip: TextureRect = upgrade_pip_scene.instantiate()
 				pip.texture = blue_upgrade_tex
 				upgrade_container.add_child(pip)
+			upgrade_max_label.visible = true
 		else:
 			for i in range(mod.upgrade_cost):
 				var index = mod.current_level - i
@@ -84,3 +87,4 @@ func update_module(mod: ModuleSlot) -> void:
 				else:
 					pip.texture = empty_upgrade_tex
 				upgrade_container.add_child(pip)
+			upgrade_max_label.visible = false

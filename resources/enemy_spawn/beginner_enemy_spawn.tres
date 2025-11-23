@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=7 format=3 uid="uid://80ic4djnxtie"]
+[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=7 format=3 uid="uid://b5607lmcs0mpp"]
 
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_mr0iv"]
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="2_khl2h"]

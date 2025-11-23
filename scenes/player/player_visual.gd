@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_weapon_style(0)
 	pass # Replace with function body.
 
 
@@ -32,5 +33,8 @@ func set_weapon_style(style:int) -> void:
 		7: animation = "frag_rockets"
 	$WeaponSprite.play(animation)
 
-func set_body_style(_style:int) -> void:
-	pass
+func set_body_style(style:int) -> void:
+	var animation: String
+	match style:
+		0: animation = "classic"
+	$ShipSprite.play(animation)

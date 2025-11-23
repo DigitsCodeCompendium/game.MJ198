@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PickupDropTable" load_steps=32 format=3 uid="uid://f6x6m4dqec2"]
+[gd_resource type="Resource" script_class="PickupDropTable" load_steps=34 format=3 uid="uid://f6x6m4dqec2"]
 
 [ext_resource type="Script" path="res://scenes/pickups/pickup_content.gd" id="1_qrb3g"]
 [ext_resource type="Script" uid="uid://cjk7x2h4383nf" path="res://scenes/systems/enemies/pickup_drop_table.gd" id="2_bsrxx"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://e8a02ulxu6yy" path="res://resources/modules/mobility_module.tres" id="16_q55ky"]
 [ext_resource type="Resource" uid="uid://eiagn6iioe67" path="res://resources/modules/projectiles_module.tres" id="17_yq24y"]
 [ext_resource type="Resource" uid="uid://c0i3lu7iqnbw8" path="res://resources/modules/peircing_module_1.tres" id="18_oboha"]
+[ext_resource type="Resource" uid="uid://bm2m052eus4an" path="res://resources/weapons/player/player_laser.tres" id="19_o0bre"]
 
 [sub_resource type="Resource" id="Resource_ftebs"]
 script = ExtResource("5_fhf8e")
@@ -84,6 +85,11 @@ script = ExtResource("5_fhf8e")
 module = ExtResource("18_oboha")
 metadata/_custom_type_script = "uid://cc7vsq5nveskd"
 
+[sub_resource type="Resource" id="Resource_q55ky"]
+script = ExtResource("6_fhf8e")
+weapon = ExtResource("19_o0bre")
+metadata/_custom_type_script = "uid://dh634rqw5sh5y"
+
 [resource]
 script = ExtResource("2_bsrxx")
 weights = Dictionary[ExtResource("1_qrb3g"), float]({
@@ -101,5 +107,6 @@ SubResource("Resource_mjbwv"): 20.0,
 SubResource("Resource_d08jt"): 20.0,
 SubResource("Resource_xub0e"): 20.0,
 SubResource("Resource_f0qb2"): 20.0,
-SubResource("Resource_0dqbr"): 20.0
+SubResource("Resource_0dqbr"): 20.0,
+SubResource("Resource_q55ky"): 20.0
 })
