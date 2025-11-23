@@ -1,6 +1,9 @@
 extends Node
 
 @warning_ignore("unused_signal")
+signal player_died()
+
+@warning_ignore("unused_signal")
 signal reactor_updated(power_system: PowerSystem)
 @warning_ignore("unused_signal")
 signal module_updated(slot: int, module: ModuleSlot)
