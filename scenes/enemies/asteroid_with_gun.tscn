@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wc042h4gthjf"]
+[gd_scene load_steps=14 format=3 uid="uid://wc042h4gthjf"]
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_mgijr"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="2_5rpwm"]
@@ -9,7 +9,8 @@
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_mgijr"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_yhr8k"]
 [ext_resource type="Resource" uid="uid://cdmps7x5mqlvm" path="res://resources/weapons/enemy/enemy_basic_cannon.tres" id="8_2bymh"]
-[ext_resource type="Script" path="res://scenes/systems/enemy_ai/shoot_at_player_ai.gd" id="9_f4g4s"]
+[ext_resource type="Script" uid="uid://c3niecotneg53" path="res://scenes/systems/enemy_ai/shoot_at_player_ai.gd" id="9_f4g4s"]
+[ext_resource type="AudioStream" uid="uid://3ksjw4ekeo3l" path="res://assets/sound_effects/asteroid destruction.mp3" id="11_3b3iv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
@@ -68,3 +69,11 @@ current_weapon = ExtResource("8_2bymh")
 [node name="BasicShootAi" parent="Systems" node_paths=PackedStringArray("weapon_system") instance=ExtResource("4_lsygd")]
 script = ExtResource("9_f4g4s")
 weapon_system = NodePath("../WeaponSystem")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_3b3iv")
+volume_db = 5.0
+max_distance = 4096.0
+max_polyphony = 5
+bus = &"Sound Effects"
