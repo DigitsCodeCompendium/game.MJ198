@@ -29,14 +29,21 @@ var blue_upgrade_tex: Texture2D = preload("res://assets/module_icons/blue_upgrad
 @onready var mod_background = get_node("%ModuleBackground")
 @onready var increase_power_label: Label = %IncreasePowerLabel
 @onready var decrease_power_label: Label = %DecreasePowerLabel
+@onready var discard_label = %DiscardLabel
+@onready var discard_progress_bar: ProgressBar = %DiscardProgressBar
 
+var _slot_index: int
 
 
 func set_slot(slot: int):
+	_slot_index = slot
 	var increase_power_binding = InputMap.action_get_events("power_up_module_%d" % (slot + 1))[0]
 	var decrease_power_binding = InputMap.action_get_events("power_down_module_%d" % (slot + 1))[0]
+	var discard_binding = InputMap.action_get_events("discard_module_%d" % (slot + 1))[0]
+	# Super hacky way to get a simplified binding, can't be bothered to figure out how do it properly
 	increase_power_label.text = increase_power_binding.as_text().substr(0, 1)
 	decrease_power_label.text = decrease_power_binding.as_text().substr(0, 1)
+	discard_label.text = "Replace: Hold %s" % discard_binding.as_text().substr(0, 1)
 
 func update_module(mod: ModuleSlot) -> void:
 	print("received module update")
@@ -88,3 +95,10 @@ func update_module(mod: ModuleSlot) -> void:
 					pip.texture = empty_upgrade_tex
 				upgrade_container.add_child(pip)
 			upgrade_max_label.visible = false
+
+func update_discard_progress(progress: float):
+	if progress == null:
+		discard_progress_bar.visible = false
+	else:
+		discard_progress_bar.visible = true
+		discard_progress_bar.value = progress
