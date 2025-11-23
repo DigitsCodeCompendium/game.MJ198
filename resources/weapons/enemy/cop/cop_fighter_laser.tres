@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CannonWeapon" load_steps=4 format=3 uid="uid://bc11d30co7hp2"]
+
+[ext_resource type="PackedScene" uid="uid://caotn0iibmj20" path="res://scenes/systems/weapons/cannon/enemy_bullet.tscn" id="1_kgi8w"]
+[ext_resource type="PackedScene" uid="uid://cu184tdsc4rkj" path="res://scenes/systems/weapons/cannon/spent_casing.tscn" id="2_cyitj"]
+[ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="2_kgi8w"]
+
+[resource]
+script = ExtResource("2_kgi8w")
+bullet_scene = ExtResource("1_kgi8w")
+casing_scene = ExtResource("2_cyitj")
+base_fire_rate = 0.25
+base_projectile_velocity = 300.0
+firing_ports = Array[Vector2]([Vector2(9, -6), Vector2(-9, -6)])
+metadata/_custom_type_script = "uid://ci7we2a0ieoim"

@@ -12,7 +12,7 @@ func _process(delta):
 	owner.position += _velocity * delta
 	
 	var target_dir: Vector2 = player.global_position - owner.global_position
-	var rot_diff = angle_difference(area.rotation, target_dir.angle())
+	var rot_diff = angle_difference(area.rotation, target_dir.angle()) + PI/2
 	var rotation_limit = rotation_speed * delta * PI / 180
 	area.rotate(clampf(rot_diff, -rotation_limit, rotation_limit))
 	

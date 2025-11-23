@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://b28ic5p8jf3k7"]
 
-[ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
 [ext_resource type="Texture2D" uid="uid://cadjaq4l8ydt1" path="res://assets/enemies/pi3rate9.png" id="1_grl6f"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_lixtk"]
 [ext_resource type="Script" uid="uid://dgbb17yny54b" path="res://scenes/systems/enemies/ai/charge_ai.gd" id="4_lixtk"]
-[ext_resource type="Script" uid="uid://da4r5ca3b8a1r" path="res://scenes/enemies/fuel_bar.gd" id="4_v5pnv"]
-[ext_resource type="Script" uid="uid://chc3lq3o5cdvy" path="res://scenes/systems/enemies/effect_spawner.gd" id="5_en8o4"]
+[ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="4_v5pnv"]
+[ext_resource type="Script" path="res://scenes/systems/enemies/effect_spawner.gd" id="5_en8o4"]
 [ext_resource type="PackedScene" uid="uid://cfb780j6jhgit" path="res://scenes/enemies/explosion_effect.tscn" id="6_v5pnv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu6rs"]
@@ -56,11 +56,9 @@ script = ExtResource("1_en8o4")
 health = NodePath("../Health")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-rotation = 1.5707964
 polygon = PackedVector2Array(0, -16, 16, 5, 11, 13, -11, 13, -16, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_8gyub")
 frame_progress = 0.43749857
 

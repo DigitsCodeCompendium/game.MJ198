@@ -20,7 +20,9 @@ func launch(vel:Vector2, pos:Vector2, size:float, dmg:float, group:String, weapo
 	self.velocity = vel
 	self.scale = Vector2(size, size)
 	self.damage = dmg
-	self.pierce = weapon_sys.module_system.get_module_property("weapon_pierce")
+	self.pierce = 0
+	if weapon_sys.modules_exist:
+		self.pierce += weapon_sys.module_system.get_module_property("weapon_pierce")
 
 func hit():
 	if self.pierce >= 1:
