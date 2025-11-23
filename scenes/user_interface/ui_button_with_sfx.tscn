@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://beyp3wv54bpoh"]
+
+[ext_resource type="AudioStream" uid="uid://15dcvx6lt7ee" path="res://assets/menu_sounds/menu_option.mp3" id="1_7ti42"]
+[ext_resource type="AudioStream" uid="uid://cl63greqlj22u" path="res://assets/menu_sounds/menu_select.mp3" id="2_g0oyu"]
+
+[node name="Button" type="Button"]
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7ti42")
+bus = &"User Interface"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g0oyu")
+bus = &"User Interface"
+
+[connection signal="mouse_entered" from="." to="HoverSound" method="play"]
+[connection signal="pressed" from="." to="ClickSound" method="play"]

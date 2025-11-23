@@ -52,8 +52,8 @@ func _process(delta: float) -> void:
 	position.y = clamp(position.y,0,get_viewport().size.y)
 	
 func _on_player_collide(area: Area2D):
-	if area.is_in_group("enemy"):
-		print("AAAAHHHHH")
+	if area.is_in_group("enemy") or area.is_in_group("enemy_projectile"):
+		UiEventBus.emit_signal("player_died")
 
 func set_engine_style(style:int) -> void:
 	$PlayerVisual.set_engine_style(style)
