@@ -146,10 +146,10 @@ anchor_top = 0.05
 anchor_right = 0.875
 anchor_bottom = 0.25
 
-[node name="TextureRect" type="TextureRect" parent="PickedUpModule"]
+[node name="PendingModuleSprite" type="TextureRect" parent="PickedUpModule"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("5_f1hci")
 expand_mode = 4
 
 [node name="ModuleDiscardProgressBar" type="ProgressBar" parent="PickedUpModule"]

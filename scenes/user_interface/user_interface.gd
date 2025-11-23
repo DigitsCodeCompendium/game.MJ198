@@ -9,6 +9,7 @@ extends Control
 @onready var pending_module = get_node("%PickedUpModule")
 @onready var pending_module_timer = get_node("%ModuleTimer")
 @onready var pending_module_bar = get_node("%ModuleDiscardProgressBar")
+@onready var pending_module_sprite = get_node("%PendingModuleSprite")
 
 @onready var pending_wep_eng = get_node("%PickedUpEngWep")
 @onready var pending_wep_eng_timer = get_node("%EngWepTimer")
@@ -41,6 +42,7 @@ func _on_speed_update(speed_str:String):
 	speed_bar.value = int(float(speed_str)*100)
 
 func _on_module_added(module:BaseModule):
+	pending_module_sprite.texture = module.module_icon
 	pending_module.visible = true
 	pending_module_timer.start(5)
 
