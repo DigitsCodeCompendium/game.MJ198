@@ -79,6 +79,7 @@ horizontal_alignment = 2
 
 [connection signal="button_down" from="LeftButton" to="." method="_on_left_button_down"]
 [connection signal="button_up" from="LeftButton" to="." method="_on_left_button_up"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_slider_drag_ended"]
 [connection signal="value_changed" from="HSlider" to="." method="_on_slider_value_changed"]
 [connection signal="button_down" from="RightButton" to="." method="_on_right_button_down"]
 [connection signal="button_up" from="RightButton" to="." method="_on_right_button_up"]
