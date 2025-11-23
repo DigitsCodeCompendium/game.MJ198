@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="PickupContentPower" load_steps=2 format=3 uid="uid://d7tayalcdvkw"]
+[gd_resource type="Resource" script_class="PickupContentPower" load_steps=3 format=3 uid="uid://d7tayalcdvkw"]
 
 [ext_resource type="Script" uid="uid://dbd03sbe3mcjm" path="res://scenes/pickups/pickup_content_power.gd" id="1_nmhr7"]
+[ext_resource type="PackedScene" uid="uid://du4el3d28wwn1" path="res://scenes/pickups/power_pickup_visu.tscn" id="2_l6kem"]
 
 [resource]
 script = ExtResource("1_nmhr7")
+vis_scene = ExtResource("2_l6kem")
 metadata/_custom_type_script = "uid://dbd03sbe3mcjm"

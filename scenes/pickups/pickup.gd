@@ -9,7 +9,12 @@ func _ready() -> void:
 	self.connect("area_entered", _on_area_entered)
 	$VisibleOnScreenNotifier2D.connect("screen_exited", _on_leave_screen)
 	
-	$Icon.texture = content.get_icon()
+	if content is PickupContentPower:
+		var visu_scene = content.get_visu_scene().instantiate()
+		self.add_child(visu_scene)
+		$Icon.queue_free()
+	else:
+		$Icon.texture = content.get_icon()
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("player") and content != null:
