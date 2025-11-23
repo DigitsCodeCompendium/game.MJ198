@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu184tdsc4rkj"]
+
+[ext_resource type="Script" uid="uid://c4owsford4vrg" path="res://scenes/systems/weapons/cannon/spent_casing.gd" id="1_b2ycd"]
+[ext_resource type="Texture2D" uid="uid://bj88es3out02f" path="res://assets/weapon_icons/cannon/spent_casing.png" id="2_tyre5"]
+
+[node name="SpentCasing" type="Node2D"]
+script = ExtResource("1_b2ycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tyre5")

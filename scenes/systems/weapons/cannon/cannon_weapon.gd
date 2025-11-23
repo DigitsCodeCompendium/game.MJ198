@@ -2,6 +2,7 @@ extends Shootable
 class_name CannonWeapon
 
 @export var bullet_scene = preload("res://scenes/systems/weapons/cannon/basic_bullet.tscn")
+@export var casing_scene = preload("res://scenes/systems/weapons/cannon/spent_casing.tscn")
 @export var base_fire_rate: float = 1
 @export var base_damage: float = 1
 @export var base_projectile_velocity: float = 500
@@ -68,6 +69,14 @@ func _fire(dir:Vector2, weapon_system: WeaponSystem) -> void:
 					self.base_damage * damage_mod,
 					group,
 					weapon_system)
+	
+	#launch casing
+	var casing = casing_scene.instantiate()
+	casing.position = weapon_system.owner.position + offset
+	casing.velocity = (Vector2.RIGHT * 50)+ (Vector2.DOWN * 30)
+	casing.rotaion_vel = 1
+	casing.scale = Vector2.ONE * size_mod
+	weapon_system.get_tree().current_scene.add_child(casing)
 	
 func cooldown_weapon(delta:float, weapon_system:WeaponSystem) -> void:
 	var weapon_state = weapon_system.weapon_state
