@@ -180,7 +180,8 @@ anchor_top = 0.05
 anchor_right = 0.25
 anchor_bottom = 0.25
 
-[node name="TextureRect" type="TextureRect" parent="PickedUpEngWep"]
+[node name="PendingWepEngSprite" type="TextureRect" parent="PickedUpEngWep"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("5_f1hci")

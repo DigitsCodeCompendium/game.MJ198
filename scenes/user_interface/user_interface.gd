@@ -14,6 +14,7 @@ extends Control
 @onready var pending_wep_eng = get_node("%PickedUpEngWep")
 @onready var pending_wep_eng_timer = get_node("%EngWepTimer")
 @onready var pending_wep_eng_bar = get_node("%EngWepDiscardProgressBar")
+@onready var pending_wep_eng_sprite = get_node("%PendingWepEngSprite")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
@@ -55,6 +56,7 @@ func _on_module_lost():
 	pending_module_timer.stop()
 
 func _on_weapon_added(weapon: Shootable):
+	pending_wep_eng_sprite.texture = weapon.weapon_icon
 	pending_wep_eng.visible = true
 	pending_wep_eng_timer.start(5)
 	
