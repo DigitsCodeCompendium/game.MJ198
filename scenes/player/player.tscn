@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c6k4yokkjgfxh" path="res://assets/weapon_icons/cannon/cannon_weapon.png" id="7_je7p5"]
 [ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="7_smehm"]
 [ext_resource type="AudioStream" uid="uid://bcla6are3y60c" path="res://assets/sound_effects/module pickup v3.mp3" id="12_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://dy2n8wa150pqc" path="res://assets/sound_effects/engine running.mp3" id="13_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://cynhn66sbneuc" path="res://assets/sound_effects/weapon pickup v2.mp3" id="13_ugbui"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ur7pv"]
@@ -62,3 +63,7 @@ bus = &"Sound Effects"
 stream = ExtResource("13_ugbui")
 volume_db = 10.0
 bus = &"Sound Effects"
+
+[node name="SFX_EngineRunning" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("13_gx1jg")
+autoplay = true
