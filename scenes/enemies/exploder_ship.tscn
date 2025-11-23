@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b28ic5p8jf3k7"]
+[gd_scene load_steps=13 format=3 uid="uid://b28ic5p8jf3k7"]
 
+[ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
 [ext_resource type="Texture2D" uid="uid://cadjaq4l8ydt1" path="res://assets/enemies/pi3rate9.png" id="1_grl6f"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_lixtk"]
 [ext_resource type="Script" uid="uid://dgbb17yny54b" path="res://scenes/systems/enemies/ai/charge_ai.gd" id="4_lixtk"]
-[ext_resource type="Script" uid="uid://c8qqu12pnhuik" path="res://scenes/systems/enemies/lifetime_death.gd" id="4_wecn4"]
+[ext_resource type="Script" uid="uid://da4r5ca3b8a1r" path="res://scenes/enemies/fuel_bar.gd" id="4_v5pnv"]
+[ext_resource type="Script" uid="uid://chc3lq3o5cdvy" path="res://scenes/systems/enemies/effect_spawner.gd" id="5_en8o4"]
+[ext_resource type="PackedScene" uid="uid://cfb780j6jhgit" path="res://scenes/enemies/explosion_effect.tscn" id="6_v5pnv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu6rs"]
 atlas = ExtResource("1_grl6f")
@@ -34,9 +37,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en8o4"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [node name="ExploderShip" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("1_en8o4")
+health = NodePath("../Health")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 rotation = 1.5707964
@@ -63,11 +80,34 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
+[node name="FuelBar" type="ProgressBar" parent="." node_paths=PackedStringArray("fuel_timer")]
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 189.99998
+offset_bottom = -7.0000153
+scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_en8o4")
+max_value = 1.0
+value = 0.49
+show_percentage = false
+script = ExtResource("4_v5pnv")
+fuel_timer = NodePath("../Systems/Timer")
+
 [node name="Systems" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Systems"]
+wait_time = 10.0
+one_shot = true
+autostart = true
 
 [node name="ChargeAI" type="Node" parent="Systems" node_paths=PackedStringArray("area")]
 script = ExtResource("4_lixtk")
 area = NodePath("../../Area2D")
 
-[node name="LifetimeDeath" type="Node" parent="Systems"]
-script = ExtResource("4_wecn4")
+[node name="ExplosionEffect" type="Node" parent="Systems"]
+script = ExtResource("5_en8o4")
+effects = Array[PackedScene]([ExtResource("6_v5pnv")])
+
+[connection signal="player_collision" from="Area2D" to="Systems/ExplosionEffect" method="spawn_effects"]
+[connection signal="timeout" from="Systems/Timer" to="." method="queue_free"]
+[connection signal="timeout" from="Systems/Timer" to="Systems/ExplosionEffect" method="spawn_effects"]
