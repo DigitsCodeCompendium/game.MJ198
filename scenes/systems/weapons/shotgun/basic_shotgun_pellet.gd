@@ -2,6 +2,7 @@ extends Area2D
 
 var velocity = Vector2.ZERO
 var damage: float
+var pierce: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
