@@ -1,46 +1,9 @@
-[gd_resource type="Resource" script_class="EnemySpawnPattern" load_steps=13 format=3 uid="uid://ckbj4ecgkde82"]
+[gd_resource type="Resource" script_class="AsteroidSpawnPattern" load_steps=3 format=3 uid="uid://ckbj4ecgkde82"]
 
-[ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_5t86p"]
-[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/enemy_spawn_pattern.gd" id="2_3v4av"]
+[ext_resource type="Script" uid="uid://b5u4q68x1rpxx" path="res://scenes/enemies/spawning/asteroid_spawn_pattern.gd" id="2_5t86p"]
 [ext_resource type="PackedScene" uid="uid://cdoqsejbi7fcx" path="res://scenes/enemies/asteroid.tscn" id="2_x18jk"]
-[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="3_bd1g0"]
-[ext_resource type="Script" uid="uid://c23pk8vi40nqa" path="res://scenes/enemies/spawning/base_random_property.gd" id="4_bji2v"]
-[ext_resource type="Script" uid="uid://bumlyigncsmdy" path="res://scenes/enemies/spawning/random_vector2_property.gd" id="5_6dtxk"]
-[ext_resource type="Script" uid="uid://dep3eiqtl26qi" path="res://scenes/enemies/spawning/random_property_enemy_spawn.gd" id="6_366da"]
-
-[sub_resource type="Resource" id="Resource_ryrru"]
-script = ExtResource("3_bd1g0")
-enemy = ExtResource("2_x18jk")
-metadata/_custom_type_script = "uid://20wcajr3o32k"
-
-[sub_resource type="Resource" id="Resource_a3bpv"]
-script = ExtResource("5_6dtxk")
-min_value = Vector2(-10, 200)
-max_value = Vector2(10, 200)
-property_name = "velocity"
-metadata/_custom_type_script = "uid://bumlyigncsmdy"
-
-[sub_resource type="Resource" id="Resource_6dtxk"]
-script = ExtResource("5_6dtxk")
-min_value = Vector2(1, 1)
-max_value = Vector2(5, 5)
-diagonal = true
-property_name = "scale"
-metadata/_custom_type_script = "uid://bumlyigncsmdy"
-
-[sub_resource type="Resource" id="Resource_t8ix5"]
-script = ExtResource("6_366da")
-enemy_spawn = SubResource("Resource_ryrru")
-random_properties = Array[ExtResource("4_bji2v")]([SubResource("Resource_a3bpv"), SubResource("Resource_6dtxk")])
-metadata/_custom_type_script = "uid://dep3eiqtl26qi"
-
-[sub_resource type="Resource" id="Resource_bji2v"]
-script = ExtResource("1_5t86p")
-enemy_spawn = SubResource("Resource_t8ix5")
-random_offset = Vector2(400, 0)
-metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
 
 [resource]
-script = ExtResource("2_3v4av")
-pattern = Array[ExtResource("1_5t86p")]([SubResource("Resource_bji2v")])
+script = ExtResource("2_5t86p")
+asteroid_scene = ExtResource("2_x18jk")
 metadata/_custom_type_script = "uid://b4rcup02wd1hy"
