@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=17 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="2_y4r1p"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://n8vo022raq7l" path="res://scenes/player/weapon_insertion_system.tscn" id="6_fm80t"]
 [ext_resource type="Texture2D" uid="uid://c6k4yokkjgfxh" path="res://assets/weapon_icons/cannon/cannon_weapon.png" id="7_je7p5"]
 [ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="7_smehm"]
+[ext_resource type="AudioStream" uid="uid://cexxkfs374sut" path="res://assets/sound_effects/cannon.mp3" id="7_ugbui"]
 [ext_resource type="AudioStream" uid="uid://bcla6are3y60c" path="res://assets/sound_effects/module pickup v3.mp3" id="12_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://dy2n8wa150pqc" path="res://assets/sound_effects/engine running.mp3" id="13_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://cynhn66sbneuc" path="res://assets/sound_effects/weapon pickup v2.mp3" id="13_ugbui"]
@@ -21,6 +22,7 @@ points = PackedVector2Array(0, -25, 20, 0, 20, 9, -20, 9, -20, 0)
 script = ExtResource("5_smehm")
 base_damage = 10.0
 weapon_icon = ExtResource("7_je7p5")
+weapon_sfx = ExtResource("7_ugbui")
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"
 
 [node name="Player" type="Area2D" node_paths=PackedStringArray("weapon_system") groups=["player"]]
