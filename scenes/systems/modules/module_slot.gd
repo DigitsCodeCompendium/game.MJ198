@@ -84,13 +84,16 @@ func get_module_property(property: String) -> float:
 	return value * _module.level_property_scaling[_current_level]
 
 
-func add_level_progress(progress: int):
+func add_level_progress(progress: int) -> bool: # Returns whether the module upgraded
 	assert(_module != null)
 	
 	_upgrade_progress += progress
+	var upgraded = false
 	while not is_max_level and _upgrade_progress >= upgrade_cost:
 		_upgrade_progress -= upgrade_cost
 		_current_level += 1
+		upgraded = true
+	return upgraded
 
 
 # tries to increase the extra power of the 
