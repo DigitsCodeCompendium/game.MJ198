@@ -109,5 +109,7 @@ script = ExtResource("5_en8o4")
 effects = Array[PackedScene]([ExtResource("6_v5pnv")])
 
 [connection signal="player_collision" from="Area2D" to="Systems/ExplosionEffect" method="spawn_effects"]
+[connection signal="health_depleted" from="Health" to="." method="queue_free"]
+[connection signal="health_depleted" from="Health" to="Systems/ExplosionEffect" method="spawn_effects"]
 [connection signal="timeout" from="Systems/Timer" to="." method="queue_free"]
 [connection signal="timeout" from="Systems/Timer" to="Systems/ExplosionEffect" method="spawn_effects"]
