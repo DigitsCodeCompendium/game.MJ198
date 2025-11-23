@@ -48,10 +48,11 @@ func increase_module_power(slot: int) -> bool:
 	if slot_has_module(slot):
 		var module = module_slots[slot]
 		var required_power = module.required_increase_power()
-		if power_system.request_power(module, required_power):
-			module.increase_power()
-			UiEventBus.emit_signal("module_updated", slot, module)
-			return true
+		if required_power != 0:
+			if power_system.request_power(module, required_power):
+				module.increase_power()
+				UiEventBus.emit_signal("module_updated", slot, module)
+				return true
 	return false
 
 func decrease_module_power(slot: int) -> bool:
