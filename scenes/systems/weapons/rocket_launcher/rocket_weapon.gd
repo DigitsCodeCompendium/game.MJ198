@@ -10,6 +10,7 @@ class_name RocketWeapon
 const MAX_COOLDOWN: float = 1
 
 @export var weapon_icon: Texture2D
+@export var weapon_sfx: AudioStream
 
 func get_icon():
 	return weapon_icon
