@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
-[ext_resource type="Texture2D" uid="uid://b8yq1ryeyw6xj" path="res://assets/module_icons/basic_background.png" id="2_axgoa"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
 [ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/modules.gd" id="2_y1h3b"]
 [ext_resource type="Script" uid="uid://dimvenxw1wkw3" path="res://scenes/user_interface/reactor_power/reactor_power_grid.gd" id="3_6xuti"]
 [ext_resource type="Texture2D" uid="uid://pxkgs5d3vj1p" path="res://assets/power_icons/active_power.png" id="3_pvt6f"]
+[ext_resource type="Texture2D" uid="uid://b15xy6aves4lb" path="res://assets/menu_icons/gray_background.png" id="3_tfswy"]
 [ext_resource type="PackedScene" uid="uid://b7wdh8x7yiyhu" path="res://scenes/user_interface/reactor_power/reactor_power_pip.tscn" id="4_flq3v"]
 [ext_resource type="Texture2D" uid="uid://7rbgkhea3qms" path="res://assets/power_icons/reserved_power.png" id="5_axgoa"]
 [ext_resource type="Texture2D" uid="uid://bdxfwbwlnlf2j" path="res://assets/power_icons/empty_power.png" id="6_tfswy"]
