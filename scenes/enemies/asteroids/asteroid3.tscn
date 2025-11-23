@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bw0sfkganve5j"]
+
+[ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroids/asteroid.gd" id="1_d8qm1"]
+[ext_resource type="Texture2D" uid="uid://b4rh8eu8nkclq" path="res://assets/enemies/Astroid_3.png" id="2_d8qm1"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="3_1klwb"]
+[ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_25o4e"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_ot5al"]
+[ext_resource type="AudioStream" uid="uid://3ksjw4ekeo3l" path="res://assets/sound_effects/asteroid destruction.mp3" id="6_mylgj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d8qm1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8qm1"]
+
+[node name="Asteroid" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_d8qm1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.43333334, 0.43333334)
+sprite_frames = SubResource("SpriteFrames_6mo6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_d8qm1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("3_1klwb")
+drop_table = ExtResource("4_25o4e")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("5_ot5al")
+health_bar = NodePath("../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.999999
+offset_top = -10.999999
+offset_right = 189.99998
+offset_bottom = -1.0000143
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_mylgj")
+volume_db = -3.0
+bus = &"Sound Effects"

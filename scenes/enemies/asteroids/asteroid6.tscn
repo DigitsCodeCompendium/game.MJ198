@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbjk5381ua7jr"]
+
+[ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroids/asteroid.gd" id="1_knfgx"]
+[ext_resource type="Texture2D" uid="uid://c2mjip0oumb4g" path="res://assets/enemies/Bigroid01.png" id="2_xkvnb"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="3_8eff0"]
+[ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_1pb5j"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_x47fh"]
+[ext_resource type="AudioStream" uid="uid://3ksjw4ekeo3l" path="res://assets/sound_effects/asteroid destruction.mp3" id="6_yxo5q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xkvnb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgpov"]
+radius = 7.0
+height = 24.0
+
+[node name="Asteroid" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_knfgx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, 7)
+scale = Vector2(0.7243564, 0.7243564)
+sprite_frames = SubResource("SpriteFrames_6mo6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jgpov")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("3_8eff0")
+drop_table = ExtResource("4_1pb5j")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("5_x47fh")
+health_bar = NodePath("../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.999999
+offset_top = -10.999999
+offset_right = 189.99998
+offset_bottom = -1.0000143
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_yxo5q")
+volume_db = -3.0
+bus = &"Sound Effects"
