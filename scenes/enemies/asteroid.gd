@@ -38,8 +38,8 @@ func _on_asteroid_collision(area: Area2D):
 		pass
 	
 	elif area.is_in_group("player_projectile"):
-		$Health.damage(area.damage)
 		area.hit()
+		$Health.damage(area.damage)
 	
 func _death():
 	#Hide sprite

@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://dldemqo0m7nl8"]
+
+[ext_resource type="Script" uid="uid://ucn45qpccy0k" path="res://scenes/systems/weapons/rocket_launcher/he_rocket_explosion.gd" id="1_xv1q8"]
+[ext_resource type="Texture2D" uid="uid://bri00e14enclo" path="res://assets/weapon_icons/rocket/explosion.png" id="2_xv1q8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5do53"]
+atlas = ExtResource("2_xv1q8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe6q1"]
+atlas = ExtResource("2_xv1q8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fmta"]
+atlas = ExtResource("2_xv1q8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vo3d"]
+atlas = ExtResource("2_xv1q8")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr3wg"]
+atlas = ExtResource("2_xv1q8")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvo1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5do53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5do53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe6q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fmta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vo3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr3wg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dde8"]
+radius = 29.274563
+
+[node name="HeRocketExplosion" type="Area2D"]
+script = ExtResource("1_xv1q8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.0000001, 0)
+scale = Vector2(1.421875, 1.421875)
+sprite_frames = SubResource("SpriteFrames_hvo1y")
+autoplay = "default"
+frame_progress = 0.61361027
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0dde8")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcmy2ed0nsml6"]
+
+[ext_resource type="Script" uid="uid://dc3htx2pvwh5o" path="res://scenes/systems/weapons/rocket_launcher/frag_rocket.gd" id="1_nftn3"]
+[ext_resource type="Texture2D" uid="uid://rvn2xgjj5gqm" path="res://assets/weapon_icons/rocket/frag_rocket_projectile.png" id="2_nftn3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvbig"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhsby"]
+atlas = ExtResource("2_nftn3")
+region = Rect2(0, 0, 12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5dr8"]
+atlas = ExtResource("2_nftn3")
+region = Rect2(12, 0, 12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nghi"]
+atlas = ExtResource("2_nftn3")
+region = Rect2(24, 0, 12, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlaay"]
+atlas = ExtResource("2_nftn3")
+region = Rect2(36, 0, 12, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvo1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhsby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5dr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nghi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlaay")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FragRocket" type="Area2D"]
+script = ExtResource("1_nftn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kvbig")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 2)
+rect = Rect2(-6, -10, 12, 22)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_hvo1y")
+autoplay = "default"
+frame = 1
+frame_progress = 0.48592198
