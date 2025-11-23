@@ -13,6 +13,8 @@ func _ready() -> void:
 	var screen_size = get_viewport().size
 	position.y = screen_size.y * (1 - y_pos)
 	position.x = screen_size.x/2
+	
+	set_engine_style(PlayerOptions.get_option("customize_engine", 0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
