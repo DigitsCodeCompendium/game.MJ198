@@ -44,7 +44,7 @@ func update_module(mod: ModuleSlot) -> void:
 
 	else:
 		mod_icon.texture = mod.module.module_icon
-		mod_background.texture = backgrounds[0]
+		mod_background.texture = backgrounds[mod.current_level]
 		
 		var min_power_display: TextureRect = power_container.get_node("MinPower")
 		
