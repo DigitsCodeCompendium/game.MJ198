@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="RocketWeapon" load_steps=4 format=3 uid="uid://bl3r4vf5yq0wp"]
+[gd_resource type="Resource" script_class="RocketWeapon" load_steps=5 format=3 uid="uid://bl3r4vf5yq0wp"]
 
 [ext_resource type="PackedScene" uid="uid://dmp444rnoaysk" path="res://scenes/systems/weapons/rocket_launcher/kinetic_rocket.tscn" id="1_5w6nr"]
 [ext_resource type="Script" uid="uid://cwac1i507kr31" path="res://scenes/systems/weapons/rocket_launcher/rocket_weapon.gd" id="2_mv0ua"]
 [ext_resource type="Texture2D" uid="uid://ex7581uyx14k" path="res://assets/weapon_icons/rocket/kinetic_rocket_icon.png" id="3_5w6nr"]
+[ext_resource type="AudioStream" uid="uid://incedre0g8wj" path="res://assets/sound_effects/missile.mp3" id="4_qg3uh"]
 
 [resource]
 script = ExtResource("2_mv0ua")
@@ -10,5 +11,6 @@ base_fire_rate = 0.8
 base_damage = 10.0
 firing_ports = Array[Vector2]([Vector2(25, 0), Vector2(-25, 0)])
 weapon_icon = ExtResource("3_5w6nr")
+weapon_sfx = ExtResource("4_qg3uh")
 weapon_id = 5
 metadata/_custom_type_script = "uid://cwac1i507kr31"
