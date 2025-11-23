@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=23 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -19,9 +19,20 @@
 [ext_resource type="AudioStream" uid="uid://r7nykiy285hq" path="res://assets/music_loop_v1_7_stages/game loop 7.mp3" id="11_264po"]
 [ext_resource type="PackedScene" uid="uid://3khsdlfylfxy" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
 
-[sub_resource type="Curve" id="Curve_ssvqc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvqc"]
+size = Vector2(1000, 100)
+
+[sub_resource type="Curve" id="Curve_264po"]
 _limits = [2.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_264po"]
+size = Vector2(1000, 100)
+
+[sub_resource type="Curve" id="Curve_ssvqc"]
+_limits = [2.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Game" type="Node2D"]
@@ -32,12 +43,23 @@ script = ExtResource("1_yqjtg")
 [node name="Player" parent="." instance=ExtResource("2_lnu2h")]
 unique_name_in_owner = true
 
-[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("speed_control")]
+[node name="EnemySpawners" type="Area2D" parent="."]
+
+[node name="AsteroidSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_ssvqc")
 script = ExtResource("4_ir15t")
-speed_control = NodePath("../SpeedControl")
-asteroid_spawn_pattern = ExtResource("5_ca42v")
-asteroid_spawn_timer_curve = SubResource("Curve_ssvqc")
-persistent_spawn_pattern = ExtResource("6_ssvqc")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = ExtResource("5_ca42v")
+spawn_timer_curve = SubResource("Curve_264po")
+
+[node name="EnemySpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_264po")
+script = ExtResource("4_ir15t")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = ExtResource("6_ssvqc")
+spawn_timer_curve = SubResource("Curve_ssvqc")
 
 [node name="SpeedControl" type="Node" parent="."]
 script = ExtResource("3_lbhrr")

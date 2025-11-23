@@ -1,21 +1,29 @@
-[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=15 format=3 uid="uid://c0g6bmu0jaby8"]
+[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=11 format=3 uid="uid://c0g6bmu0jaby8"]
 
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_2q41a"]
 [ext_resource type="Script" uid="uid://x5qhqlaqnpod" path="res://scenes/enemies/spawning/random_choice_enemy_spawn_over_time.gd" id="2_h2cyi"]
 [ext_resource type="PackedScene" uid="uid://b28ic5p8jf3k7" path="res://scenes/enemies/exploder_ship.tscn" id="3_x6hsu"]
 [ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="4_vg8ws"]
-[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="5_rqthi"]
-[ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="6_f3rrs"]
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="7_a2f0q"]
+
+[sub_resource type="Curve" id="Curve_iuycc"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, nan, 1, 1]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_2q41a"]
 _data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_x6hsu"]
+_data = [Vector2(0, 0), 0.0, 2.0, 0, 1, Vector2(0.5, 1), 2.0, 0.0, 1, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Resource" id="Resource_2q41a"]
 script = ExtResource("2_h2cyi")
 spawn_table = Dictionary[PackedScene, Curve]({
-ExtResource("3_x6hsu"): SubResource("Curve_2q41a")
+null: SubResource("Curve_iuycc"),
+ExtResource("3_x6hsu"): SubResource("Curve_2q41a"),
+ExtResource("4_vg8ws"): SubResource("Curve_x6hsu")
 })
 metadata/_custom_type_script = "uid://x5qhqlaqnpod"
 
@@ -24,29 +32,7 @@ script = ExtResource("1_2q41a")
 enemy_spawn = SubResource("Resource_2q41a")
 metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
 
-[sub_resource type="Resource" id="Resource_ynufw"]
-script = ExtResource("5_rqthi")
-enemy = ExtResource("4_vg8ws")
-metadata/_custom_type_script = "uid://20wcajr3o32k"
-
-[sub_resource type="Resource" id="Resource_lqkmv"]
-script = ExtResource("1_2q41a")
-enemy_spawn = SubResource("Resource_ynufw")
-random_offset = Vector2(800, 0)
-metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
-
-[sub_resource type="Resource" id="Resource_k053r"]
-script = ExtResource("5_rqthi")
-enemy = ExtResource("6_f3rrs")
-metadata/_custom_type_script = "uid://20wcajr3o32k"
-
-[sub_resource type="Resource" id="Resource_8jss5"]
-script = ExtResource("1_2q41a")
-enemy_spawn = SubResource("Resource_k053r")
-base_offset = Vector2(500, 0)
-metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
-
 [resource]
 script = ExtResource("7_a2f0q")
-pattern = Array[ExtResource("1_2q41a")]([SubResource("Resource_bi2un"), SubResource("Resource_lqkmv"), SubResource("Resource_8jss5")])
+pattern = Array[ExtResource("1_2q41a")]([SubResource("Resource_bi2un")])
 metadata/_custom_type_script = "uid://b4rcup02wd1hy"
