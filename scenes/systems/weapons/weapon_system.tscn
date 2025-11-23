@@ -6,5 +6,4 @@
 script = ExtResource("1_iwijl")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
 bus = &"Sound Effects"
