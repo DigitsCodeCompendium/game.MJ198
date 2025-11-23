@@ -8,6 +8,9 @@ var power_system: PowerSystem
 
 @onready var sfx_power_down_module: AudioStreamPlayer = $"SoundEffects/SFXPowerDownModule"
 @onready var sfx_power_up_module: AudioStreamPlayer = $"SoundEffects/SFXPowerUpModule"
+@onready var sfx_power_increase: AudioStreamPlayer = $SoundEffects/SFXPowerIncrease
+@onready var sfx_power_decrease: AudioStreamPlayer = $SoundEffects/SFXPowerDecrease
+
 
 func _ready() -> void:
 	for i in range(self.num_module_slots):
@@ -59,6 +62,8 @@ func increase_module_power(slot: int) -> bool:
 				#Check if module was activated
 				if module.activation_power == module.current_power:
 					sfx_power_up_module.play()
+				else:
+					sfx_power_increase.play()
 				return true
 	return false
 
@@ -73,5 +78,7 @@ func decrease_module_power(slot: int) -> bool:
 		#Check if module was deactivated
 		if module.activation_power > module.current_power:
 			sfx_power_down_module.play()
+		else:
+			sfx_power_decrease.play()
 		return true
 	return false
