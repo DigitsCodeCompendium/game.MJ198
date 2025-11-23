@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=16 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="2_y4r1p"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://co5ipeiddhp0g" path="res://scenes/systems/weapons/weapon_insertion_system.gd" id="6_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://c6k4yokkjgfxh" path="res://assets/weapon_icons/cannon/cannon_weapon.png" id="7_je7p5"]
 [ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="7_smehm"]
+[ext_resource type="AudioStream" uid="uid://bcla6are3y60c" path="res://assets/sound_effects/module pickup v3.mp3" id="12_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://cynhn66sbneuc" path="res://assets/sound_effects/weapon pickup v2.mp3" id="13_ugbui"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ur7pv"]
 points = PackedVector2Array(0, -25, 20, 0, 20, 9, -20, 9, -20, 0)
@@ -48,3 +50,15 @@ script = ExtResource("7_smehm")
 module_system = NodePath("../ModuleSystem")
 
 [node name="PowerSystem" parent="Systems" instance=ExtResource("5_qlg0r")]
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="SFX_ModulePickup" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("12_gx1jg")
+volume_db = 10.0
+bus = &"Sound Effects"
+
+[node name="SFX_WeaponPickup" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("13_ugbui")
+volume_db = 10.0
+bus = &"Sound Effects"
