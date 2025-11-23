@@ -5,11 +5,14 @@ var playable_margins: float
 @export var spawn_timer = 0.5 #spawn timer of asteroids in seconds
 var spawn_timer_time = 0
 
+func _ready() -> void:
+	playable_margins = 0.125*get_viewport().size.x
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	spawn_timer_time += delta
 	
-	playable_margins = 0.125*get_viewport().size.x
+	
 	
 	if spawn_timer_time > spawn_timer:
 		spawn_timer_time = 0
