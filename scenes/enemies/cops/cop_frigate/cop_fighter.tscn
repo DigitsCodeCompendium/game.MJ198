@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgtvtskd7f0kt"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_collision_area.gd" id="1_nxft5"]
+[ext_resource type="Texture2D" uid="uid://2fej2ykva2rf" path="res://assets/enemies/cop_fighter.png" id="2_mgybb"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_cjgyk"]
+[ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="4_y7ay8"]
+[ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="5_kmogp"]
+[ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="6_h5tmp"]
+[ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="7_r0pqd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be5vc"]
+atlas = ExtResource("2_mgybb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yyge"]
+atlas = ExtResource("2_mgybb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1rf7"]
+atlas = ExtResource("2_mgybb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdn6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be5vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yyge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1rf7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yyge"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="CopFighter" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+script = ExtResource("1_nxft5")
+health = NodePath("../Health")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_wdn6e")
+frame_progress = 0.5814532
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("3_cjgyk")
+health_bar = NodePath("../HealthBar")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.000001
+offset_top = -18.0
+offset_right = 189.99998
+offset_bottom = -8.000015
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="FuelBar" type="ProgressBar" parent="." node_paths=PackedStringArray("fuel_timer")]
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 189.99998
+offset_bottom = -7.0000153
+scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_2yyge")
+max_value = 1.0
+value = 0.49
+show_percentage = false
+script = ExtResource("4_y7ay8")
+fuel_timer = NodePath("../Systems/Timer")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="Systems"]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[node name="WeaponSystem" parent="Systems" instance=ExtResource("5_kmogp")]
+current_weapon = ExtResource("6_h5tmp")
+
+[node name="HitRunAi" type="Node" parent="Systems" node_paths=PackedStringArray("weapon_systems", "area")]
+script = ExtResource("7_r0pqd")
+weapon_systems = [NodePath("../WeaponSystem")]
+break_off_dist = 200.0
+engage_dist = 500.0
+rotation_speed = 300.0
+speed = 100.0
+area = NodePath("../../Area2D")

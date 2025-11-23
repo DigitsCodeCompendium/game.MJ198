@@ -1,12 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://byinyv2ojmdk0"]
+[gd_scene load_steps=19 format=3 uid="uid://byinyv2ojmdk0"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy_collision_area.gd" id="1_2yyge"]
+[ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_2yyge"]
 [ext_resource type="Texture2D" uid="uid://2fej2ykva2rf" path="res://assets/enemies/cop_fighter.png" id="1_l8aco"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="2_cdl2y"]
+[ext_resource type="Texture2D" uid="uid://cqx8dii7pwcj5" path="res://assets/enemies/deathfightercop7.png" id="2_mcs0h"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="2_wdn6e"]
 [ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="3_be5vc"]
 [ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="3_wdn6e"]
 [ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="4_cdl2y"]
+[ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp41b"]
+atlas = ExtResource("2_mcs0h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pkkn"]
+atlas = ExtResource("2_mcs0h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1q6y"]
+atlas = ExtResource("2_mcs0h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntg3r"]
+atlas = ExtResource("2_mcs0h")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be5vc"]
 atlas = ExtResource("1_l8aco")
@@ -22,6 +40,23 @@ region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdn6e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp41b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pkkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1q6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntg3r")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_be5vc")
@@ -60,13 +95,20 @@ polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_wdn6e")
-frame_progress = 0.5814532
+animation = &"death"
+autoplay = "default"
 
 [node name="PickupDropSource" type="Node2D" parent="."]
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("2_wdn6e")
 health_bar = NodePath("../HealthBar")
+
+[node name="HealthDeath" type="Node" parent="." node_paths=PackedStringArray("health", "animated_sprite")]
+script = ExtResource("5_erfpo")
+health = NodePath("../Health")
+animated_sprite = NodePath("../Area2D/AnimatedSprite2D")
+fade_away_time = 1.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -10.000001
@@ -101,8 +143,9 @@ autostart = true
 [node name="WeaponSystem" parent="Systems" instance=ExtResource("2_cdl2y")]
 current_weapon = ExtResource("3_wdn6e")
 
-[node name="HitRunAi" type="Node" parent="Systems" node_paths=PackedStringArray("weapon_systems", "area")]
+[node name="HitRunAi" type="Node" parent="Systems" node_paths=PackedStringArray("death_sources", "weapon_systems", "area")]
 script = ExtResource("4_cdl2y")
+death_sources = [NodePath("../../HealthDeath")]
 weapon_systems = [NodePath("../WeaponSystem")]
 break_off_dist = 200.0
 engage_dist = 500.0
