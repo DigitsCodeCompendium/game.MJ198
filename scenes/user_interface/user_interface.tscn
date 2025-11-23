@@ -48,10 +48,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="WeaponBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_axgoa")
+texture = ExtResource("3_tfswy")
 
 [node name="WeaponSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer"]
 unique_name_in_owner = true
@@ -63,10 +63,10 @@ size_flags_horizontal = 4
 layout_mode = 2
 
 [node name="EngineBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
-custom_minimum_size = Vector2(96, 96)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_axgoa")
+texture = ExtResource("3_tfswy")
 
 [node name="EngineSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
 unique_name_in_owner = true
@@ -165,27 +165,27 @@ vertical_alignment = 1
 
 [node name="PickedUpModule" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.75
-anchor_top = 0.05
+anchor_left = 0.875
 anchor_right = 0.875
-anchor_bottom = 0.25
+offset_left = -96.0
+offset_top = 32.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PickedUpModule"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="PendingModuleSprite" type="TextureRect" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("10_axgoa")
 expand_mode = 4
 
 [node name="ModuleDiscardProgressBar" type="ProgressBar" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_pvt6f")
 max_value = 5.0
@@ -203,28 +203,28 @@ one_shot = true
 
 [node name="PickedUpEngWep" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
-anchor_top = 0.05
-anchor_right = 0.25
-anchor_bottom = 0.25
-offset_bottom = 81.0
+anchor_right = 0.125
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 167.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PickedUpEngWep"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="PendingWepEngSprite" type="TextureRect" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("10_axgoa")
 expand_mode = 4
 
 [node name="EngWepDiscardProgressBar" type="ProgressBar" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_pvt6f")
 max_value = 5.0
