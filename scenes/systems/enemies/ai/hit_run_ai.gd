@@ -27,6 +27,9 @@ func _on_death():
 func _process(delta: float) -> void:
 	owner.position += Vector2.UP.rotated(area.rotation) * speed * delta
 	
+	#Clamp to visivle area
+	owner.position.x = clamp(owner.position.x,160,get_viewport().size.x-160)
+	
 	var target_dir: Vector2 = player.global_position - owner.global_position
 	var rot_diff: float
 	
