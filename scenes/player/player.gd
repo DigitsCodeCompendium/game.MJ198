@@ -47,3 +47,6 @@ func set_engine_style(style:int) -> void:
 
 func set_weapon_style(style:int) -> void:
 	$PlayerVisual.set_weapon_style(style)
+
+func set_body_style(style:int) -> void:
+	$PlayerVisual.set_body_style(style)
