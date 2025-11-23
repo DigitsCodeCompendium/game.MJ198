@@ -1,6 +1,8 @@
 extends Node
 class_name PowerSystem
 
+@onready var sfx_reactor_pickup: AudioStreamPlayer = $SoundEffects/SFXReactorPickup
+
 @export var _base_max_power: int = 5
 @export var _power_limit: int = 20
 var _current_max_power: int
@@ -16,6 +18,7 @@ var current_max_power: int:
 		assert(value >= _current_max_power)
 		_current_max_power = min(value, _power_limit)
 		_dirty = true
+		sfx_reactor_pickup.play()
 		
 var current_power_loss: int:
 	get:

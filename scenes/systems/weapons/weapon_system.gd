@@ -31,8 +31,11 @@ func _process(delta: float) -> void:
 
 func fire(dir:Vector2) -> bool:
 	if has_weapon:
-		current_weapon.fire_weapon(dir, self)
-		return true
+		if current_weapon.fire_weapon(dir, self):
+			if current_weapon.weapon_sfx != null:
+				$AudioStreamPlayer.set_stream(current_weapon.weapon_sfx)
+				$AudioStreamPlayer.play()
+			return true
 	return false
 
 func remove_weapon() -> void:

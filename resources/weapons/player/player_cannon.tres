@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CannonWeapon" load_steps=4 format=3 uid="uid://dwg6trya8qcqf"]
 
-[ext_resource type="PackedScene" uid="uid://cfr6dshc1ngsh" path="res://scenes/systems/weapons/cannon/basic_bullet.tscn" id="1_016k3"]
 [ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="2_b0lur"]
 [ext_resource type="Texture2D" uid="uid://c6k4yokkjgfxh" path="res://assets/weapon_icons/cannon/cannon_weapon.png" id="3_qv57d"]
+[ext_resource type="AudioStream" uid="uid://cexxkfs374sut" path="res://assets/sound_effects/cannon.mp3" id="4_b0lur"]
 
 [resource]
 script = ExtResource("2_b0lur")
@@ -10,5 +10,7 @@ base_fire_rate = 2.0
 base_damage = 10.0
 firing_ports = Array[Vector2]([Vector2(8, -15), Vector2(-8, -15)])
 weapon_icon = ExtResource("3_qv57d")
+weapon_sfx = ExtResource("4_b0lur")
+volume = null
 weapon_id = 1
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"
