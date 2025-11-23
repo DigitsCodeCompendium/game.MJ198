@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PickupDropTable" load_steps=18 format=3 uid="uid://f6x6m4dqec2"]
 
 [ext_resource type="Script" uid="uid://cc3nlj4geu6ce" path="res://scenes/pickups/pickup_content.gd" id="1_qrb3g"]
-[ext_resource type="Script" uid="uid://cjk7x2h4383nf" path="res://scenes/enemies/pickup_drop_table.gd" id="2_bsrxx"]
+[ext_resource type="Script" uid="uid://cjk7x2h4383nf" path="res://scenes/systems/enemies/pickup_drop_table.gd" id="2_bsrxx"]
 [ext_resource type="Resource" uid="uid://d7tayalcdvkw" path="res://scenes/pickups/pickup_content_power.tres" id="3_2ehe6"]
 [ext_resource type="Resource" uid="uid://d27ym6sj8ysaq" path="res://resources/modules/firerate_module_1.tres" id="4_hecxd"]
 [ext_resource type="Script" uid="uid://cc7vsq5nveskd" path="res://scenes/pickups/pickup_content_module.gd" id="5_fhf8e"]

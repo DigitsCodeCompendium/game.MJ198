@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://b28ic5p8jf3k7"]
+
+[ext_resource type="Texture2D" uid="uid://cadjaq4l8ydt1" path="res://assets/enemies/pi3rate9.png" id="1_grl6f"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_lixtk"]
+[ext_resource type="Script" uid="uid://dgbb17yny54b" path="res://scenes/systems/enemies/ai/charge_ai.gd" id="4_lixtk"]
+[ext_resource type="Script" uid="uid://c8qqu12pnhuik" path="res://scenes/systems/enemies/lifetime_death.gd" id="4_wecn4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu6rs"]
+atlas = ExtResource("1_grl6f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8l8r"]
+atlas = ExtResource("1_grl6f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lixtk"]
+atlas = ExtResource("1_grl6f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gyub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu6rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8l8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lixtk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ExploderShip" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -16, 16, 5, 11, 13, -11, 13, -16, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_8gyub")
+frame_progress = 0.43749857
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("3_lixtk")
+health_bar = NodePath("../HealthBar")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.000001
+offset_top = -18.0
+offset_right = 189.99998
+offset_bottom = -8.000015
+scale = Vector2(0.1, 0.1)
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="ChargeAI" type="Node" parent="Systems" node_paths=PackedStringArray("area")]
+script = ExtResource("4_lixtk")
+area = NodePath("../../Area2D")
+
+[node name="LifetimeDeath" type="Node" parent="Systems"]
+script = ExtResource("4_wecn4")
