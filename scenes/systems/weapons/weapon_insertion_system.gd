@@ -6,9 +6,12 @@ extends Node
 
 var _pending_weapon: Shootable
 var _pending_remaining_time: float
+var _dirty: bool
 
 func _ready():
 	_pending_remaining_time = 0
+	_pending_weapon = weapon_system.current_weapon
+	_dirty = true
 
 func insert_weapon(weapon: Shootable):
 	_pending_weapon = weapon
@@ -21,10 +24,11 @@ func insert_weapon(weapon: Shootable):
 func _reset_pending_weapon():
 	_pending_weapon = null
 	_pending_remaining_time = 0
+	_dirty = false
 
 func _process(delta):
 	if _pending_weapon != null:
-		if Input.is_action_just_pressed("replace_weapon"):
+		if Input.is_action_just_pressed("replace_weapon") or _dirty:
 			weapon_system.set_weapon(_pending_weapon)
 			UiEventBus.emit_signal("weapon_pending_applied", _pending_weapon)
 			_reset_pending_weapon()
