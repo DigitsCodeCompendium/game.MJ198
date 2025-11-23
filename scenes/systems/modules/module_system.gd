@@ -10,6 +10,7 @@ var power_system: PowerSystem
 @onready var sfx_power_up_module: AudioStreamPlayer = $"SoundEffects/SFXPowerUpModule"
 @onready var sfx_power_increase: AudioStreamPlayer = $SoundEffects/SFXPowerIncrease
 @onready var sfx_power_decrease: AudioStreamPlayer = $SoundEffects/SFXPowerDecrease
+@onready var sfx_module_assigned: AudioStreamPlayer = $SoundEffects/SFXModuleAssigned
 
 
 func _ready() -> void:
@@ -29,6 +30,7 @@ func set_module(slot:int, module: BaseModule) -> bool:
 		
 		power_system.power_consumers = module_slots
 		UiEventBus.emit_signal("module_updated", slot, module_slots[slot])
+		sfx_module_assigned.play()
 		return true
 	return false
 

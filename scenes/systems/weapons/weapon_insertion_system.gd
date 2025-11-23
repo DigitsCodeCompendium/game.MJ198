@@ -4,6 +4,8 @@ extends Node
 
 @export var pickup_keep_time: float = 5
 
+@onready var sfx_weapon_equiped: AudioStreamPlayer = $SoundEffects/SFXWeaponEquiped
+
 var _pending_weapon: Shootable
 var _pending_remaining_time: float
 var _dirty: bool
@@ -30,6 +32,9 @@ func _process(delta):
 	if _pending_weapon != null:
 		if Input.is_action_just_pressed("replace_weapon") or _dirty:
 			weapon_system.set_weapon(_pending_weapon)
+			
+			sfx_weapon_equiped.play()
+			
 			UiEventBus.emit_signal("weapon_pending_applied", _pending_weapon)
 			_reset_pending_weapon()
 		elif Input.is_action_just_pressed("discard_weapon"):
