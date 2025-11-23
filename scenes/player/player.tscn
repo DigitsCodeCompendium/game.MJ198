@@ -65,3 +65,4 @@ bus = &"Sound Effects"
 [node name="SFX_EngineRunning" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("13_gx1jg")
 autoplay = true
+parameters/looping = true
