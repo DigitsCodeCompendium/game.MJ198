@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baa78moi6xsmh"
-path="res://.godot/imported/free_extra_power.png-d7ac47887d6ae7d06d449610119fdc5d.ctex"
+uid="uid://dt5dpcvm7lee6"
+path="res://.godot/imported/active_upgrade.png-e01fb6826b399cf45f83c8a9c1a9c14f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/module_icons/free_extra_power.png"
-dest_files=["res://.godot/imported/free_extra_power.png-d7ac47887d6ae7d06d449610119fdc5d.ctex"]
+source_file="res://assets/module_icons/active_upgrade.png"
+dest_files=["res://.godot/imported/active_upgrade.png-e01fb6826b399cf45f83c8a9c1a9c14f.ctex"]
 
 [params]
 

@@ -102,7 +102,7 @@ texture = ExtResource("4_i6xls")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="UpgradeBar" type="ProgressBar" parent="."]
+[node name="UpgradeContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 96)
 layout_mode = 1
@@ -110,12 +110,11 @@ anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -32.0
 offset_top = 32.0
 offset_bottom = -32.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 4
-max_value = 6.0
-value = 1.0
-fill_mode = 3
-show_percentage = false
+theme_override_constants/separation = -4
+alignment = 2
