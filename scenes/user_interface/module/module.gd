@@ -18,6 +18,7 @@ var empty_extra_power_tex: Texture2D = preload("res://assets/module_icons/empty_
 
 var active_upgrade_tex: Texture2D = preload("res://assets/module_icons/active_upgrade.png")
 var empty_upgrade_tex: Texture2D = preload("res://assets/module_icons/empty_upgrade.png")
+var blue_upgrade_tex: Texture2D = preload("res://assets/module_icons/blue_upgrade.png")
 
 @onready var power_container = get_node("%EnergyContainer")
 @onready var upgrade_container = get_node("%UpgradeContainer")
@@ -65,11 +66,17 @@ func update_module(mod: ModuleSlot) -> void:
 			
 		for child in upgrade_container.get_children():
 			child.queue_free()
-		for i in range(mod.current_level + 1):
-			var index = mod.current_level - i
-			var pip: TextureRect = upgrade_pip_scene.instantiate()
-			if index < mod.level_progress:
-				pip.texture = active_upgrade_tex
-			else:
-				pip.texture = empty_upgrade_tex
-			upgrade_container.add_child(pip)
+		if mod.is_max_level:
+			for i in range(mod.upgrade_cost):
+				var pip: TextureRect = upgrade_pip_scene.instantiate()
+				pip.texture = blue_upgrade_tex
+				upgrade_container.add_child(pip)
+		else:
+			for i in range(mod.upgrade_cost):
+				var index = mod.current_level - i
+				var pip: TextureRect = upgrade_pip_scene.instantiate()
+				if index < mod.upgrade_progress:
+					pip.texture = active_upgrade_tex
+				else:
+					pip.texture = empty_upgrade_tex
+				upgrade_container.add_child(pip)
