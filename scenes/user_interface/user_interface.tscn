@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://pxkgs5d3vj1p" path="res://assets/power_icons/active_power.png" id="3_pvt6f"]
 [ext_resource type="PackedScene" uid="uid://b7wdh8x7yiyhu" path="res://scenes/user_interface/reactor_power/reactor_power_pip.tscn" id="4_flq3v"]
 [ext_resource type="Texture2D" uid="uid://7rbgkhea3qms" path="res://assets/power_icons/reserved_power.png" id="5_axgoa"]
-[ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="5_f1hci"]
 [ext_resource type="Texture2D" uid="uid://bdxfwbwlnlf2j" path="res://assets/power_icons/empty_power.png" id="6_tfswy"]
+[ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="10_axgoa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dtu1"]
 bg_color = Color(0.5086386, 0.10218536, 0.72161824, 1)
@@ -136,7 +136,7 @@ text = "ttest"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PickedUpModule" type="VBoxContainer" parent="."]
+[node name="PickedUpModule" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -146,13 +146,17 @@ anchor_top = 0.05
 anchor_right = 0.875
 anchor_bottom = 0.25
 
-[node name="PendingModuleSprite" type="TextureRect" parent="PickedUpModule"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PickedUpModule"]
+layout_mode = 2
+
+[node name="PendingModuleSprite" type="TextureRect" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+texture = ExtResource("10_axgoa")
 expand_mode = 4
 
-[node name="ModuleDiscardProgressBar" type="ProgressBar" parent="PickedUpModule"]
+[node name="ModuleDiscardProgressBar" type="ProgressBar" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -161,16 +165,16 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 
-[node name="ModuleDiscardButton" type="Button" parent="PickedUpModule"]
+[node name="ModuleDiscardButton" type="Button" parent="PickedUpModule/VBoxContainer"]
 layout_mode = 2
 text = "X"
 
-[node name="ModuleTimer" type="Timer" parent="PickedUpModule"]
+[node name="ModuleTimer" type="Timer" parent="PickedUpModule/VBoxContainer"]
 unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
 
-[node name="PickedUpEngWep" type="VBoxContainer" parent="."]
+[node name="PickedUpEngWep" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -179,15 +183,19 @@ anchor_left = 0.125
 anchor_top = 0.05
 anchor_right = 0.25
 anchor_bottom = 0.25
+offset_bottom = 81.0
 
-[node name="PendingWepEngSprite" type="TextureRect" parent="PickedUpEngWep"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PickedUpEngWep"]
+layout_mode = 2
+
+[node name="PendingWepEngSprite" type="TextureRect" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("5_f1hci")
+texture = ExtResource("10_axgoa")
 expand_mode = 4
 
-[node name="EngWepDiscardProgressBar" type="ProgressBar" parent="PickedUpEngWep"]
+[node name="EngWepDiscardProgressBar" type="ProgressBar" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -196,11 +204,21 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 
-[node name="EngWepDiscardButton" type="Button" parent="PickedUpEngWep"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PickedUpEngWep/VBoxContainer"]
 layout_mode = 2
-text = "Z"
 
-[node name="EngWepTimer" type="Timer" parent="PickedUpEngWep"]
+[node name="EngWepPickUpButton" type="Button" parent="PickedUpEngWep/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y"
+
+[node name="EngWepDiscardButton2" type="Button" parent="PickedUpEngWep/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "N
+"
+
+[node name="EngWepTimer" type="Timer" parent="PickedUpEngWep/VBoxContainer"]
 unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
