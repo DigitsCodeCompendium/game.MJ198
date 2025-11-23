@@ -31,5 +31,5 @@ bus = &"Sound Effects"
 
 [node name="SFXModuleAssigned" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("5_w56mu")
-volume_db = 10.0
+volume_db = -5.0
 bus = &"Sound Effects"

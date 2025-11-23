@@ -54,5 +54,5 @@ show_percentage = false
 [node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_w7b4c")
-volume_db = 24.0
+volume_db = -3.0
 bus = &"Sound Effects"

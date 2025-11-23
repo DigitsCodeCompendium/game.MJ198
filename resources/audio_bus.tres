@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=0 format=3 uid="uid://c6nar83hqx5jx"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://c6nar83hqx5jx"]
 
 [resource]
 bus/0/volume_db = -5.99743
@@ -12,7 +12,7 @@ bus/2/name = &"Sound Effects"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = 0.0
+bus/2/volume_db = -0.13049698
 bus/2/send = &"Master"
 bus/3/name = &"User Interface"
 bus/3/solo = false
