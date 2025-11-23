@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckkccjr144hjs"]
+[gd_scene load_steps=3 format=3 uid="uid://ckkccjr144hjs"]
 
 [ext_resource type="Script" uid="uid://deomllro72uji" path="res://scenes/systems/power/power_system.gd" id="1_nkg8t"]
+[ext_resource type="AudioStream" uid="uid://bo10bni0uj5ar" path="res://assets/sound_effects/reactor pickup.mp3" id="2_g6yay"]
 
 [node name="PowerSystem" type="Node"]
 script = ExtResource("1_nkg8t")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="SFXReactorPickup" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("2_g6yay")
+volume_db = -10.0
+bus = &"Sound Effects"
