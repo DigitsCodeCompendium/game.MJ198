@@ -32,7 +32,6 @@ script = ExtResource("1_jbsfc")
 [node name="LeftPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.125
 anchor_bottom = 1.0
 metadata/_edit_use_anchors_ = true
 
@@ -102,7 +101,7 @@ free_power_texture = ExtResource("3_pvt6f")
 [node name="RightPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.875
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0

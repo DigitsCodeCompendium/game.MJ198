@@ -4,6 +4,7 @@ class_name ShotgunWeapon
 @export var base_number_of_projectiles: int = 6
 @export var base_spread: float = 40
 
+
 func get_icon():
 	return weapon_icon
 

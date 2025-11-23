@@ -26,14 +26,16 @@ var blue_upgrade_tex: Texture2D = preload("res://assets/module_icons/blue_upgrad
 @onready var power_down_button = get_node("%DecreasePower")
 @onready var mod_icon = get_node("%ModuleSprite")
 @onready var mod_background = get_node("%ModuleBackground")
+@onready var increase_power_label: Label = %IncreasePowerLabel
+@onready var decrease_power_label: Label = %DecreasePowerLabel
 
 
 
 func set_slot(slot: int):
 	var increase_power_binding = InputMap.action_get_events("power_up_module_%d" % (slot + 1))[0]
 	var decrease_power_binding = InputMap.action_get_events("power_down_module_%d" % (slot + 1))[0]
-	power_up_button.text = increase_power_binding.as_text().substr(0, 1)
-	power_down_button.text = decrease_power_binding.as_text().substr(0, 1)
+	increase_power_label.text = increase_power_binding.as_text().substr(0, 1)
+	decrease_power_label.text = decrease_power_binding.as_text().substr(0, 1)
 
 func update_module(mod: ModuleSlot) -> void:
 	print("received module update")
