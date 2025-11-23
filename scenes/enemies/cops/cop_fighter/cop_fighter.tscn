@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://byinyv2ojmdk0"]
+[gd_scene load_steps=20 format=3 uid="uid://byinyv2ojmdk0"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_2yyge"]
 [ext_resource type="Texture2D" uid="uid://2fej2ykva2rf" path="res://assets/enemies/cop_fighter.png" id="1_l8aco"]
@@ -8,7 +8,8 @@
 [ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="3_be5vc"]
 [ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="3_wdn6e"]
 [ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="4_cdl2y"]
-[ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+[ext_resource type="Script" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="7_erfpo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp41b"]
 atlas = ExtResource("2_mcs0h")
@@ -86,9 +87,10 @@ corner_detail = 6
 
 [node name="CopFighter" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_2yyge")
 health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)
@@ -132,6 +134,11 @@ value = 0.49
 show_percentage = false
 script = ExtResource("3_be5vc")
 fuel_timer = NodePath("../Systems/Timer")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_erfpo")
+volume_db = 5.0
+bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
 

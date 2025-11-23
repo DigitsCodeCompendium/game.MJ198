@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ovol6tu8w0mo"]
+[gd_scene load_steps=21 format=3 uid="uid://ovol6tu8w0mo"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_tp4mi"]
 [ext_resource type="Texture2D" uid="uid://b5rcmhasdurgk" path="res://assets/enemies/deathcruiserSprite-0030.png" id="2_f6c20"]
@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_f6c20"]
 [ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="4_d0oqy"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="5_expjq"]
-[ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_f6c20"]
+[ext_resource type="Script" path="res://scenes/systems/enemies/health_death.gd" id="5_f6c20"]
 [ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="6_yhwmg"]
 [ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="7_c8ovo"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="7_d0oqy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0oqy"]
 atlas = ExtResource("2_f6c20")
@@ -93,9 +94,10 @@ corner_detail = 6
 
 [node name="CopCruiser" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_tp4mi")
 health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_wdn6e")
@@ -137,6 +139,11 @@ value = 0.49
 show_percentage = false
 script = ExtResource("4_d0oqy")
 fuel_timer = NodePath("../Systems/Timer")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_d0oqy")
+volume_db = 5.0
+bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
 

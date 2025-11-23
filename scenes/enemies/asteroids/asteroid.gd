@@ -2,8 +2,10 @@ extends Node2D
 
 var velocity: Vector2
 var ang_velocity: float
-var base_health = 10
+var base_health = 9
 var _marked_for_death = false
+
+@export var hit_sound: AudioStreamPlayer2D
 
 @onready var death_sound = get_node("%DeathSoundPlayer")
 @onready var possible_fragment_scene = [
@@ -56,6 +58,7 @@ func _on_asteroid_collision(area: Area2D):
 	elif area.is_in_group("player_projectile"):
 		area.hit()
 		$Health.damage(area.damage)
+		hit_sound.play()
 	
 func _death():
 	#Hide sprite

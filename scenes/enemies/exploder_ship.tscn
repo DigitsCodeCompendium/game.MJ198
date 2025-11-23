@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b28ic5p8jf3k7"]
+[gd_scene load_steps=14 format=3 uid="uid://b28ic5p8jf3k7"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
+[ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
 [ext_resource type="Texture2D" uid="uid://cadjaq4l8ydt1" path="res://assets/enemies/pi3rate9.png" id="1_grl6f"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_lixtk"]
 [ext_resource type="Script" uid="uid://dgbb17yny54b" path="res://scenes/systems/enemies/ai/charge_ai.gd" id="4_lixtk"]
 [ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="4_v5pnv"]
 [ext_resource type="Script" path="res://scenes/systems/enemies/effect_spawner.gd" id="5_en8o4"]
-[ext_resource type="PackedScene" uid="uid://cfb780j6jhgit" path="res://scenes/enemies/explosion_effect.tscn" id="6_v5pnv"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="5_mqrs7"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/explosion_effect.tscn" id="6_v5pnv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu6rs"]
 atlas = ExtResource("1_grl6f")
@@ -51,9 +52,10 @@ corner_detail = 6
 
 [node name="ExploderShip" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound")]
 script = ExtResource("1_en8o4")
 health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(0, -16, 16, 5, 11, 13, -11, 13, -16, 5)
@@ -90,6 +92,11 @@ value = 0.49
 show_percentage = false
 script = ExtResource("4_v5pnv")
 fuel_timer = NodePath("../Systems/Timer")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mqrs7")
+volume_db = 5.0
+bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
 
