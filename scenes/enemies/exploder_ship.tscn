@@ -58,9 +58,11 @@ health = NodePath("../Health")
 hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+rotation = 3.1415927
 polygon = PackedVector2Array(0, -16, 16, 5, 11, 13, -11, 13, -16, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_8gyub")
 frame_progress = 0.43749857
 
