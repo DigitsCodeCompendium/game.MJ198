@@ -1,0 +1,121 @@
+[gd_scene load_steps=5 format=3 uid="uid://b54uo5otbvimt"]
+
+[ext_resource type="Script" uid="uid://1xgxtcrnhjnk" path="res://scenes/user_interface/module/module.gd" id="1_raokp"]
+[ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="2_7vxq3"]
+[ext_resource type="Texture2D" uid="uid://b8yq1ryeyw6xj" path="res://assets/module_icons/basic_background.png" id="2_na2qk"]
+[ext_resource type="Texture2D" uid="uid://c4rw7ixga2j3q" path="res://assets/module_icons/active_min_power.png" id="4_i6xls"]
+
+[node name="Module" type="Control"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 164.0
+size_flags_vertical = 3
+script = ExtResource("1_raokp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IncreasePower" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+text = "Q"
+
+[node name="DecreasePower" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+size_flags_vertical = 10
+text = "A"
+
+[node name="ModuleContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModuleBackground" type="TextureRect" parent="ModuleContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("2_na2qk")
+
+[node name="ModuleSprite" type="TextureRect" parent="ModuleContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_7vxq3")
+
+[node name="EnergyControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EnergyContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -32.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.875, 0.875)
+pivot_offset = Vector2(56, 16)
+
+[node name="MinPower" type="TextureRect" parent="EnergyContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_i6xls")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="UpgradeBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 96)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+max_value = 6.0
+value = 1.0
+fill_mode = 3
+show_percentage = false

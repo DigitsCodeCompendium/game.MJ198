@@ -16,6 +16,11 @@ var current_power: int:
 		if is_active:
 			return module.activation_power + _extra_power
 		return 0
+var current_extra_power: int:
+	get:
+		if is_active:
+			return _extra_power
+		return 0
 var activation_power: int:
 	get:
 		return module.activation_power
