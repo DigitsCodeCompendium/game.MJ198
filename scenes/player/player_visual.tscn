@@ -1,0 +1,137 @@
+[gd_scene load_steps=17 format=3 uid="uid://b0hpmch812els"]
+
+[ext_resource type="Texture2D" uid="uid://3k4lfgb8fkmf" path="res://assets/player/player_ship_base.png" id="1_y6k2m"]
+[ext_resource type="Texture2D" uid="uid://cvyspjk1m2pbc" path="res://assets/player/player_ship_engine1.png" id="2_ue5q2"]
+[ext_resource type="Texture2D" uid="uid://i7j2papyyt00" path="res://assets/player/player_ship_engine4.png" id="3_ally7"]
+[ext_resource type="Texture2D" uid="uid://dlih1sb8t7ewr" path="res://assets/player/player_ship_engine2.png" id="4_xmcf6"]
+[ext_resource type="Texture2D" uid="uid://bpuyfmali5jqt" path="res://assets/player/player_ship_engine3.png" id="5_5lam4"]
+[ext_resource type="Texture2D" uid="uid://djirlr1sic37k" path="res://assets/player/player_ship_cannon.png" id="6_3wve8"]
+[ext_resource type="Texture2D" uid="uid://l25lhhhpcc4w" path="res://assets/player/player_ship_frag_rocket.png" id="7_2ao7h"]
+[ext_resource type="Texture2D" uid="uid://gyf7aq03vjal" path="res://assets/player/player_ship_he_rocket.png" id="8_04jqx"]
+[ext_resource type="Texture2D" uid="uid://dxlg75fyw30el" path="res://assets/player/player_ship_kinetic_rocket.png" id="9_gdiyg"]
+[ext_resource type="Texture2D" uid="uid://b2ehg2frpi7ej" path="res://assets/player/player_ship_laser.png" id="10_hucp1"]
+[ext_resource type="Texture2D" uid="uid://ctbeq56fkpwmc" path="res://assets/player/player_ship_railgun.png" id="11_p4ar4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+atlas = ExtResource("2_ue5q2")
+region = Rect2(0, 0, 59, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("2_ue5q2")
+region = Rect2(59, 0, 59, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("2_ue5q2")
+region = Rect2(118, 0, 59, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8cc")
+}],
+"loop": true,
+"name": &"classic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ally7")
+}],
+"loop": true,
+"name": &"short",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xmcf6")
+}],
+"loop": true,
+"name": &"spike",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5lam4")
+}],
+"loop": true,
+"name": &"vintage",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_487ah"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3wve8")
+}],
+"loop": true,
+"name": &"cannon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2ao7h")
+}],
+"loop": true,
+"name": &"frag_rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_04jqx")
+}],
+"loop": true,
+"name": &"he_rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gdiyg")
+}],
+"loop": true,
+"name": &"kinetic_rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_hucp1")
+}],
+"loop": true,
+"name": &"laser",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_p4ar4")
+}],
+"loop": true,
+"name": &"railgun",
+"speed": 5.0
+}]
+
+[node name="PlayerVisual" type="Node2D"]
+
+[node name="ShipSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_y6k2m")
+
+[node name="EngineSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qhqgy")
+animation = &"classic"
+autoplay = "classic"
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_487ah")
+animation = &"none"
+autoplay = "none"

@@ -41,23 +41,7 @@ func _on_player_collide(area: Area2D):
 		print("AAAAHHHHH")
 
 func set_engine_style(style:int) -> void:
-	var animation: String
-	match style:
-		0: animation = "classic"
-		1: animation = "spike"
-		2: animation = "vintage"
-		3: animation = "short"
-	$EngineSprite.play(animation)
+	$PlayerVisual.set_engine_style(style)
 
 func set_weapon_style(style:int) -> void:
-	var animation: String
-	match style:
-		0: animation = "none"
-		1: animation = "cannon"
-		2: animation = "railgun"
-		3: animation = "laser"
-		4: animation = "shotgun"
-		5: animation = "kinetic_rockets"
-		6: animation = "he_rockets"
-		7: animation = "frag_rockets"
-	$EngineSprite.play(animation)
+	$PlayerVisual.set_weapon_style(style)
