@@ -46,9 +46,11 @@ func _reset_discard_progress():
 		Input.action_release("discard_module_%d" % (i+1))
 
 func insert_module(module: BaseModule):
-	for module_slot in module_system.module_slots:
+	for i in range(len(module_system.module_slots)):
+		var module_slot: ModuleSlot = module_system.module_slots[i]
 		if module_slot.module == module:
 			module_slot.add_level_progress(1)
+			UiEventBus.emit_signal("module_updated", i, module_slot)
 			return
 
 	_pending_module = module

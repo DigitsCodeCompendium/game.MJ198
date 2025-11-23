@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://crnpbgj3b7lkt"]
+
+[ext_resource type="Texture2D" uid="uid://dt5dpcvm7lee6" path="res://assets/module_icons/active_upgrade.png" id="1_gu7v0"]
+
+[node name="TextureRect" type="TextureRect"]
+custom_minimum_size = Vector2(0, 24)
+size_flags_horizontal = 4
+texture = ExtResource("1_gu7v0")
+expand_mode = 3

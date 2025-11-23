@@ -16,6 +16,11 @@ var current_power: int:
 		if is_active:
 			return module.activation_power + _extra_power
 		return 0
+var current_extra_power: int:
+	get:
+		if is_active:
+			return _extra_power
+		return 0
 var activation_power: int:
 	get:
 		return module.activation_power
@@ -77,7 +82,7 @@ func add_level_progress(progress: int):
 	assert(_module != null)
 	
 	_level_progress += progress
-	while _current_level < 3 and _level_progress > _current_level + 1:
+	while _current_level < 3 and _level_progress >= _current_level + 1:
 		_current_level += 1
 		_level_progress -= _current_level
 
