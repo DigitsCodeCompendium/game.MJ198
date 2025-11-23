@@ -151,6 +151,7 @@ alignment = 2
 
 [node name="MaxLevelLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 modulate = Color(0, 0.7882353, 0, 1)
 layout_mode = 1
 anchors_preset = -1
