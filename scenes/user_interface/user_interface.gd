@@ -1,7 +1,7 @@
 extends Control
 
-@onready var weapon_icon = get_node("%Weapon")
-@onready var engine_icon = get_node("%Engine")
+@onready var weapon_sprite = get_node("%WeaponSprite")
+@onready var engine_sprite = get_node("%EngineSprite")
 
 @onready var speed_label = get_node("%SpeedLabel")
 @onready var speed_bar = get_node("%SpeedProgressBar")
@@ -61,6 +61,7 @@ func _on_weapon_added(weapon: Shootable):
 	pending_wep_eng_timer.start(5)
 	
 func _on_weapon_applied(weapon: Shootable):
+	weapon_sprite.texture = weapon.weapon_icon
 	pending_wep_eng.visible = false
 	pending_wep_eng_timer.stop()
 	
