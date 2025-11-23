@@ -11,19 +11,17 @@ var _pending_remaining_time: float
 # float means how long the player has held the discard button, null means discard button is not held
 var _discard_pending_progress # float or null
 var _discard_progress: Array # array of float or null
+var _discard_active: Array[bool] = [] # true if a slot is being actively discarded. need to be settable programmatically to cancel a discard and requrie a release and re press
 
 var pending_module: BaseModule:
 	get:
 		return _pending_module
-
 var pending_remaining_time: float:
 	get:
 		return _pending_remaining_time
-
 var discard_pending_progress:
 	get:
 		return _discard_pending_progress
-
 var discard_progress: # Array of 5 float|null values, for each slot
 	get:
 		return _discard_progress
@@ -36,14 +34,14 @@ func _reset_pending_module():
 	_pending_module = null
 	_pending_remaining_time = 0
 	_discard_pending_progress = null
-	Input.action_release("discard_module_pending")
 
 func _reset_discard_progress():
 	_discard_pending_progress = null
 	_discard_progress = []
+	_discard_active = []
 	for i in range(module_system.num_module_slots):
 		_discard_progress.append(null)
-		Input.action_release("discard_module_%d" % (i+1))
+		_discard_active.append(false)
 
 func insert_module(module: BaseModule):
 	for i in range(len(module_system.module_slots)):
@@ -62,25 +60,37 @@ func insert_module(module: BaseModule):
 	UiEventBus.emit_signal("module_pending_added", module)
 	
 func _replace_module(i):
-	print("Replacing module at %d with %s" % [i, _pending_module])
 	module_system.set_module(i, _pending_module)
 	_discard_progress[i] = null
-	Input.action_release("discard_module_%d" % (i+1))
+	_discard_active[i] = false
 
-func _process(delta):
-	var any_discard = false
+func _process(delta: float):
+	_process_discard_active()
+	_process_discard_progress(delta)
+	_process_discard_pending(delta)
+	var any_discard = _discard_active.any(func(active): return active)
+	_process_pending_timeout(delta, any_discard)
+
+func _process_discard_active():
+	for i in range(module_system.num_module_slots):
+		if Input.is_action_just_pressed("discard_module_%d" % (i+1)):
+			_discard_active[i] = true
+		if Input.is_action_just_released("discard_module_%d" % (i+1)):
+			_discard_active[i] = false
+
+func _process_discard_progress(delta: float):
 	for i in range(module_system.num_module_slots):
 		var can_discard = module_system.get_module(i) != null || _pending_module != null
-		if can_discard and Input.is_action_pressed("discard_module_%d" % (i + 1)):
+		if can_discard and _discard_active[i]:
 			_discard_progress[i] = _discard_progress[i] + delta if _discard_progress[i] != null else delta
 			if _discard_progress[i] > discard_time:
 				_replace_module(i)
 				UiEventBus.emit_signal("module_pending_applied", i, _pending_module)
 				_reset_pending_module()
-			any_discard = true
 		else:
 			_discard_progress[i] = null
-	
+
+func _process_discard_pending(delta: float):
 	if _pending_module != null:
 		if Input.is_action_pressed("discard_module_pending"):
 			_discard_pending_progress = _discard_pending_progress + delta if _discard_pending_progress != null else delta
@@ -90,10 +100,11 @@ func _process(delta):
 		else:
 			_discard_pending_progress = null
 
+func _process_pending_timeout(delta: float, any_discard: bool):
 	if _pending_module != null:
 		_pending_remaining_time -= delta
 		if _pending_remaining_time <= 0 and not any_discard:
 			_reset_pending_module()
 			_reset_discard_progress()
 			UiEventBus.emit_signal("module_pending_lost")
-			
+	
