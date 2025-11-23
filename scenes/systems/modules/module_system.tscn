@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5k51vab0hjpc"]
+[gd_scene load_steps=4 format=3 uid="uid://b5k51vab0hjpc"]
 
 [ext_resource type="Script" uid="uid://bdefd5knu3tue" path="res://scenes/systems/modules/module_system.gd" id="1_x0fty"]
+[ext_resource type="AudioStream" uid="uid://b7uooxitlp7yp" path="res://assets/sound_effects/power down module.mp3" id="2_1vmrh"]
+[ext_resource type="AudioStream" uid="uid://ceg8nbv4o1f62" path="res://assets/sound_effects/power up module.mp3" id="3_nu0hs"]
 
 [node name="ModuleSystem" type="Node"]
 script = ExtResource("1_x0fty")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="SFXPowerDownModule" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("2_1vmrh")
+
+[node name="SFXPowerUpModule" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("3_nu0hs")

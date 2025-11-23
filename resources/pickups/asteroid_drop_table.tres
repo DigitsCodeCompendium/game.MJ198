@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://d7tayalcdvkw" path="res://scenes/pickups/pickup_content_power.tres" id="3_2ehe6"]
 [ext_resource type="Resource" uid="uid://d27ym6sj8ysaq" path="res://resources/modules/firerate_module_1.tres" id="4_hecxd"]
 [ext_resource type="Script" uid="uid://cc7vsq5nveskd" path="res://scenes/pickups/pickup_content_module.gd" id="5_fhf8e"]
-[ext_resource type="Script" path="res://scenes/pickups/pickup_content_weapon.gd" id="6_fhf8e"]
+[ext_resource type="Script" uid="uid://dh634rqw5sh5y" path="res://scenes/pickups/pickup_content_weapon.gd" id="6_fhf8e"]
 [ext_resource type="Resource" uid="uid://dwg6trya8qcqf" path="res://resources/weapons/player/basic_player_cannon.tres" id="7_ftebs"]
 [ext_resource type="Resource" uid="uid://bl3r4vf5yq0wp" path="res://resources/weapons/player/basic_player_rocket_weapon.tres" id="8_ly78s"]
 [ext_resource type="Resource" uid="uid://ci0klvqfo2xc3" path="res://resources/weapons/player/basic_player_shotgun.tres" id="9_hwpxa"]

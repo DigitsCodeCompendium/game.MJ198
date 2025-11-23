@@ -27,6 +27,8 @@ var blue_upgrade_tex: Texture2D = preload("res://assets/module_icons/blue_upgrad
 @onready var mod_icon = get_node("%ModuleSprite")
 @onready var mod_background = get_node("%ModuleBackground")
 
+
+
 func set_slot(slot: int):
 	var increase_power_binding = InputMap.action_get_events("power_up_module_%d" % (slot + 1))[0]
 	var decrease_power_binding = InputMap.action_get_events("power_down_module_%d" % (slot + 1))[0]
