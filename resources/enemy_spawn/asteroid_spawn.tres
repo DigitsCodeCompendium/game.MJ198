@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="AsteroidSpawnPattern" load_steps=3 format=3 uid="uid://ckbj4ecgkde82"]
+[gd_resource type="Resource" script_class="AsteroidSpawnPattern" load_steps=10 format=3 uid="uid://ckbj4ecgkde82"]
 
+[ext_resource type="PackedScene" uid="uid://dv5nendv66xb3" path="res://scenes/enemies/asteroids/asteroid1.tscn" id="1_366da"]
 [ext_resource type="Script" uid="uid://b5u4q68x1rpxx" path="res://scenes/enemies/spawning/asteroid_spawn_pattern.gd" id="2_5t86p"]
-[ext_resource type="PackedScene" uid="uid://cdoqsejbi7fcx" path="res://scenes/enemies/asteroids/asteroid.tscn" id="2_x18jk"]
+[ext_resource type="PackedScene" uid="uid://c3k0kmweehgm5" path="res://scenes/enemies/asteroids/asteroid2.tscn" id="2_ryrru"]
+[ext_resource type="PackedScene" uid="uid://bw0sfkganve5j" path="res://scenes/enemies/asteroids/asteroid3.tscn" id="3_a3bpv"]
+[ext_resource type="PackedScene" uid="uid://7eq1skiyjrr1" path="res://scenes/enemies/asteroids/asteroid4.tscn" id="4_t8ix5"]
+[ext_resource type="PackedScene" uid="uid://dp1h1mdxwkpb0" path="res://scenes/enemies/asteroids/asteroid5.tscn" id="5_x6h57"]
+[ext_resource type="PackedScene" uid="uid://bbjk5381ua7jr" path="res://scenes/enemies/asteroids/asteroid6.tscn" id="6_0xrre"]
+[ext_resource type="PackedScene" uid="uid://bg0avtdgbwoa1" path="res://scenes/enemies/asteroids/asteroid7.tscn" id="7_3ljpl"]
+[ext_resource type="PackedScene" uid="uid://ik02g12suy1x" path="res://scenes/enemies/asteroids/asteroid8.tscn" id="8_ollxh"]
 
 [resource]
 script = ExtResource("2_5t86p")
-asteroid_scene = ExtResource("2_x18jk")
+asteroid_scenes = Array[PackedScene]([ExtResource("1_366da"), ExtResource("2_ryrru"), ExtResource("3_a3bpv"), ExtResource("4_t8ix5"), ExtResource("5_x6h57"), ExtResource("6_0xrre"), ExtResource("7_3ljpl"), ExtResource("8_ollxh")])
 metadata/_custom_type_script = "uid://b4rcup02wd1hy"
