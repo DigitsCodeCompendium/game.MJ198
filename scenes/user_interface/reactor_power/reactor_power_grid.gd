@@ -1,5 +1,6 @@
 extends GridContainer
 
+@export var max_power_label: Control
 @export var power_pip_scene: PackedScene
 @export var lost_power_texture: Texture2D
 @export var used_power_texture: Texture2D
@@ -30,4 +31,5 @@ func _on_power_changed(power_system: PowerSystem):
 		var power_free_rect: TextureRect = power_pip_scene.instantiate()
 		power_free_rect.texture = free_power_texture
 		add_child(power_free_rect)
-		
+	
+	max_power_label.visible = power_system.is_max_power_at_limit
