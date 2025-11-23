@@ -65,7 +65,8 @@ func _fire(dir:Vector2, weapon_system: WeaponSystem) -> void:
 					weapon_system.owner.position + offset,
 					self.base_projectile_size * size_mod,
 					self.base_damage * damage_mod,
-					group)
+					group,
+					weapon_system)
 	
 func cooldown_weapon(delta:float, weapon_system:WeaponSystem) -> void:
 	var weapon_state = weapon_system.weapon_state

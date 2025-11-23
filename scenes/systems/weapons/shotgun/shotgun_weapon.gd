@@ -29,7 +29,7 @@ func _fire(dir:Vector2, weapon_system: WeaponSystem) -> void:
 		velocity_mod += module_system.get_module_property("weapon_velocity")
 		damage_mod += module_system.get_module_property("weapon_damage")
 		size_mod += module_system.get_module_property("weapon_size")
-		proj_num_mod += module_system.get_module_property("weapon_projectile_number")
+		proj_num_mod += module_system.get_module_property("weapon_projectiles")
 		spread_mod += module_system.get_module_property("weapon_spread")
 
 	var weapon_state: ShotgunState = weapon_system.weapon_state
@@ -42,7 +42,7 @@ func _fire(dir:Vector2, weapon_system: WeaponSystem) -> void:
 			offset = firing_ports[0]
 			weapon_state.last_fire_port = 1
 
-	for i in range(base_number_of_projectiles * proj_num_mod):
+	for i in range(round(base_number_of_projectiles * proj_num_mod)):
 		var mod_spread = spread_mod * base_spread
 		var random_accuracy = randf_range(-mod_spread/2, mod_spread/2) * PI/180
 		var dir_x = dir.normalized().x
@@ -56,7 +56,8 @@ func _fire(dir:Vector2, weapon_system: WeaponSystem) -> void:
 						weapon_system.owner.position + offset,
 						self.base_projectile_size * size_mod,
 						self.base_damage * damage_mod,
-						group)
+						group,
+						weapon_system)
 	
 func cooldown_weapon(delta:float, weapon_system:WeaponSystem) -> void:
 	var weapon_state = weapon_system.weapon_state

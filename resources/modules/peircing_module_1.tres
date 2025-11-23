@@ -6,9 +6,8 @@
 [resource]
 script = ExtResource("2_jft4l")
 is_passive_module = true
-activation_power = 4
-base_extra_power_limit = 1
+activation_power = 6
 active_properties = Dictionary[String, float]({
-"weapon_pierce": 1.0
+"weapon_pierce": 2.0
 })
 module_icon = ExtResource("1_ngrd5")

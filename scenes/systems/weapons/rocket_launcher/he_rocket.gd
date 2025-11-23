@@ -5,6 +5,7 @@ var accel_accel = Vector2.ZERO
 var acceleration = Vector2.ZERO
 var velocity = Vector2.ZERO
 var damage: float
+var weapon_system: WeaponSystem
 @export var explosion_damage_mult: float = 5
 
 var _dead: bool = false
@@ -23,16 +24,17 @@ func _process(delta: float) -> void:
 	
 	if _dead:
 		var explosion = explosion_scene.instantiate()
-		explosion.launch(Vector2.ZERO, self.position, 2, self.damage * explosion_damage_mult , "player_projectile")
+		explosion.launch(Vector2.ZERO, self.position, self.scale.x, self.damage * explosion_damage_mult , "player_projectile", weapon_system)
 		get_node("/root").add_child(explosion)
 		self.queue_free()
 
-func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
+func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String, weapon_sys:WeaponSystem) -> void:
 	self.add_to_group(group)
 	self.position = pos
 	self.acceleration = accel
 	self.scale = Vector2(size, size)
 	self.damage = dmg
+	self.weapon_system = weapon_sys
 
 func hit():
 	_dead = true

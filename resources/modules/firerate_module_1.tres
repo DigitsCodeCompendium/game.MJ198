@@ -11,4 +11,7 @@ base_extra_power_limit = 2
 active_properties = Dictionary[String, float]({
 "weapon_firerate": 0.5
 })
+scaling_properties = Dictionary[String, float]({
+"weapon_firerate": 0.25
+})
 module_icon = ExtResource("1_lbycx")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://bllic3qs0koui"]
+
+[ext_resource type="Texture2D" uid="uid://caqc3anivyc16" path="res://assets/module_icons/spread_decrease_module.png" id="1_a8jsl"]
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="1_qapyr"]
+
+[resource]
+script = ExtResource("1_qapyr")
+is_passive_module = true
+activation_power = 1
+base_extra_power_limit = 2
+level_extra_power_limit_scaling = Array[int]([1, 2, 3, 4])
+active_properties = Dictionary[String, float]({
+"weapon_spread": -0.1
+})
+scaling_properties = Dictionary[String, float]({
+"weapon_spread": -0.1
+})
+module_icon = ExtResource("1_a8jsl")
+metadata/_custom_type_script = "uid://b53p326bdcro3"

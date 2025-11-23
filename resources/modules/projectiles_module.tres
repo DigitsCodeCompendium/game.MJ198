@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://eiagn6iioe67"]
+
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="1_gsq08"]
+[ext_resource type="Texture2D" uid="uid://detx7kfhc4v1m" path="res://assets/module_icons/more_projectiles_module.png" id="1_qdsak"]
+
+[resource]
+script = ExtResource("1_gsq08")
+is_passive_module = true
+activation_power = 4
+active_properties = Dictionary[String, float]({
+"weapon_projectiles": 0.5
+})
+module_icon = ExtResource("1_qdsak")
+metadata/_custom_type_script = "uid://b53p326bdcro3"

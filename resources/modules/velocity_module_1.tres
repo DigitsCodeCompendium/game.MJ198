@@ -5,9 +5,13 @@
 
 [resource]
 script = ExtResource("2_81ftu")
+is_passive_module = true
 activation_power = 1
 base_extra_power_limit = 5
 active_properties = Dictionary[String, float]({
 "weapon_velocity": 0.5
+})
+scaling_properties = Dictionary[String, float]({
+"weapon_velocity": 0.25
 })
 module_icon = ExtResource("1_rsd40")

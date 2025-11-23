@@ -11,6 +11,7 @@ base_spread = 30.0
 bullet_scene = ExtResource("1_pm381")
 base_damage = 6.0
 base_projectile_size = 1.5
+firing_ports = Array[Vector2]([Vector2(8, -12), Vector2(-8, -12)])
 weapon_icon = ExtResource("3_c3ear")
 weapon_id = 4
 metadata/_custom_type_script = "uid://deo7rnd0etaxf"
