@@ -1,46 +1,136 @@
-[gd_scene load_steps=16 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=27 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://diodhnq0m3c2v" path="res://assets/player.png" id="2_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://3k4lfgb8fkmf" path="res://assets/player/player_ship_base.png" id="2_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://cvyspjk1m2pbc" path="res://assets/player/player_ship_engine1.png" id="3_60mlk"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://cfr6dshc1ngsh" path="res://scenes/systems/weapons/cannon/basic_bullet.tscn" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://i7j2papyyt00" path="res://assets/player/player_ship_engine4.png" id="4_i4ail"]
 [ext_resource type="PackedScene" uid="uid://b5k51vab0hjpc" path="res://scenes/systems/modules/module_system.tscn" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://dlih1sb8t7ewr" path="res://assets/player/player_ship_engine2.png" id="5_a38lo"]
 [ext_resource type="PackedScene" uid="uid://ckkccjr144hjs" path="res://scenes/systems/power/power_system.tscn" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="5_smehm"]
+[ext_resource type="Texture2D" uid="uid://bpuyfmali5jqt" path="res://assets/player/player_ship_engine3.png" id="6_4ni07"]
 [ext_resource type="Script" path="res://scenes/systems/weapons/weapon_insertion_system.gd" id="6_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://djirlr1sic37k" path="res://assets/player/player_ship_cannon.png" id="7_l71n6"]
 [ext_resource type="Script" uid="uid://do58sux7hyofl" path="res://scenes/systems/modules/module_insertion_system.gd" id="7_smehm"]
+[ext_resource type="Texture2D" uid="uid://l25lhhhpcc4w" path="res://assets/player/player_ship_frag_rocket.png" id="8_ke2ow"]
+[ext_resource type="Texture2D" uid="uid://gyf7aq03vjal" path="res://assets/player/player_ship_he_rocket.png" id="9_ujl30"]
+[ext_resource type="Texture2D" uid="uid://dxlg75fyw30el" path="res://assets/player/player_ship_kinetic_rocket.png" id="10_31cv2"]
+[ext_resource type="Texture2D" uid="uid://b2ehg2frpi7ej" path="res://assets/player/player_ship_laser.png" id="11_pf23h"]
+[ext_resource type="Texture2D" uid="uid://ctbeq56fkpwmc" path="res://assets/player/player_ship_railgun.png" id="12_dt7fs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("2_ur7pv")
-region = Rect2(0, 0, 43, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+atlas = ExtResource("3_60mlk")
+region = Rect2(0, 0, 59, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("2_ur7pv")
-region = Rect2(43, 0, 43, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("3_60mlk")
+region = Rect2(59, 0, 59, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
-atlas = ExtResource("2_ur7pv")
-region = Rect2(86, 0, 43, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("3_60mlk")
+region = Rect2(118, 0, 59, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
+"texture": SubResource("AtlasTexture_wqfne")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4r1p")
+"texture": SubResource("AtlasTexture_wnwbv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d2wvv")
+"texture": SubResource("AtlasTexture_gl8cc")
 }],
 "loop": true,
-"name": &"default",
+"name": &"classic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i4ail")
+}],
+"loop": true,
+"name": &"short",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a38lo")
+}],
+"loop": true,
+"name": &"spike",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4ni07")
+}],
+"loop": true,
+"name": &"vintage",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_487ah"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_l71n6")
+}],
+"loop": true,
+"name": &"cannon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ke2ow")
+}],
+"loop": true,
+"name": &"frag_rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ujl30")
+}],
+"loop": true,
+"name": &"he_rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_31cv2")
+}],
+"loop": true,
+"name": &"kinetic_rockets",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_pf23h")
+}],
+"loop": true,
+"name": &"laser",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_dt7fs")
+}],
+"loop": true,
+"name": &"railgun",
 "speed": 5.0
 }]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ur7pv"]
-points = PackedVector2Array(0, -25, 25, 5, 25, 17, -25, 17, -25, 5)
+points = PackedVector2Array(0, -25, 20, 0, 20, 9, -20, 9, -20, 0)
 
 [sub_resource type="Resource" id="Resource_ur7pv"]
 script = ExtResource("5_smehm")
@@ -50,11 +140,18 @@ metadata/_custom_type_script = "uid://ci7we2a0ieoim"
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_3vyb7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 4)
-scale = Vector2(1.2988281, 1.2988281)
+[node name="ShipSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_4r5pv")
+
+[node name="EngineSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-autoplay = "default"
+animation = &"classic"
+autoplay = "classic"
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_487ah")
+animation = &"none"
+autoplay = "none"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_ur7pv")
