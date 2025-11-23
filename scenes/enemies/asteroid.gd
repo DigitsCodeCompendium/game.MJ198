@@ -65,7 +65,7 @@ func _death():
 	#Play animations
 	
 	#Play sound effects
-	death_sound.play(0.5)
+	death_sound.play()
 	
 	_marked_for_death = true
 	

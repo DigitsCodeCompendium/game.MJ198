@@ -3,11 +3,17 @@ extends Area2D
 @export var speed = 300
 @export var y_pos = 0.2 #as a percentage of the screen size (bottom up)
 
+@onready var sfx_module_pickup: AudioStreamPlayer = $SoundEffects/SFX_ModulePickup
+@onready var sfx_weapon_pickup: AudioStreamPlayer = $SoundEffects/SFX_WeaponPickup
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
 	connect("area_entered", _on_player_collide)
+	UiEventBus.connect("module_pending_added",_on_module_picked_up)
+	UiEventBus.connect("weapon_pending_added",_on_weapon_picked_up)
 	
 	# set default pos on the screen on startup
 	var screen_size = get_viewport().size
@@ -50,3 +56,9 @@ func set_weapon_style(style:int) -> void:
 
 func set_body_style(style:int) -> void:
 	$PlayerVisual.set_body_style(style)
+
+func _on_module_picked_up(module: BaseModule):
+	sfx_module_pickup.play()
+	
+func _on_weapon_picked_up(weapon: Shootable):
+	sfx_weapon_pickup.play()
