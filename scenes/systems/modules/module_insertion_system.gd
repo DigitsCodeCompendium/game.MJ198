@@ -85,10 +85,15 @@ func _process_discard_progress(delta: float):
 			_discard_progress[i] = _discard_progress[i] + delta if _discard_progress[i] != null else delta
 			if _discard_progress[i] > discard_time:
 				_replace_module(i)
+				UiEventBus.emit_signal("module_discard_progress", i, 0)
 				UiEventBus.emit_signal("module_pending_applied", i, _pending_module)
 				_reset_pending_module()
+			else:
+				UiEventBus.emit_signal("module_discard_progress", i, discard_progress[i] / discard_time)
 		else:
-			_discard_progress[i] = null
+			if _discard_progress[i] != null:
+				_discard_progress[i] = null
+				UiEventBus.emit_signal("module_discard_progress", i, 0)
 
 func _process_discard_pending(delta: float):
 	if _pending_module != null:
