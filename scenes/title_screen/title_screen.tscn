@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxqj4iktbgvcj"]
+[gd_scene load_steps=15 format=3 uid="uid://bxqj4iktbgvcj"]
 
 [ext_resource type="Script" uid="uid://bnledk4h17ac4" path="res://scenes/title_screen/title_screen.gd" id="1_fgkus"]
 [ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
@@ -8,12 +8,18 @@
 [ext_resource type="AudioStream" uid="uid://15dcvx6lt7ee" path="res://assets/menu_sounds/menu_option.mp3" id="6_j12ko"]
 [ext_resource type="AudioStream" uid="uid://cl63greqlj22u" path="res://assets/menu_sounds/menu_select.mp3" id="7_yegqs"]
 [ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
+[ext_resource type="Script" uid="uid://bl24lb5nr04o6" path="res://scenes/title_screen/customize_player.gd" id="9_xoykc"]
+[ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="10_ju3lf"]
+[ext_resource type="Script" uid="uid://chdknkxy57spt" path="res://scenes/player/player_visual.gd" id="11_xetrx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
 font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgrm8"]
 font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yegqs"]
+content_margin_bottom = 1.0
 
 [node name="TitleScreen" type="Control" node_paths=PackedStringArray("main_menu", "options_menu")]
 layout_mode = 3
@@ -140,20 +146,24 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="AudioTitle" type="PanelContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AudioTitle"]
 layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MasterAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
+option_name = "volume_master"
+default_volume_percent = 50
 
 [node name="MusicAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
 bus_name = "Music"
+option_name = "volume_music"
 
 [node name="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/MusicAudio" index="0"]
 text = "Music"
@@ -161,6 +171,7 @@ text = "Music"
 [node name="SoundEffectsAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
 bus_name = "Sound Effects"
+option_name = "volume_sound_effects"
 
 [node name="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoundEffectsAudio" index="0"]
 text = "SFX"
@@ -168,9 +179,67 @@ text = "SFX"
 [node name="UserInterfaceAudio" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("8_yegqs")]
 layout_mode = 2
 bus_name = "User Interface"
+option_name = "volume_user_interface"
 
 [node name="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UserInterfaceAudio" index="0"]
 text = "UI"
+
+[node name="Spacer" type="Control" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="CustomizeTitle" type="PanelContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeTitle"]
+layout_mode = 2
+text = "Customize Spaceship"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CustomizeContent" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("select_engine_button", "player_visual")]
+layout_mode = 2
+script = ExtResource("9_xoykc")
+select_engine_button = NodePath("VBoxContainer/EngineSelect/OptionButton")
+player_visual = NodePath("AspectRatioContainer/Control/PlayerVisual")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EngineSelect" type="HBoxContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/VBoxContainer/EngineSelect"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yegqs")
+text = "Engine"
+
+[node name="OptionButton" type="OptionButton" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/VBoxContainer/EngineSelect"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "Classic"
+popup/item_0/id = 0
+popup/item_1/text = "Spike"
+popup/item_1/id = 1
+popup/item_2/text = "Vintage"
+popup/item_2/id = 2
+popup/item_3/text = "Short"
+popup/item_3/id = 3
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent"]
+layout_mode = 2
+stretch_mode = 0
+
+[node name="Control" type="Control" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/AspectRatioContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="PlayerVisual" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/AspectRatioContainer/Control" instance=ExtResource("10_ju3lf")]
+position = Vector2(100, 100)
+scale = Vector2(2, 2)
+script = ExtResource("11_xetrx")
 
 [node name="BackButton" type="Button" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -194,6 +263,7 @@ bus = &"User Interface"
 [connection signal="mouse_entered" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton/HoverSound" method="play"]
 [connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_quit"]
 [connection signal="pressed" from="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="MainMenu/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton/ClickSound" method="play"]
+[connection signal="item_selected" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/VBoxContainer/EngineSelect/OptionButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent" method="_on_select_engine"]
 [connection signal="mouse_entered" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton/HoverSound" method="play"]
 [connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_open_main_menu"]
 [connection signal="pressed" from="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/BackButton/ClickSound" method="play"]
