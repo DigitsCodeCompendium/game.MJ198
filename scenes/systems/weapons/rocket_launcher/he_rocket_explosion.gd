@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	if time_till_death < 0:
 		self.queue_free()
 
-func launch(_accel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
+func launch(_accel:Vector2, pos:Vector2, size:float, dmg:float, group:String, _weapon_system) -> void:
 	self.add_to_group(group)
 	self.position = pos
 	self.scale = Vector2(size, size)

@@ -1,12 +1,18 @@
-[gd_resource type="Resource" script_class="CannonWeapon" load_steps=3 format=3 uid="uid://bm2m052eus4an"]
+[gd_resource type="Resource" script_class="CannonWeapon" load_steps=5 format=3 uid="uid://bm2m052eus4an"]
 
-[ext_resource type="PackedScene" uid="uid://cfr6dshc1ngsh" path="res://scenes/systems/weapons/cannon/basic_bullet.tscn" id="1_iyfdb"]
+[ext_resource type="PackedScene" uid="uid://dxwc4w76jpeu8" path="res://scenes/systems/weapons/laser/laser_bullet.tscn" id="1_iyfdb"]
 [ext_resource type="Script" uid="uid://ci7we2a0ieoim" path="res://scenes/systems/weapons/cannon/cannon_weapon.gd" id="2_i3arw"]
+[ext_resource type="Texture2D" uid="uid://34mne73f71fx" path="res://assets/weapon_icons/laser/laser_projectile.png" id="3_n6qch"]
+[ext_resource type="AudioStream" uid="uid://ixdjwlujc2j6" path="res://assets/sound_effects/laser v4.mp3" id="4_6xm8c"]
 
 [resource]
 script = ExtResource("2_i3arw")
-base_fire_rate = 2.0
-base_damage = 4.0
-base_projectile_velocity = 700.0
+bullet_scene = ExtResource("1_iyfdb")
+base_fire_rate = 4.0
+base_damage = 5.0
+base_projectile_velocity = 1200.0
 firing_ports = Array[Vector2]([Vector2(7, 10), Vector2(-7, 10)])
+weapon_icon = ExtResource("3_n6qch")
+weapon_sfx = ExtResource("4_6xm8c")
+weapon_id = 3
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"

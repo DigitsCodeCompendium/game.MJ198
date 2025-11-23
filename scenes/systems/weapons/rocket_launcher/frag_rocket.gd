@@ -11,6 +11,7 @@ var _dead: bool
 @export var shrapnel_amount = 10
 @export var shrapnel_speed = 300
 @export var shrapnel_dmg_perc = 0.5
+var weapon_system
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,16 +30,17 @@ func _process(delta: float) -> void:
 		for i in range(shrapnel_amount):
 			var shrapnel = shrapnel_scene.instantiate()
 			var angle = randf_range(0, 2*PI)
-			shrapnel.launch(shrapnel_speed * Vector2.UP.rotated(angle), self.position, 1, shrapnel_dmg_perc * damage, "player_projectile")
+			shrapnel.launch(shrapnel_speed * Vector2.UP.rotated(angle), self.position, 1, shrapnel_dmg_perc * damage, "player_projectile", weapon_system)
 			get_node("/root").add_child(shrapnel)
 		self.queue_free()
 
-func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String, _weapon_sys:WeaponSystem) -> void:
+func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String, weapon_sys:WeaponSystem) -> void:
 	self.add_to_group(group)
 	self.position = pos
 	self.acceleration = accel
 	self.scale = Vector2(size, size)
 	self.damage = dmg
+	self.weapon_system = weapon_sys
 
 func hit():
 	_dead = true

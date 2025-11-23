@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_7oqqe")
 bullet_scene = ExtResource("1_0irwx")
+base_fire_rate = 0.8
 base_damage = 10.0
 firing_ports = Array[Vector2]([Vector2(25, 0), Vector2(-25, 0)])
 weapon_icon = ExtResource("3_7oqqe")
