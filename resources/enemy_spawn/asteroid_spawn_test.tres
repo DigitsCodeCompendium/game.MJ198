@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_ddrko"]
 [ext_resource type="PackedScene" uid="uid://wc042h4gthjf" path="res://scenes/enemies/asteroid_with_gun.tscn" id="2_pimrc"]
 [ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="3_lm1rw"]
-[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/enemy_spawn_pattern.gd" id="8_k2gob"]
+[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="8_k2gob"]
 
 [sub_resource type="Resource" id="Resource_pimrc"]
 script = ExtResource("3_lm1rw")

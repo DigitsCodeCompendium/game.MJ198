@@ -1,6 +1,6 @@
 extends Node
 
-@export var asteroid_spawn_pattern: EnemySpawnPattern
+@export var asteroid_spawn_pattern: BaseEnemySpawnPattern
 
 @export var asteroid_spawn_timer: float = 2
 var _spawn_timer = 0

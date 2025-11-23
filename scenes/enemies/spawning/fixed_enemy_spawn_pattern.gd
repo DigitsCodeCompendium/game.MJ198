@@ -1,7 +1,7 @@
 # represents a group of enemies attempting to spawn
 # for example, a square formation of enemies
-extends Resource
-class_name EnemySpawnPattern
+extends BaseEnemySpawnPattern
+class_name FixedEnemySpawnPattern
 
 @export var pattern: Array[EnemySpawnPatternEntry] = []
 
