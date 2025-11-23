@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://n8vo022raq7l"]
+
+[ext_resource type="Script" uid="uid://co5ipeiddhp0g" path="res://scenes/systems/weapons/weapon_insertion_system.gd" id="1_7yen3"]
+[ext_resource type="AudioStream" uid="uid://cynhn66sbneuc" path="res://assets/sound_effects/weapon pickup v2.mp3" id="2_xl0xm"]
+
+[node name="WeaponInsertionSystem" type="Node"]
+script = ExtResource("1_7yen3")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="SFXWeaponEquiped" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("2_xl0xm")
+volume_db = 10.0
+bus = &"Sound Effects"

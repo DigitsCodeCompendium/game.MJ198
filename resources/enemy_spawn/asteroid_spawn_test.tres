@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemySpawnPattern" load_steps=7 format=3 uid="uid://besef6r4oleox"]
+
+[ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_ddrko"]
+[ext_resource type="PackedScene" uid="uid://wc042h4gthjf" path="res://scenes/enemies/asteroid_with_gun.tscn" id="2_pimrc"]
+[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="3_lm1rw"]
+[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/enemy_spawn_pattern.gd" id="8_k2gob"]
+
+[sub_resource type="Resource" id="Resource_pimrc"]
+script = ExtResource("3_lm1rw")
+enemy = ExtResource("2_pimrc")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_bji2v"]
+script = ExtResource("1_ddrko")
+enemy_spawn = SubResource("Resource_pimrc")
+random_offset = Vector2(400, 0)
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[resource]
+script = ExtResource("8_k2gob")
+pattern = Array[ExtResource("1_ddrko")]([SubResource("Resource_bji2v")])
+metadata/_custom_type_script = "uid://b4rcup02wd1hy"

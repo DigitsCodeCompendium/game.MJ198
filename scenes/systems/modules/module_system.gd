@@ -6,6 +6,13 @@ var module_slots: Array[ModuleSlot]
 @export
 var power_system: PowerSystem
 
+@onready var sfx_power_down_module: AudioStreamPlayer = $"SoundEffects/SFXPowerDownModule"
+@onready var sfx_power_up_module: AudioStreamPlayer = $"SoundEffects/SFXPowerUpModule"
+@onready var sfx_power_increase: AudioStreamPlayer = $SoundEffects/SFXPowerIncrease
+@onready var sfx_power_decrease: AudioStreamPlayer = $SoundEffects/SFXPowerDecrease
+@onready var sfx_module_assigned: AudioStreamPlayer = $SoundEffects/SFXModuleAssigned
+
+
 func _ready() -> void:
 	for i in range(self.num_module_slots):
 		module_slots.append(ModuleSlot.new())
@@ -23,6 +30,7 @@ func set_module(slot:int, module: BaseModule) -> bool:
 		
 		power_system.power_consumers = module_slots
 		UiEventBus.emit_signal("module_updated", slot, module_slots[slot])
+		sfx_module_assigned.play()
 		return true
 	return false
 
@@ -52,6 +60,12 @@ func increase_module_power(slot: int) -> bool:
 			if power_system.request_power(module, required_power):
 				module.increase_power()
 				UiEventBus.emit_signal("module_updated", slot, module)
+				
+				#Check if module was activated
+				if module.activation_power == module.current_power:
+					sfx_power_up_module.play()
+				else:
+					sfx_power_increase.play()
 				return true
 	return false
 
@@ -62,5 +76,11 @@ func decrease_module_power(slot: int) -> bool:
 		var returned_power = module.reduce_power(1)
 		power_system.request_power(module, -1 * returned_power)
 		UiEventBus.emit_signal("module_updated", slot, module)
+		
+		#Check if module was deactivated
+		if module.activation_power > module.current_power:
+			sfx_power_down_module.play()
+		else:
+			sfx_power_decrease.play()
 		return true
 	return false

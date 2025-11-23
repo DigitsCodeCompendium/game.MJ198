@@ -1,6 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5k51vab0hjpc"]
+[gd_scene load_steps=6 format=3 uid="uid://b5k51vab0hjpc"]
 
 [ext_resource type="Script" uid="uid://bdefd5knu3tue" path="res://scenes/systems/modules/module_system.gd" id="1_x0fty"]
+[ext_resource type="AudioStream" uid="uid://b7uooxitlp7yp" path="res://assets/sound_effects/power down module.mp3" id="2_1vmrh"]
+[ext_resource type="AudioStream" uid="uid://ceg8nbv4o1f62" path="res://assets/sound_effects/power up module.mp3" id="3_nu0hs"]
+[ext_resource type="AudioStream" uid="uid://15dcvx6lt7ee" path="res://assets/menu_sounds/menu_option.mp3" id="4_nu0hs"]
+[ext_resource type="AudioStream" uid="uid://cynhn66sbneuc" path="res://assets/sound_effects/weapon pickup v2.mp3" id="5_w56mu"]
 
 [node name="ModuleSystem" type="Node"]
 script = ExtResource("1_x0fty")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="SFXPowerDownModule" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("2_1vmrh")
+
+[node name="SFXPowerUpModule" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("3_nu0hs")
+
+[node name="SFXPowerIncrease" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("4_nu0hs")
+volume_db = -1.0
+pitch_scale = 1.25
+bus = &"Sound Effects"
+
+[node name="SFXPowerDecrease" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("4_nu0hs")
+volume_db = -1.0
+pitch_scale = 0.75
+bus = &"Sound Effects"
+
+[node name="SFXModuleAssigned" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("5_w56mu")
+volume_db = 10.0
+bus = &"Sound Effects"
