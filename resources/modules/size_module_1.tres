@@ -7,7 +7,7 @@
 script = ExtResource("2_58gkn")
 is_passive_module = true
 activation_power = 2
-max_extra_power = 3
+base_extra_power_limit = 3
 active_properties = Dictionary[String, float]({
 "weapon_damage": -0.2,
 "weapon_size": 2.0

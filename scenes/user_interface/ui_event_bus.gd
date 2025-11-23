@@ -1,15 +1,18 @@
 extends Node
 
 signal reactor_updated(power_system: PowerSystem)
-signal module_updated(slot:int, module:BaseModule)
+
+signal module_updated(slot: int, module: ModuleSlot)
 signal module_pending_added(module: BaseModule)
 signal module_pending_applied(slot: int, module: BaseModule)
 signal module_pending_lost()
 signal module_pending_discarded()
+
 signal weapon_updated(weapon)
 signal weapon_pending_added(weapon: Shootable)
 signal weapon_pending_applied(weapon: Shootable)
 signal weapon_pending_lost()
 signal weapon_pending_discarded()
+
 signal engine_updated(engine)
 signal current_speed(speed:String)

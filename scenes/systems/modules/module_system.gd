@@ -2,64 +2,44 @@ extends Node
 class_name ModuleSystem
 
 @export var num_module_slots = 5
-var module_slots: Array
+var module_slots: Array[ModuleSlot]
 @export
-var power_system: Node
+var power_system: PowerSystem
 
 func _ready() -> void:
 	for i in range(self.num_module_slots):
-		module_slots.append(null)
+		module_slots.append(ModuleSlot.new())
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("power_up_module_1"):
-		increase_module_power(0)
-	elif Input.is_action_just_pressed("power_down_module_1"):
-		decrease_module_power(0)
-	elif Input.is_action_just_pressed("power_up_module_2"):
-		increase_module_power(1)
-	elif Input.is_action_just_pressed("power_down_module_2"):
-		decrease_module_power(1)
-	elif Input.is_action_just_pressed("power_up_module_3"):
-		increase_module_power(2)
-	elif Input.is_action_just_pressed("power_down_module_3"):
-		decrease_module_power(2)
-	elif Input.is_action_just_pressed("power_up_module_4"):
-		increase_module_power(3)
-	elif Input.is_action_just_pressed("power_down_module_4"):
-		decrease_module_power(3)
-	elif Input.is_action_just_pressed("power_up_module_5"):
-		increase_module_power(4)
-	elif Input.is_action_just_pressed("power_down_module_5"):
-		decrease_module_power(4)
+	for i in range(5):
+		if Input.is_action_just_pressed("power_up_module_%d" % (i+1)):
+			increase_module_power(i)
+		elif Input.is_action_just_pressed("power_down_module_%d" % (i+1)):
+			decrease_module_power(i)
 
 func set_module(slot:int, module: BaseModule) -> bool:
 	if slot < num_module_slots:
-		module_slots[slot] = module.duplicate()
+		module_slots[slot].set_module(module)
 		
-		var power_consumers = []
-		for module_slot in module_slots:
-			if module_slot != null:
-				power_consumers.append(module_slot)
-		power_system.power_consumers = power_consumers
-		UiEventBus.emit_signal("module_updated", slot, module)
+		power_system.power_consumers = module_slots
+		UiEventBus.emit_signal("module_updated", slot, module_slots[slot])
 		return true
 	return false
 
 func get_module(slot:int) -> BaseModule:
 	if slot < len(module_slots):
-		return module_slots[slot]
+		return module_slots[slot].module
 	return null
 
 func get_module_property(property: String) -> float:
 	var prop_value = 0
 	for module_slot in module_slots:
-		if module_slot != null:
-			prop_value += module_slot.get_module_property(property)
+		prop_value += module_slot.get_module_property(property)
 	return prop_value
 
 func slot_has_module(slot: int) -> bool:
 	assert(slot < num_module_slots)
-	return module_slots[slot] != null
+	return module_slots[slot].module != null
 
 # try to increase the power of a module, will return true on success
 # meant for the ui interaction

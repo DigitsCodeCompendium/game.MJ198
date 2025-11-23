@@ -1,4 +1,5 @@
 extends Node
+class_name SpeedControl
 
 @export var linear_acceleration: float = 0.1
 

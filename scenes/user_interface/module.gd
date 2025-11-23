@@ -1,11 +1,18 @@
 extends PanelContainer
 
-@onready var power_bar = get_node("%EnergyProgressBar")
-@onready var upgrade_bar = get_node("%UpgradeProgressBar")
+var empty_sprite = preload("res://assets/module_icons/emptyslot.png")
+var backgrounds = [
+	preload("res://assets/module_icons/basic_background.png"),
+	preload("res://assets/module_icons/advanced_background.png"),
+	preload("res://assets/module_icons/master_background.png"),
+	preload("res://assets/module_icons/ultimate_background.png")
+]
+@onready var power_bar = get_node("%EnergyBar")
+@onready var upgrade_bar = get_node("%UpgradeBar")
 @onready var power_up_button = get_node("%IncreasePower")
 @onready var power_down_button = get_node("%DecreasePower")
 @onready var mod_icon = get_node("%ModuleSprite")
-@onready var installed_module = get_node("%FilledModule")
+@onready var mod_background = get_node("%ModuleBackground")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,12 +28,13 @@ func set_slot(slot: int):
 	power_up_button.text = increase_power_binding.as_text().substr(0, 1)
 	power_down_button.text = decrease_power_binding.as_text().substr(0, 1)
 
-func update_module(mod:BaseModule) -> void:
+func update_module(mod: ModuleSlot) -> void:
 	print("received module update")
-	if mod == null:
-		installed_module.visible = false
+	if mod.module == null:
+		mod_icon.texture = empty_sprite
 	else:
-		installed_module.visible = true
+		mod_icon.texture = mod.module.module_icon
 		power_bar.value = mod.current_power
+		mod_background.texture = backgrounds[0]
 		#upgrade_bar.value = mod.upgrade_progress
 		#mod_icon.texture = mod.

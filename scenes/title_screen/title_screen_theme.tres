@@ -1,0 +1,44 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cnsyav0jqc2kb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bspr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf7qy"]
+content_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho5ea"]
+content_margin_bottom = 3.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[resource]
+IconButton/base_type = &"Button"
+IconButton/styles/focus = SubResource("StyleBoxFlat_1bspr")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+SliderContainer/base_type = &"HBoxContainer"
+SliderContainer/constants/separation = 8
+SliderLabel/base_type = &"Label"
+SliderLabel/styles/focus = SubResource("StyleBoxEmpty_xf7qy")
+SliderLabel/styles/normal = SubResource("StyleBoxFlat_ho5ea")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://cerm72vxq2f4g"]
+
+[ext_resource type="Script" uid="uid://bm3xs6j5ni3ww" path="res://scenes/title_screen/audio_slider.gd" id="1_g5sjk"]
+[ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_vaw45"]
+[ext_resource type="Texture2D" uid="uid://bwhwxqtmp4b5j" path="res://assets/menu_icons/baseline_chevron_left_white_24dp.png" id="2_2fn3i"]
+[ext_resource type="Texture2D" uid="uid://dug3oyuwlidh6" path="res://assets/menu_icons/baseline_chevron_right_white_24dp.png" id="3_10tul"]
+
+[node name="MasterAudio" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+theme = ExtResource("1_vaw45")
+theme_type_variation = &"SliderContainer"
+script = ExtResource("1_g5sjk")
+bus_name = "Master"
+arrow_hold_delay = 0.8
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_type_variation = &"SliderLabel"
+text = "Master"
+vertical_alignment = 1
+
+[node name="LeftButton" type="Button" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="LeftButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("2_2fn3i")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="RightButton" type="Button" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="RightButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("3_10tul")
+
+[node name="Percentage" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50%"
+horizontal_alignment = 2
+
+[connection signal="button_down" from="LeftButton" to="." method="_on_left_button_down"]
+[connection signal="button_up" from="LeftButton" to="." method="_on_left_button_up"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_slider_value_changed"]
+[connection signal="button_down" from="RightButton" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="RightButton" to="." method="_on_right_button_up"]
