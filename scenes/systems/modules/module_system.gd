@@ -73,14 +73,16 @@ func decrease_module_power(slot: int) -> bool:
 	assert(slot < num_module_slots)
 	if slot_has_module(slot):
 		var module = module_slots[slot]
-		var returned_power = module.reduce_power(1)
-		power_system.request_power(module, -1 * returned_power)
-		UiEventBus.emit_signal("module_updated", slot, module)
 		
-		#Check if module was deactivated
-		if module.activation_power > module.current_power:
-			sfx_power_down_module.play()
-		else:
-			sfx_power_decrease.play()
-		return true
+		if module.current_power > 0:
+			var returned_power = module.reduce_power(1)
+			power_system.request_power(module, -1 * returned_power)
+			UiEventBus.emit_signal("module_updated", slot, module)
+			
+			#Check if module was deactivated
+			if module.activation_power > module.current_power:
+				sfx_power_down_module.play()
+			else:
+				sfx_power_decrease.play()
+			return true
 	return false
