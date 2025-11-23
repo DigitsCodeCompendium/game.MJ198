@@ -31,3 +31,6 @@ func set_weapon_style(style:int) -> void:
 		6: animation = "he_rockets"
 		7: animation = "frag_rockets"
 	$EngineSprite.play(animation)
+
+func set_body_style(style:int) -> void:
+	pass
