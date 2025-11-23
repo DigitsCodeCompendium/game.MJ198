@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=13 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
+[ext_resource type="Texture2D" uid="uid://b8yq1ryeyw6xj" path="res://assets/module_icons/basic_background.png" id="2_axgoa"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module.tscn" id="2_l2bgj"]
 [ext_resource type="Script" uid="uid://dwvnnvbrxba58" path="res://scenes/user_interface/modules.gd" id="2_y1h3b"]
 [ext_resource type="Script" uid="uid://dimvenxw1wkw3" path="res://scenes/user_interface/reactor_power/reactor_power_grid.gd" id="3_6xuti"]
@@ -37,14 +38,37 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="WeaponSprite" type="TextureRect" parent="LeftPanel/VBoxContainer"]
+[node name="Panel" type="Panel" parent="LeftPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LeftPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="WeaponBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_axgoa")
+
+[node name="WeaponSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="EngineSprite" type="TextureRect" parent="LeftPanel/VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="LeftPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="EngineBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_axgoa")
+
+[node name="EngineSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
@@ -115,6 +139,7 @@ grow_horizontal = 2
 
 [node name="SpeedProgressBar" type="ProgressBar" parent="SpeedBarContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/fill = SubResource("StyleBoxFlat_2dtu1")
