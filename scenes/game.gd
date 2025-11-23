@@ -9,7 +9,7 @@ func _ready() -> void:
 	playable_margins = 0.125*get_viewport().size.x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#spawn_timer_time += delta
 	#
 	#if spawn_timer_time > spawn_timer:

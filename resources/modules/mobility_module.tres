@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaseModule" load_steps=3 format=3 uid="uid://e8a02ulxu6yy"]
+
+[ext_resource type="Texture2D" uid="uid://cw5tow3i1xl5q" path="res://assets/module_icons/ship_mobility_module.png" id="1_1qf5q"]
+[ext_resource type="Script" uid="uid://b53p326bdcro3" path="res://scenes/systems/modules/base_module.gd" id="1_yk5fd"]
+
+[resource]
+script = ExtResource("1_yk5fd")
+is_passive_module = true
+activation_power = 3
+base_extra_power_limit = 2
+active_properties = Dictionary[String, float]({
+"ship_mobility": 0.2
+})
+scaling_properties = Dictionary[String, float]({
+"ship_mobility": 0.1
+})
+module_icon = ExtResource("1_1qf5q")
+metadata/_custom_type_script = "uid://b53p326bdcro3"

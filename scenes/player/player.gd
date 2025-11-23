@@ -7,6 +7,7 @@ extends Area2D
 @onready var sfx_weapon_pickup: AudioStreamPlayer = $SoundEffects/SFX_WeaponPickup
 
 @export var weapon_system: WeaponSystem
+@export var module_system: ModuleSystem
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,7 +38,10 @@ func _process(delta: float) -> void:
 	var difference = mouse_pos - position
 	var max_speed = difference.length()
 	
-	velocity = (difference.normalized()*speed*delta)
+	var speed_mod = 1
+	speed_mod += module_system.get_module_property("ship_mobility")
+	
+	velocity = (difference.normalized()*speed*delta*speed_mod)
 	velocity = velocity.limit_length(max_speed)
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_CONFINED:
@@ -60,11 +64,11 @@ func set_weapon_style(style:int) -> void:
 func set_body_style(style:int) -> void:
 	$PlayerVisual.set_body_style(style)
 
-func _on_module_picked_up(module: BaseModule):
+func _on_module_picked_up(_module: BaseModule):
 	sfx_module_pickup.play()
 	
-func _on_weapon_picked_up(weapon: Shootable):
+func _on_weapon_picked_up(_weapon: Shootable):
 	sfx_module_pickup.play()
 
-func _on_weapon_switched(weapon_system:WeaponSystem) -> void:
+func _on_weapon_switched(_weapon_system:WeaponSystem) -> void:
 	set_weapon_style(weapon_system.current_weapon.weapon_id)

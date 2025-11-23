@@ -32,5 +32,5 @@ func set_weapon_style(style:int) -> void:
 		7: animation = "frag_rockets"
 	$WeaponSprite.play(animation)
 
-func set_body_style(style:int) -> void:
+func set_body_style(_style:int) -> void:
 	pass

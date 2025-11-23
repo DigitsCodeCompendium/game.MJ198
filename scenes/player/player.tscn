@@ -25,9 +25,10 @@ weapon_icon = ExtResource("7_je7p5")
 weapon_sfx = ExtResource("7_ugbui")
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("weapon_system") groups=["player"]]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("weapon_system", "module_system") groups=["player"]]
 script = ExtResource("1_3vyb7")
 weapon_system = NodePath("Systems/WeaponSystem")
+module_system = NodePath("Systems/ModuleSystem")
 
 [node name="PlayerVisual" parent="." instance=ExtResource("2_y4r1p")]
 

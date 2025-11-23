@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 			get_node("/root").add_child(shrapnel)
 		self.queue_free()
 
-func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String) -> void:
+func launch(accel:Vector2, pos:Vector2, size:float, dmg:float, group:String, _weapon_sys:WeaponSystem) -> void:
 	self.add_to_group(group)
 	self.position = pos
 	self.acceleration = accel
