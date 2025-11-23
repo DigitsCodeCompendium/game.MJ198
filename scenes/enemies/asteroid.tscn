@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroid.gd" id="1_6mo6b"]
 [ext_resource type="Texture2D" uid="uid://btjssuc8r2qjo" path="res://assets/asteroid.png" id="1_akfqu"]
-[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/enemies/pickup_drop_source.gd" id="3_08eb2"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="3_08eb2"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_2h6hj"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_j2n00"]
 [ext_resource type="AudioStream" uid="uid://3ksjw4ekeo3l" path="res://assets/sound_effects/asteroid destruction.mp3" id="6_w7b4c"]
