@@ -6,6 +6,7 @@ extends Area2D
 @onready var sfx_module_pickup: AudioStreamPlayer = $SoundEffects/SFX_ModulePickup
 @onready var sfx_weapon_pickup: AudioStreamPlayer = $SoundEffects/SFX_WeaponPickup
 
+@export var weapon_system: WeaponSystem
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,8 @@ func _ready() -> void:
 	position.x = screen_size.x/2
 	
 	set_engine_style(PlayerOptions.get_option("customize_engine", 0))
+	
+	weapon_system.connect("weapon_switched", _on_weapon_switched)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -62,3 +65,6 @@ func _on_module_picked_up(module: BaseModule):
 	
 func _on_weapon_picked_up(weapon: Shootable):
 	sfx_weapon_pickup.play()
+
+func _on_weapon_switched(weapon_system:WeaponSystem) -> void:
+	set_weapon_style(weapon_system.current_weapon.weapon_id)

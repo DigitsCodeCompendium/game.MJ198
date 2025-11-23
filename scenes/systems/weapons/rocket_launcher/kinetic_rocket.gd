@@ -3,7 +3,9 @@ extends Area2D
 var accel_accel = Vector2.ZERO
 var acceleration = Vector2.ZERO
 var velocity = Vector2.ZERO
-var damage: float
+var damage: float:
+	get: return damage * velocity.length()/100
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

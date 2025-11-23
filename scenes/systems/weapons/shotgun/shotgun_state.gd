@@ -1,4 +1,2 @@
-extends ShootableState
+extends CannonState
 class_name ShotgunState
-
-var cooldown: float
