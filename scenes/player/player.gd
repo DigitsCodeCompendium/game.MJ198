@@ -64,7 +64,7 @@ func _on_module_picked_up(module: BaseModule):
 	sfx_module_pickup.play()
 	
 func _on_weapon_picked_up(weapon: Shootable):
-	sfx_weapon_pickup.play()
+	sfx_module_pickup.play()
 
 func _on_weapon_switched(weapon_system:WeaponSystem) -> void:
 	set_weapon_style(weapon_system.current_weapon.weapon_id)
