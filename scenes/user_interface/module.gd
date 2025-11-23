@@ -17,11 +17,7 @@ var backgrounds = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+
 func set_slot(slot: int):
 	var increase_power_binding = InputMap.action_get_events("power_up_module_%d" % (slot + 1))[0]
 	var decrease_power_binding = InputMap.action_get_events("power_down_module_%d" % (slot + 1))[0]

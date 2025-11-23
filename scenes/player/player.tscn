@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=13 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="2_y4r1p"]
-[ext_resource type="Script" uid="uid://chdknkxy57spt" path="res://scenes/player/player_visual.gd" id="3_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://cfr6dshc1ngsh" path="res://scenes/systems/weapons/cannon/basic_bullet.tscn" id="4_fjrip"]
 [ext_resource type="PackedScene" uid="uid://b5k51vab0hjpc" path="res://scenes/systems/modules/module_system.tscn" id="4_qlg0r"]
@@ -21,11 +20,11 @@ base_damage = 10.0
 weapon_icon = ExtResource("7_je7p5")
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"
 
-[node name="Player" type="Area2D" groups=["player"]]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("weapon_system") groups=["player"]]
 script = ExtResource("1_3vyb7")
+weapon_system = NodePath("Systems/WeaponSystem")
 
 [node name="PlayerVisual" parent="." instance=ExtResource("2_y4r1p")]
-script = ExtResource("3_d2wvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_ur7pv")

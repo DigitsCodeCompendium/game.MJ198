@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0hpmch812els"]
+[gd_scene load_steps=27 format=3 uid="uid://b0hpmch812els"]
 
+[ext_resource type="Script" uid="uid://chdknkxy57spt" path="res://scenes/player/player_visual.gd" id="1_3cxcm"]
 [ext_resource type="Texture2D" uid="uid://3k4lfgb8fkmf" path="res://assets/player/player_ship_base.png" id="1_y6k2m"]
 [ext_resource type="Texture2D" uid="uid://cvyspjk1m2pbc" path="res://assets/player/player_ship_engine1.png" id="2_ue5q2"]
 [ext_resource type="Texture2D" uid="uid://i7j2papyyt00" path="res://assets/player/player_ship_engine4.png" id="3_ally7"]
@@ -12,29 +13,65 @@
 [ext_resource type="Texture2D" uid="uid://b2ehg2frpi7ej" path="res://assets/player/player_ship_laser.png" id="10_hucp1"]
 [ext_resource type="Texture2D" uid="uid://ctbeq56fkpwmc" path="res://assets/player/player_ship_railgun.png" id="11_p4ar4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_67x7h"]
 atlas = ExtResource("2_ue5q2")
-region = Rect2(0, 0, 59, 63)
+region = Rect2(0, 0, 63, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cxcm"]
 atlas = ExtResource("2_ue5q2")
-region = Rect2(59, 0, 59, 63)
+region = Rect2(63, 0, 63, 63)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qb3o"]
 atlas = ExtResource("2_ue5q2")
-region = Rect2(118, 0, 59, 63)
+region = Rect2(126, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q40mv"]
+atlas = ExtResource("3_ally7")
+region = Rect2(0, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x4un"]
+atlas = ExtResource("3_ally7")
+region = Rect2(63, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4apy6"]
+atlas = ExtResource("3_ally7")
+region = Rect2(126, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtnyr"]
+atlas = ExtResource("4_xmcf6")
+region = Rect2(0, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ban77"]
+atlas = ExtResource("4_xmcf6")
+region = Rect2(63, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0t3g"]
+atlas = ExtResource("4_xmcf6")
+region = Rect2(126, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fet4g"]
+atlas = ExtResource("5_5lam4")
+region = Rect2(0, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2km0y"]
+atlas = ExtResource("5_5lam4")
+region = Rect2(63, 0, 63, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ndlh"]
+atlas = ExtResource("5_5lam4")
+region = Rect2(126, 0, 63, 63)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wqfne")
+"texture": SubResource("AtlasTexture_67x7h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wnwbv")
+"texture": SubResource("AtlasTexture_3cxcm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gl8cc")
+"texture": SubResource("AtlasTexture_4qb3o")
 }],
 "loop": true,
 "name": &"classic",
@@ -42,7 +79,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ally7")
+"texture": SubResource("AtlasTexture_q40mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x4un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4apy6")
 }],
 "loop": true,
 "name": &"short",
@@ -50,7 +93,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_xmcf6")
+"texture": SubResource("AtlasTexture_dtnyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ban77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0t3g")
 }],
 "loop": true,
 "name": &"spike",
@@ -58,7 +107,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_5lam4")
+"texture": SubResource("AtlasTexture_fet4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2km0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ndlh")
 }],
 "loop": true,
 "name": &"vintage",
@@ -122,14 +177,16 @@ animations = [{
 }]
 
 [node name="PlayerVisual" type="Node2D"]
+script = ExtResource("1_3cxcm")
 
 [node name="ShipSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_y6k2m")
 
 [node name="EngineSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 33)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"classic"
-autoplay = "classic"
+animation = &"spike"
+frame_progress = 0.40002403
 
 [node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_487ah")

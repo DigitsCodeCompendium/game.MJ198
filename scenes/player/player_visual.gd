@@ -30,7 +30,7 @@ func set_weapon_style(style:int) -> void:
 		5: animation = "kinetic_rockets"
 		6: animation = "he_rockets"
 		7: animation = "frag_rockets"
-	$EngineSprite.play(animation)
+	$WeaponSprite.play(animation)
 
 func set_body_style(style:int) -> void:
 	pass

@@ -3,6 +3,8 @@ extends Area2D
 @export var speed = 300
 @export var y_pos = 0.2 #as a percentage of the screen size (bottom up)
 
+@export var weapon_system: WeaponSystem
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
@@ -15,6 +17,8 @@ func _ready() -> void:
 	position.x = screen_size.x/2
 	
 	set_engine_style(PlayerOptions.get_option("customize_engine", 0))
+	
+	weapon_system.connect("weapon_switched", _on_weapon_switched)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,3 +54,6 @@ func set_weapon_style(style:int) -> void:
 
 func set_body_style(style:int) -> void:
 	$PlayerVisual.set_body_style(style)
+
+func _on_weapon_switched(weapon_system:WeaponSystem) -> void:
+	set_weapon_style(weapon_system.current_weapon.weapon_id)

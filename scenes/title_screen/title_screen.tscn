@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxqj4iktbgvcj"]
+[gd_scene load_steps=14 format=3 uid="uid://bxqj4iktbgvcj"]
 
 [ext_resource type="Script" uid="uid://bnledk4h17ac4" path="res://scenes/title_screen/title_screen.gd" id="1_fgkus"]
 [ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
 [ext_resource type="Script" uid="uid://bl24lb5nr04o6" path="res://scenes/title_screen/customize_player.gd" id="9_xoykc"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="10_ju3lf"]
-[ext_resource type="Script" uid="uid://chdknkxy57spt" path="res://scenes/player/player_visual.gd" id="11_xetrx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgkus"]
 font_size = 48
@@ -239,7 +238,6 @@ layout_mode = 2
 [node name="PlayerVisual" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/CustomizeContent/AspectRatioContainer/Control" instance=ExtResource("10_ju3lf")]
 position = Vector2(100, 100)
 scale = Vector2(2, 2)
-script = ExtResource("11_xetrx")
 
 [node name="BackButton" type="Button" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

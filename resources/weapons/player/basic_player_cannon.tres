@@ -8,5 +8,7 @@
 script = ExtResource("2_f0xoq")
 base_fire_rate = 2.0
 base_damage = 10.0
+firing_ports = Array[Vector2]([Vector2(10, 10), Vector2(-10, 10)])
 weapon_icon = ExtResource("3_f0xoq")
+weapon_id = 1
 metadata/_custom_type_script = "uid://ci7we2a0ieoim"

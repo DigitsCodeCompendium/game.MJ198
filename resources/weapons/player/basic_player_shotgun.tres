@@ -6,7 +6,11 @@
 
 [resource]
 script = ExtResource("2_c3ear")
+base_number_of_projectiles = 4
+base_spread = 30.0
 bullet_scene = ExtResource("1_pm381")
-base_damage = 2.0
+base_damage = 6.0
+base_projectile_size = 1.5
 weapon_icon = ExtResource("3_c3ear")
+weapon_id = 4
 metadata/_custom_type_script = "uid://deo7rnd0etaxf"
