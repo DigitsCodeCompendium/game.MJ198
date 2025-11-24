@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://l6nhix37ie83" path="res://scenes/background/background.gd" id="1_y0upk"]
 [ext_resource type="Texture2D" uid="uid://b246vg0bnqb6g" path="res://assets/Background_GJ.png" id="2_jougr"]
-[ext_resource type="Texture2D" uid="uid://wxp0sm63q7go" path="res://assets/Big_Stars.png" id="3_rsf5d"]
+[ext_resource type="Texture2D" uid="uid://ccj1p8kx3ko8l" path="res://assets/stars.png" id="3_rsf5d"]
 
 [node name="Background" type="Node2D" node_paths=PackedStringArray("scrolling_backgrounds")]
 script = ExtResource("1_y0upk")
