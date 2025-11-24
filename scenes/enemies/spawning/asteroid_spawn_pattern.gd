@@ -3,9 +3,7 @@ class_name AsteroidSpawnPattern
 
 @export var asteroid_scenes: Array[PackedScene]
 @export var horizontal_speed_range: float = 10
-@export var min_vertical_speed: float = 100
-@export var max_vertical_speed: float = 200
-@export var linear_speed_scale: float = 1
+@export var vertical_speed_curve: Curve
 @export var min_scale_curve: Curve
 @export var max_scale_curve: Curve
 
@@ -13,7 +11,7 @@ func do_spawn(parent: Node2D, position: Vector2, rand: RandomNumberGenerator, pa
 	var asteroid = asteroid_scenes.pick_random().instantiate()
 	
 	var velocity_x = rand.randf_range(-horizontal_speed_range, horizontal_speed_range)
-	var velocity_y = lerpf(min_vertical_speed, max_vertical_speed, params.relativistic_speed)
+	var velocity_y = vertical_speed_curve.sample(params.linear_speed)
 	var scale = rand.randf_range(min_scale_curve.sample(params.relativistic_speed), max_scale_curve.sample(params.relativistic_speed))
 	
 	parent.add_child(asteroid)
