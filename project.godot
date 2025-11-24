@@ -29,6 +29,7 @@ PlayerOptions="*res://scenes/player_options.gd"
 window/size/viewport_width=1422
 window/size/viewport_height=800
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://dw801jrmyey6g"
 
 [input]
 
