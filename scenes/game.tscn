@@ -59,6 +59,7 @@ shape = SubResource("RectangleShape2D_ssvqc")
 script = ExtResource("4_ir15t")
 speed_control = NodePath("../../SpeedControl")
 spawn_pattern = ExtResource("5_ca42v")
+initial_delay = 2.5
 spawn_timer_curve = SubResource("Curve_264po")
 
 [node name="EnemySpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
