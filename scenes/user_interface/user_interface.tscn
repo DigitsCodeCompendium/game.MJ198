@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=21 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module/module.tscn" id="2_l2bgj"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://7rbgkhea3qms" path="res://assets/power_icons/reserved_power.png" id="5_axgoa"]
 [ext_resource type="Texture2D" uid="uid://bdxfwbwlnlf2j" path="res://assets/power_icons/empty_power.png" id="6_tfswy"]
 [ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="10_axgoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfswy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6pv1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axgoa"]
 
@@ -52,6 +57,9 @@ _data = {
 &"default": SubResource("Animation_axgoa")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01bs6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dtu1"]
 bg_color = Color(0.5086386, 0.10218536, 0.72161824, 1)
 
@@ -74,6 +82,7 @@ script = ExtResource("1_jbsfc")
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tfswy")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel"]
@@ -84,6 +93,7 @@ theme_override_constants/separation = 0
 [node name="Panel" type="Panel" parent="LeftPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g6pv1")
 
 [node name="CenterContainer" type="CenterContainer" parent="LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -153,6 +163,11 @@ lost_power_texture = ExtResource("5_axgoa")
 used_power_texture = ExtResource("6_tfswy")
 free_power_texture = ExtResource("3_pvt6f")
 
+[node name="Panel" type="Panel" parent="LeftPanel/VBoxContainer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_01bs6")
+
 [node name="RightPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -184,12 +199,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SpeedBarContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.125
-anchor_right = 0.875
-offset_bottom = 27.0
-grow_horizontal = 2
+layout_mode = 0
+offset_left = 160.0
+offset_right = 1262.0
+offset_bottom = 32.0
 
 [node name="SpeedProgressBar" type="ProgressBar" parent="SpeedBarContainer"]
 unique_name_in_owner = true
