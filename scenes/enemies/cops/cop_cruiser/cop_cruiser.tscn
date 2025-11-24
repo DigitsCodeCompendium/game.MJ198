@@ -92,9 +92,10 @@ corner_detail = 6
 
 [node name="CopCruiser" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_tp4mi")
 health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_wdn6e")

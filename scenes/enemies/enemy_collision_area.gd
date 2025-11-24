@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var health: EnemyHealth
+@export var hit_sound: AudioStreamPlayer2D
 
 signal player_collision()
 
@@ -15,6 +16,8 @@ func _on_collision(area: Area2D):
 	elif area.is_in_group("player_projectile"):
 		area.hit()
 		health.damage(area.damage)
+		if hit_sound != null:
+			hit_sound.play()
 
 func _on_health_depleted():
 	$CollisionPolygon2D.queue_free()

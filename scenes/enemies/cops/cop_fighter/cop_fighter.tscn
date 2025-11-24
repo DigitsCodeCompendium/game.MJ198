@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="2_wdn6e"]
 [ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="3_wdn6e"]
 [ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="4_cdl2y"]
-[ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+[ext_resource type="Script" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="7_erfpo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp41b"]
 atlas = ExtResource("2_mcs0h")
@@ -85,9 +86,10 @@ corner_detail = 6
 
 [node name="CopFighter" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_2yyge")
 health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)

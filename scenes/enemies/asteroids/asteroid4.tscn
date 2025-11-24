@@ -1,14 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://7eq1skiyjrr1"]
+[gd_scene load_steps=18 format=3 uid="uid://7eq1skiyjrr1"]
 
 [ext_resource type="Script" uid="uid://dpxjivnki42qp" path="res://scenes/enemies/asteroids/asteroid.gd" id="1_t7n32"]
+[ext_resource type="Texture2D" uid="uid://c8jyvn3deoit4" path="res://assets/enemies/death animations/Astroid_4-sheet.png" id="2_gmpib"]
 [ext_resource type="Texture2D" uid="uid://bhxuc7qx05tny" path="res://assets/enemies/Astroid_4.png" id="2_t7n32"]
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="3_pwa6j"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="4_uty07"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="5_7mxrt"]
 [ext_resource type="AudioStream" uid="uid://3ksjw4ekeo3l" path="res://assets/sound_effects/asteroid destruction.mp3" id="6_fjm3g"]
+[ext_resource type="Script" path="res://scenes/systems/enemies/health_death.gd" id="8_pwa6j"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="9_uty07"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwa6j"]
+atlas = ExtResource("2_gmpib")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uty07"]
+atlas = ExtResource("2_gmpib")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mxrt"]
+atlas = ExtResource("2_gmpib")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjm3g"]
+atlas = ExtResource("2_gmpib")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08i1c"]
+atlas = ExtResource("2_gmpib")
+region = Rect2(240, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsygu"]
+atlas = ExtResource("2_gmpib")
+region = Rect2(300, 0, 60, 60)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mo6b"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwa6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uty07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mxrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjm3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08i1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsygu")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_t7n32")
@@ -16,22 +66,20 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4se3"]
 
-[node name="Asteroid" type="Area2D" groups=["enemy"]]
+[node name="Asteroid" type="Area2D" node_paths=PackedStringArray("hit_sound") groups=["enemy"]]
 script = ExtResource("1_t7n32")
+hit_sound = NodePath("HitSoundPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.3376295, 0.3376295)
 sprite_frames = SubResource("SpriteFrames_6mo6b")
+animation = &"death"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t4se3")
@@ -60,4 +108,15 @@ show_percentage = false
 unique_name_in_owner = true
 stream = ExtResource("6_fjm3g")
 volume_db = -3.0
+bus = &"Sound Effects"
+
+[node name="HealthDeath" type="Node" parent="." node_paths=PackedStringArray("health", "animated_sprite")]
+script = ExtResource("8_pwa6j")
+health = NodePath("../Health")
+animated_sprite = NodePath("../AnimatedSprite2D")
+fade_away_time = 0.5
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_uty07")
+volume_db = 5.0
 bus = &"Sound Effects"

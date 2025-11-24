@@ -2,8 +2,10 @@ extends Node2D
 
 var velocity: Vector2
 var ang_velocity: float
-var base_health = 10
+var base_health = 9
 var _marked_for_death = false
+
+@export var hit_sound: AudioStreamPlayer2D
 
 @onready var death_sound = get_node("%DeathSoundPlayer")
 @onready var possible_fragment_scene = [
@@ -35,6 +37,10 @@ func launch(vel:Vector2, pos:Vector2, size:float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if $AnimatedSprite2D.self_modulate.a < 1:
+		$AnimatedSprite2D.self_modulate.a += delta
+	
+	
 	position += velocity * delta
 	$AnimatedSprite2D.rotation += ang_velocity * delta
 	
@@ -52,10 +58,10 @@ func _on_asteroid_collision(area: Area2D):
 	elif area.is_in_group("player_projectile"):
 		area.hit()
 		$Health.damage(area.damage)
+		hit_sound.play()
 	
 func _death():
 	#Hide sprite
-	$AnimatedSprite2D.visible = false
 	$CollisionShape2D.queue_free()
 	
 	#Spawn Fragments
@@ -66,6 +72,7 @@ func _death():
 			var new_position = self.position + Vector2(10*self.scale.x*randf_range(-1,1),10*self.scale.x*randf_range(-1,1))
 			var fragment = possible_fragment_scene.pick_random().instantiate()
 			fragment.launch(new_velocity,new_position,self.scale.x/fragments)
+			fragment.get_node("AnimatedSprite2D").self_modulate.a = 0
 			get_parent().call_deferred("add_child",fragment)
 		
 	#Spawn Pickup	
@@ -82,3 +89,7 @@ func _death():
 	
 	_marked_for_death = true
 	
+
+
+func _on_health_death_on_death_finish() -> void:
+	pass # Replace with function body.
