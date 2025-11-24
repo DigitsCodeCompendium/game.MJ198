@@ -91,14 +91,14 @@ script = ExtResource("1_4wr75")
 hit_sound = NodePath("HitSoundPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7.1525574e-07, 1.1368684e-13)
 scale = Vector2(1.0158999, 1.0284323)
 sprite_frames = SubResource("SpriteFrames_6mo6b")
 animation = &"death"
 autoplay = "default"
+offset = Vector2(0.98434895, -2.9170609)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(0, 3.5527137e-15)
 rotation = 1.5707964
 scale = Vector2(1.4024862, 1.4197876)
 shape = SubResource("CapsuleShape2D_jgpov")

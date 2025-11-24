@@ -61,25 +61,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgpov"]
-radius = 5.0
-height = 10.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_sst8i"]
+radius = 5.5518885
 
 [node name="Asteroid2" type="Area2D" node_paths=PackedStringArray("hit_sound") groups=["enemy"]]
 script = ExtResource("1_rjpga")
 hit_sound = NodePath("HitSoundPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3.0000005, 9.536743e-07)
 scale = Vector2(1.3047026, 1.3014348)
 sprite_frames = SubResource("SpriteFrames_6mo6b")
 animation = &"death"
 autoplay = "default"
+offset = Vector2(4.598749, -0.7683827)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
 scale = Vector2(1.8011888, 1.7966774)
-shape = SubResource("CapsuleShape2D_jgpov")
+shape = SubResource("CircleShape2D_sst8i")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
