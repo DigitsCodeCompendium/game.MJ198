@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=44 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://dyk1ykmfc3qsj" path="res://scenes/enemies/spawning/enemy_spawner.gd" id="4_ir15t"]
 [ext_resource type="Script" uid="uid://c76gyrf6d7soo" path="res://scenes/user_interface/ui_event_bus.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://bmr07kofgmiyi" path="res://scenes/music_player.gd" id="4_p57ef"]
-[ext_resource type="PackedScene" uid="uid://cs1d4wmub2aox" path="res://scenes/enemies/aliens/energy_alien/energy_alien.tscn" id="4_qnb83"]
 [ext_resource type="Resource" uid="uid://ckbj4ecgkde82" path="res://resources/enemy_spawn/asteroid_spawn.tres" id="5_ca42v"]
 [ext_resource type="Resource" uid="uid://c0g6bmu0jaby8" path="res://resources/enemy_spawn/enemy_spawn.tres" id="6_ssvqc"]
 [ext_resource type="Resource" uid="uid://guj8pcwgg5b5" path="res://resources/enemy_spawn/boss_spawn.tres" id="7_264po"]
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="7_e1j6l"]
+[ext_resource type="Resource" uid="uid://bytdrnjelth4m" path="res://resources/enemy_spawn/alien_spawn.tres" id="7_sww3w"]
 [ext_resource type="PackedScene" uid="uid://b0a184ge5c42w" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="8_pl11u"]
 [ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="9_bhx41"]
 [ext_resource type="Resource" uid="uid://bwigmsobtekpb" path="res://resources/enemy_spawn/boss_escort_spawn_table.tres" id="10_bhx41"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="11_sww3w"]
 [ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="12_pl11u"]
 [ext_resource type="AudioStream" uid="uid://cjeo0dy7tkjwu" path="res://assets/music_loop_v7_8_stages/loop 1.mp3" id="17_qnb83"]
-[ext_resource type="PackedScene" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://3khsdlfylfxy" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://kq7qmhbyuvjq" path="res://assets/music_loop_v7_8_stages/loop 2.mp3" id="18_sww3w"]
 [ext_resource type="AudioStream" uid="uid://bmj031qx10ec7" path="res://assets/music_loop_v7_8_stages/loop 3.mp3" id="19_suyxu"]
 [ext_resource type="AudioStream" uid="uid://coin4pipnsft1" path="res://assets/music_loop_v7_8_stages/loop 4.mp3" id="20_sgl2t"]
@@ -39,6 +39,11 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_264po"]
 size = Vector2(500, 0)
+
+[sub_resource type="Curve" id="Curve_qnb83"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_ssvqc"]
 _limits = [2.0, 60.0, 0.0, 1.0]
@@ -125,14 +130,14 @@ shape = SubResource("RectangleShape2D_264po")
 script = ExtResource("4_ir15t")
 speed_control = NodePath("../../SpeedControl")
 spawn_pattern = ExtResource("6_ssvqc")
-spawn_timer_curve = SubResource("Curve_ssvqc")
+spawn_timer_curve = SubResource("Curve_qnb83")
 
 [node name="AlienSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
 position = Vector2(711, 100)
 shape = SubResource("RectangleShape2D_264po")
 script = ExtResource("4_ir15t")
 speed_control = NodePath("../../SpeedControl")
-spawn_pattern = ExtResource("6_ssvqc")
+spawn_pattern = ExtResource("7_sww3w")
 spawn_timer_curve = SubResource("Curve_ssvqc")
 
 [node name="FrigateSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
