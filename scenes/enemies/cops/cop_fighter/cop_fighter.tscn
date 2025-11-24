@@ -1,14 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://byinyv2ojmdk0"]
+[gd_scene load_steps=19 format=3 uid="uid://byinyv2ojmdk0"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_2yyge"]
 [ext_resource type="Texture2D" uid="uid://2fej2ykva2rf" path="res://assets/enemies/cop_fighter.png" id="1_l8aco"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="2_cdl2y"]
 [ext_resource type="Texture2D" uid="uid://cqx8dii7pwcj5" path="res://assets/enemies/deathfightercop7.png" id="2_mcs0h"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="2_wdn6e"]
-[ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="3_be5vc"]
 [ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="3_wdn6e"]
 [ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="4_cdl2y"]
-[ext_resource type="Script" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+[ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
 [ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="7_erfpo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp41b"]
@@ -73,12 +72,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yyge"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1rf7"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
-bg_color = Color(0, 1, 0, 0.4)
+bg_color = Color(1, 0, 0, 0.4)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -118,22 +117,10 @@ offset_top = -18.0
 offset_right = 189.99998
 offset_bottom = -8.000015
 scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_p1rf7")
 max_value = 1.0
 value = 1.0
 show_percentage = false
-
-[node name="FuelBar" type="ProgressBar" parent="." node_paths=PackedStringArray("fuel_timer")]
-offset_left = -10.0
-offset_top = -17.0
-offset_right = 189.99998
-offset_bottom = -7.0000153
-scale = Vector2(0.1, 0.1)
-theme_override_styles/fill = SubResource("StyleBoxFlat_2yyge")
-max_value = 1.0
-value = 0.49
-show_percentage = false
-script = ExtResource("3_be5vc")
-fuel_timer = NodePath("../Systems/Timer")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_erfpo")
@@ -141,11 +128,6 @@ volume_db = 5.0
 bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
-
-[node name="Timer" type="Timer" parent="Systems"]
-wait_time = 40.0
-one_shot = true
-autostart = true
 
 [node name="WeaponSystem" parent="Systems" instance=ExtResource("2_cdl2y")]
 current_weapon = ExtResource("3_wdn6e")

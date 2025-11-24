@@ -22,4 +22,3 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("test_key"):
 		get_node("Player/Systems/ModuleSystem").set_module(0, load("res://resources/modules/firerate_module_1.tres"))
-	

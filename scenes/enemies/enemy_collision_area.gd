@@ -7,6 +7,7 @@ signal player_collision()
 
 func _ready():
 	connect("area_entered", _on_collision)
+	health.connect("health_depleted", _on_health_depleted)
 
 func _on_collision(area: Area2D):
 	if area.is_in_group("player"):
@@ -17,3 +18,6 @@ func _on_collision(area: Area2D):
 		health.damage(area.damage)
 		if hit_sound != null:
 			hit_sound.play()
+
+func _on_health_depleted():
+	$CollisionPolygon2D.queue_free()

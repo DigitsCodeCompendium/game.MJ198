@@ -25,3 +25,7 @@ func _restart_game():
 func _goto_main_menu():
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(load(main_menu_scene))
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		death_animation.speed_scale = 10

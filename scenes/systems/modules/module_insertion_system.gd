@@ -50,6 +50,14 @@ func insert_module(module: BaseModule):
 			module_slot.add_level_progress(1)
 			UiEventBus.emit_signal("module_updated", i, module_slot)
 			return
+	
+	# No duplicates, if there's an empty slot module gets inserted right away
+	for i in range(len(module_system.module_slots)):
+		var module_slot: ModuleSlot = module_system.module_slots[i]
+		if module_slot.module == null:
+			module_system.set_module(i, module)
+			UiEventBus.emit_signal("module_updated", i, module_slot)
+			return
 
 	_pending_module = module
 	_pending_remaining_time = pickup_keep_time

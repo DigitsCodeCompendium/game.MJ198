@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SweepCannonWeapon" load_steps=4 format=3 uid="uid://dmketgbl0purl"]
+
+[ext_resource type="PackedScene" uid="uid://caotn0iibmj20" path="res://scenes/systems/weapons/cannon/enemy_bullet.tscn" id="1_0ycvc"]
+[ext_resource type="Script" uid="uid://cw0yxb47hpvfv" path="res://scenes/systems/weapons/cannon/sweep_cannon_weapon.gd" id="2_0ycvc"]
+[ext_resource type="PackedScene" uid="uid://cu184tdsc4rkj" path="res://scenes/systems/weapons/cannon/spent_casing.tscn" id="2_5dsp8"]
+
+[resource]
+script = ExtResource("2_0ycvc")
+number_of_projectiles = 2
+spread = 0.0
+sweep_speed = 30.0
+bullet_scene = ExtResource("1_0ycvc")
+casing_scene = ExtResource("2_5dsp8")
+base_fire_rate = 0.25
+metadata/_custom_type_script = "uid://cw0yxb47hpvfv"
