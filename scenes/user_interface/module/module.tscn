@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b54uo5otbvimt"]
+[gd_scene load_steps=13 format=3 uid="uid://b54uo5otbvimt"]
 
 [ext_resource type="Script" uid="uid://1xgxtcrnhjnk" path="res://scenes/user_interface/module/module.gd" id="1_raokp"]
 [ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="2_7vxq3"]
@@ -9,6 +9,20 @@
 
 [sub_resource type="SystemFont" id="SystemFont_i6xls"]
 subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6mah"]
+bg_color = Color(0.9400947, 0, 0.033184614, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h21i"]
+bg_color = Color(0.9400947, 0, 0.033184614, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_m75gb"]
 font_size = 14
@@ -63,6 +77,8 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_i6xls")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u6mah")
+toggle_mode = true
 
 [node name="IncreasePowerLabel" type="Label" parent="VBoxContainer/IncreasePowerContainer"]
 unique_name_in_owner = true
@@ -79,6 +95,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 10
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4h21i")
+toggle_mode = true
 
 [node name="DecreasePowerLabel" type="Label" parent="VBoxContainer/DecreasePowerContainer"]
 unique_name_in_owner = true

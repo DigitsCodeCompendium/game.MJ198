@@ -32,19 +32,32 @@ var blue_upgrade_tex: Texture2D = preload("res://assets/module_icons/blue_upgrad
 @onready var discard_label = %DiscardLabel
 @onready var discard_progress_bar: ProgressBar = %DiscardProgressBar
 
+var increase_power_binding: InputEventKey
+var decrease_power_binding: InputEventKey
 var _slot_index: int
 
+func _process(delta):
+	if Input.is_key_pressed(increase_power_binding.physical_keycode) == true:
+	
+		power_up_button.button_pressed = true
+	else:
+		power_up_button.button_pressed = false
+		
+	if Input.is_key_pressed(decrease_power_binding.physical_keycode)== true:
+		power_down_button.button_pressed = true
+	else:
+		power_down_button.button_pressed = false
 
 func set_slot(slot: int):
 	_slot_index = slot
-	var increase_power_binding = InputMap.action_get_events("power_up_module_%d" % (slot + 1))[0]
-	var decrease_power_binding = InputMap.action_get_events("power_down_module_%d" % (slot + 1))[0]
+	increase_power_binding = InputMap.action_get_events("power_up_module_%d" % (slot + 1))[0]
+	decrease_power_binding = InputMap.action_get_events("power_down_module_%d" % (slot + 1))[0]
 	var discard_binding = InputMap.action_get_events("discard_module_%d" % (slot + 1))[0]
 	# Super hacky way to get a simplified binding, can't be bothered to figure out how do it properly
 	increase_power_label.text = increase_power_binding.as_text().substr(0, 1)
 	decrease_power_label.text = decrease_power_binding.as_text().substr(0, 1)
 	discard_label.text = "Replace: Hold %s" % discard_binding.as_text().substr(0, 1)
-
+	print(increase_power_binding.keycode)
 func update_module(mod: ModuleSlot) -> void:
 	print("received module update")
 	if mod.module == null:
