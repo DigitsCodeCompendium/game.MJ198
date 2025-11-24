@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RandomEnemySpawnOverTime" load_steps=6 format=3 uid="uid://bwigmsobtekpb"]
+
+[ext_resource type="Script" uid="uid://x5qhqlaqnpod" path="res://scenes/enemies/spawning/random_choice_enemy_spawn_over_time.gd" id="1_o0gu0"]
+[ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="2_2luwr"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="3_u8htm"]
+
+[sub_resource type="Curve" id="Curve_bhx41"]
+_limits = [0.0, 1.0, 4.0, 10.0]
+_data = [Vector2(4, 1), 0.0, 0.0, 0, 0, Vector2(10, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qnb83"]
+_limits = [0.0, 1.0, 4.0, 10.0]
+_data = [Vector2(4, 0), 0.0, 0.0, 0, 0, Vector2(10, 0.8), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_o0gu0")
+spawn_table = Dictionary[PackedScene, Curve]({
+ExtResource("2_2luwr"): SubResource("Curve_bhx41"),
+ExtResource("3_u8htm"): SubResource("Curve_qnb83")
+})
+use_linear_speed = true
+metadata/_custom_type_script = "uid://x5qhqlaqnpod"
