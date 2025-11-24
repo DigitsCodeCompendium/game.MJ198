@@ -1,0 +1,165 @@
+[gd_scene load_steps=23 format=3 uid="uid://cs1d4wmub2aox"]
+
+[ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_f42ur"]
+[ext_resource type="Texture2D" uid="uid://gubvbsikwlc4" path="res://assets/enemies/death animations/Deathpowerup.png" id="2_hyand"]
+[ext_resource type="Texture2D" uid="uid://cwrnqntlrvbl6" path="res://assets/enemies/alein01.png" id="3_wr1bm"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="4_chn8k"]
+[ext_resource type="Resource" uid="uid://clo5nnmye88m7" path="res://resources/pickups/energy_alien_drop_table.tres" id="5_hyand"]
+[ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="6_ohcv8"]
+[ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="7_0l57p"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="8_ih1yg"]
+[ext_resource type="Script" uid="uid://06gaapmnw76v" path="res://scenes/systems/enemies/ai/wander_ai.gd" id="9_wr1bm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wqkk"]
+atlas = ExtResource("2_hyand")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgt7b"]
+atlas = ExtResource("2_hyand")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eno8n"]
+atlas = ExtResource("2_hyand")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au36g"]
+atlas = ExtResource("2_hyand")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1v2i"]
+atlas = ExtResource("2_hyand")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmtl"]
+atlas = ExtResource("2_hyand")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykmj3"]
+atlas = ExtResource("2_hyand")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0rlw"]
+atlas = ExtResource("3_wr1bm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26emx"]
+atlas = ExtResource("3_wr1bm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hb25"]
+atlas = ExtResource("3_wr1bm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xfhi"]
+atlas = ExtResource("3_wr1bm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wdn6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wqkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgt7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eno8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au36g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1v2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykmj3")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0rlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26emx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hb25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xfhi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1rf7"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="EnergyAlien" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
+script = ExtResource("1_f42ur")
+health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_wdn6e")
+autoplay = "default"
+
+[node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("4_chn8k")
+drop_table = ExtResource("5_hyand")
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("6_ohcv8")
+health_bar = NodePath("../HealthBar")
+max_health = 50.0
+
+[node name="HealthDeath" type="Node" parent="." node_paths=PackedStringArray("health", "animated_sprite")]
+script = ExtResource("7_0l57p")
+health = NodePath("../Health")
+animated_sprite = NodePath("../Area2D/AnimatedSprite2D")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.000001
+offset_top = -18.0
+offset_right = 189.99998
+offset_bottom = -8.000015
+scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_p1rf7")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ih1yg")
+volume_db = 5.0
+bus = &"Sound Effects"
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="WanderAi" type="Node" parent="Systems" node_paths=PackedStringArray("death_sources", "area")]
+script = ExtResource("9_wr1bm")
+death_sources = [NodePath("../../HealthDeath")]
+area = NodePath("../../Area2D")
+speed = 400.0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://x5qhqlaqnpod" path="res://scenes/enemies/spawning/random_choice_enemy_spawn_over_time.gd" id="1_o0gu0"]
 [ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="2_2luwr"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="3_u8htm"]
+[ext_resource type="PackedScene" uid="uid://b0a184ge5c42w" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="3_u8htm"]
 
 [sub_resource type="Curve" id="Curve_bhx41"]
 _limits = [0.0, 1.0, 4.0, 10.0]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=42 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dyk1ykmfc3qsj" path="res://scenes/enemies/spawning/enemy_spawner.gd" id="4_ir15t"]
 [ext_resource type="Script" uid="uid://c76gyrf6d7soo" path="res://scenes/user_interface/ui_event_bus.gd" id="4_iywne"]
 [ext_resource type="Script" path="res://scenes/music_player.gd" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cs1d4wmub2aox" path="res://scenes/enemies/aliens/energy_alien/energy_alien.tscn" id="4_qnb83"]
 [ext_resource type="Resource" uid="uid://ckbj4ecgkde82" path="res://resources/enemy_spawn/asteroid_spawn.tres" id="5_ca42v"]
 [ext_resource type="AudioStream" uid="uid://dgpfdmpuf5msg" path="res://assets/music_loop_v1_7_stages/game loop 1.mp3" id="5_kvuet"]
 [ext_resource type="Resource" uid="uid://c0g6bmu0jaby8" path="res://resources/enemy_spawn/enemy_spawn.tres" id="6_ssvqc"]
@@ -16,7 +17,7 @@
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="7_e1j6l"]
 [ext_resource type="AudioStream" uid="uid://dnkr3ff5ilv4j" path="res://assets/music_loop_v1_7_stages/game loop 3.mp3" id="7_ir15t"]
 [ext_resource type="AudioStream" uid="uid://bl5oij6sdeoxn" path="res://assets/music_loop_v1_7_stages/game loop 4.mp3" id="8_ca42v"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="8_pl11u"]
+[ext_resource type="PackedScene" uid="uid://b0a184ge5c42w" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="8_pl11u"]
 [ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="9_bhx41"]
 [ext_resource type="AudioStream" uid="uid://cwms8qaubtj3r" path="res://assets/music_loop_v1_7_stages/game loop 5.mp3" id="9_rysoc"]
 [ext_resource type="Resource" uid="uid://bwigmsobtekpb" path="res://resources/enemy_spawn/boss_escort_spawn_table.tres" id="10_bhx41"]
@@ -25,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://r7nykiy285hq" path="res://assets/music_loop_v1_7_stages/game loop 7.mp3" id="11_264po"]
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="11_sww3w"]
 [ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="12_pl11u"]
-[ext_resource type="PackedScene" uid="uid://3khsdlfylfxy" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvqc"]
 size = Vector2(1000, 100)
@@ -102,6 +103,9 @@ script = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("2_lnu2h")]
 unique_name_in_owner = true
+
+[node name="EnergyAlien" parent="." instance=ExtResource("4_qnb83")]
+position = Vector2(716, 366)
 
 [node name="EnemySpawners" type="Area2D" parent="."]
 process_mode = 1

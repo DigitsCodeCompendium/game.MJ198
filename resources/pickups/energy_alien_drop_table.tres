@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PickupDropTable" load_steps=3 format=3 uid="uid://clo5nnmye88m7"]
+
+[ext_resource type="Script" uid="uid://cjk7x2h4383nf" path="res://scenes/systems/enemies/pickup_drop_table.gd" id="1_7kwhf"]
+[ext_resource type="Script" path="res://scenes/pickups/pickup_content.gd" id="2_yvrya"]
+
+[resource]
+script = ExtResource("1_7kwhf")
+metadata/_custom_type_script = "uid://cjk7x2h4383nf"

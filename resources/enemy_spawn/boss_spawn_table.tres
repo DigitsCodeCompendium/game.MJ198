@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RandomEnemySpawnOverTime" load_steps=6 format=3 uid="uid://6vi0fcj5dh6d"]
 
 [ext_resource type="Script" uid="uid://x5qhqlaqnpod" path="res://scenes/enemies/spawning/random_choice_enemy_spawn_over_time.gd" id="1_4x5c0"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="2_saqti"]
+[ext_resource type="PackedScene" uid="uid://b0a184ge5c42w" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="2_saqti"]
 [ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="3_nu0t6"]
 
 [sub_resource type="Curve" id="Curve_bfftx"]
