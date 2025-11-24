@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=41 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -13,12 +13,19 @@
 [ext_resource type="Resource" uid="uid://c0g6bmu0jaby8" path="res://resources/enemy_spawn/enemy_spawn.tres" id="6_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://dp6elfj1pe8lk" path="res://assets/music_loop_v1_7_stages/game loop 2.mp3" id="6_trtic"]
 [ext_resource type="Resource" uid="uid://guj8pcwgg5b5" path="res://resources/enemy_spawn/boss_spawn.tres" id="7_264po"]
+[ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="7_e1j6l"]
 [ext_resource type="AudioStream" uid="uid://dnkr3ff5ilv4j" path="res://assets/music_loop_v1_7_stages/game loop 3.mp3" id="7_ir15t"]
 [ext_resource type="AudioStream" uid="uid://bl5oij6sdeoxn" path="res://assets/music_loop_v1_7_stages/game loop 4.mp3" id="8_ca42v"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="8_pl11u"]
+[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="9_bhx41"]
 [ext_resource type="AudioStream" uid="uid://cwms8qaubtj3r" path="res://assets/music_loop_v1_7_stages/game loop 5.mp3" id="9_rysoc"]
+[ext_resource type="Resource" uid="uid://bwigmsobtekpb" path="res://resources/enemy_spawn/boss_escort_spawn_table.tres" id="10_bhx41"]
+[ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="10_qnb83"]
 [ext_resource type="AudioStream" uid="uid://7dtqix14vxdd" path="res://assets/music_loop_v1_7_stages/game loop 6.mp3" id="10_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://r7nykiy285hq" path="res://assets/music_loop_v1_7_stages/game loop 7.mp3" id="11_264po"]
-[ext_resource type="PackedScene" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="11_sww3w"]
+[ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="12_pl11u"]
+[ext_resource type="PackedScene" uid="uid://3khsdlfylfxy" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvqc"]
 size = Vector2(1000, 100)
@@ -36,10 +43,57 @@ _limits = [2.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Resource" id="Resource_bhx41"]
+script = ExtResource("9_bhx41")
+enemy = ExtResource("8_pl11u")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_qnb83"]
+script = ExtResource("7_e1j6l")
+enemy_spawn = SubResource("Resource_bhx41")
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[sub_resource type="Resource" id="Resource_3hd4f"]
+script = ExtResource("7_e1j6l")
+enemy_spawn = ExtResource("10_bhx41")
+base_offset = Vector2(-100, 0)
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[sub_resource type="Resource" id="Resource_xub10"]
+script = ExtResource("9_bhx41")
+enemy = ExtResource("10_qnb83")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_bfftx"]
+script = ExtResource("7_e1j6l")
+enemy_spawn = SubResource("Resource_xub10")
+base_offset = Vector2(-100, 0)
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[sub_resource type="Resource" id="Resource_suyxu"]
+script = ExtResource("11_sww3w")
+pattern = Array[ExtResource("7_e1j6l")]([SubResource("Resource_qnb83"), SubResource("Resource_3hd4f"), SubResource("Resource_bfftx")])
+metadata/_custom_type_script = "uid://b4rcup02wd1hy"
+
 [sub_resource type="Curve" id="Curve_1kice"]
 _limits = [2.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_e1j6l"]
+script = ExtResource("9_bhx41")
+enemy = ExtResource("12_pl11u")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_pl11u"]
+script = ExtResource("7_e1j6l")
+enemy_spawn = SubResource("Resource_e1j6l")
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[sub_resource type="Resource" id="Resource_sgl2t"]
+script = ExtResource("11_sww3w")
+pattern = Array[ExtResource("7_e1j6l")]([SubResource("Resource_pl11u"), SubResource("Resource_3hd4f"), SubResource("Resource_bfftx")])
+metadata/_custom_type_script = "uid://b4rcup02wd1hy"
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -71,13 +125,35 @@ speed_control = NodePath("../../SpeedControl")
 spawn_pattern = ExtResource("6_ssvqc")
 spawn_timer_curve = SubResource("Curve_ssvqc")
 
-[node name="BossSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+[node name="FrigateSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_264po")
+script = ExtResource("4_ir15t")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = SubResource("Resource_suyxu")
+initial_delay = 0.0
+spawn_timer_curve = SubResource("Curve_1kice")
+min_linear_speed = 2.0
+max_linear_speed = 2.0
+
+[node name="CruiserSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_264po")
+script = ExtResource("4_ir15t")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = SubResource("Resource_sgl2t")
+initial_delay = 100.0
+spawn_timer_curve = SubResource("Curve_1kice")
+min_linear_speed = 2.0
+max_linear_speed = 2.0
+
+[node name="ProceduralBossSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
 position = Vector2(711, 100)
 shape = SubResource("RectangleShape2D_264po")
 script = ExtResource("4_ir15t")
 speed_control = NodePath("../../SpeedControl")
 spawn_pattern = ExtResource("7_264po")
-initial_delay = 0.0
+initial_delay = 200.0
 spawn_timer_curve = SubResource("Curve_1kice")
 min_linear_speed = 2.0
 
