@@ -31,6 +31,7 @@ unique_name_in_owner = true
 script = ExtResource("4_ir15t")
 asteroid_spawn_pattern = ExtResource("5_ca42v")
 beginner_enemy_spawn_pattern = ExtResource("6_rysoc")
+enemy_spawn_timer = 10.0
 
 [node name="SpeedControl" type="Node" parent="."]
 script = ExtResource("3_lbhrr")

@@ -1,49 +1,8 @@
-[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=14 format=3 uid="uid://b5607lmcs0mpp"]
+[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=3 format=3 uid="uid://b5607lmcs0mpp"]
 
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_mr0iv"]
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="2_khl2h"]
-[ext_resource type="Script" uid="uid://22xhw1eyt8t1" path="res://scenes/enemies/spawning/random_choice_enemy_spawn.gd" id="2_ue0iw"]
-[ext_resource type="PackedScene" uid="uid://b28ic5p8jf3k7" path="res://scenes/enemies/exploder_ship.tscn" id="3_a78qv"]
-[ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="4_w1wi7"]
-[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="5_bi2un"]
-[ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="6_bi2un"]
-
-[sub_resource type="Resource" id="Resource_w1wi7"]
-script = ExtResource("2_ue0iw")
-spawn_table = Dictionary[PackedScene, float]({
-null: 50.0,
-ExtResource("3_a78qv"): 50.0
-})
-metadata/_custom_type_script = "uid://22xhw1eyt8t1"
-
-[sub_resource type="Resource" id="Resource_bi2un"]
-script = ExtResource("1_mr0iv")
-enemy_spawn = SubResource("Resource_w1wi7")
-metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
-
-[sub_resource type="Resource" id="Resource_ynufw"]
-script = ExtResource("5_bi2un")
-enemy = ExtResource("4_w1wi7")
-metadata/_custom_type_script = "uid://20wcajr3o32k"
-
-[sub_resource type="Resource" id="Resource_lqkmv"]
-script = ExtResource("1_mr0iv")
-enemy_spawn = SubResource("Resource_ynufw")
-random_offset = Vector2(800, 0)
-metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
-
-[sub_resource type="Resource" id="Resource_k053r"]
-script = ExtResource("5_bi2un")
-enemy = ExtResource("6_bi2un")
-metadata/_custom_type_script = "uid://20wcajr3o32k"
-
-[sub_resource type="Resource" id="Resource_8jss5"]
-script = ExtResource("1_mr0iv")
-enemy_spawn = SubResource("Resource_k053r")
-base_offset = Vector2(500, 0)
-metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
 
 [resource]
 script = ExtResource("2_khl2h")
-pattern = Array[ExtResource("1_mr0iv")]([SubResource("Resource_bi2un"), SubResource("Resource_lqkmv"), SubResource("Resource_8jss5")])
 metadata/_custom_type_script = "uid://b4rcup02wd1hy"

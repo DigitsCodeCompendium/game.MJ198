@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://b28ic5p8jf3k7"]
+[gd_scene load_steps=14 format=3 uid="uid://b28ic5p8jf3k7"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
+[ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_en8o4"]
 [ext_resource type="Texture2D" uid="uid://cadjaq4l8ydt1" path="res://assets/enemies/pi3rate9.png" id="1_grl6f"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_lixtk"]
 [ext_resource type="Script" uid="uid://dgbb17yny54b" path="res://scenes/systems/enemies/ai/charge_ai.gd" id="4_lixtk"]
@@ -36,6 +36,18 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5pnv"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en8o4"]
 content_margin_left = 2.0
@@ -74,6 +86,7 @@ offset_top = -18.0
 offset_right = 189.99998
 offset_bottom = -8.000015
 scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_v5pnv")
 max_value = 1.0
 value = 1.0
 show_percentage = false

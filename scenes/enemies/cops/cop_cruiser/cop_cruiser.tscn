@@ -1,14 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://ovol6tu8w0mo"]
+[gd_scene load_steps=19 format=3 uid="uid://ovol6tu8w0mo"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_tp4mi"]
 [ext_resource type="Texture2D" uid="uid://b5rcmhasdurgk" path="res://assets/enemies/deathcruiserSprite-0030.png" id="2_f6c20"]
 [ext_resource type="Texture2D" uid="uid://btvfqj8lk25on" path="res://assets/enemies/Cop_Cruiser.png" id="2_ph437"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_f6c20"]
-[ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="4_d0oqy"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="5_expjq"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_f6c20"]
-[ext_resource type="Resource" uid="uid://bc11d30co7hp2" path="res://resources/weapons/enemy/cop/cop_fighter_laser.tres" id="6_yhwmg"]
-[ext_resource type="Script" uid="uid://ba7c7pypi756b" path="res://scenes/systems/enemies/ai/hit_run_ai.gd" id="7_c8ovo"]
+[ext_resource type="Resource" uid="uid://xvmoqltyqyy8" path="res://resources/weapons/enemy/cop/cop_cruiser_cannon.tres" id="8_f6c20"]
+[ext_resource type="Script" uid="uid://c3niecotneg53" path="res://scenes/systems/enemies/ai/shoot_at_player_ai.gd" id="9_f6c20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0oqy"]
 atlas = ExtResource("2_f6c20")
@@ -79,12 +78,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yyge"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph437"]
 content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
-bg_color = Color(0, 1, 0, 0.4)
+bg_color = Color(1, 0, 0, 0.4)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -109,6 +108,7 @@ polygon = PackedVector2Array(0, -58, 2, -57, 6, -49, 13, -15, 17, -5, 15, 3, 16,
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("3_f6c20")
 health_bar = NodePath("../HealthBar")
+max_health = 2000.0
 
 [node name="HealthDeath" type="Node" parent="." node_paths=PackedStringArray("health", "animated_sprite")]
 script = ExtResource("5_f6c20")
@@ -116,43 +116,21 @@ health = NodePath("../Health")
 animated_sprite = NodePath("../Area2D/AnimatedSprite2D")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -10.000001
-offset_top = -18.0
-offset_right = 189.99998
-offset_bottom = -8.000015
+offset_left = -27.0
+offset_top = -64.0
+offset_right = 512.99994
+offset_bottom = -33.999954
 scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_ph437")
 max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="FuelBar" type="ProgressBar" parent="." node_paths=PackedStringArray("fuel_timer")]
-offset_left = -10.0
-offset_top = -17.0
-offset_right = 189.99998
-offset_bottom = -7.0000153
-scale = Vector2(0.1, 0.1)
-theme_override_styles/fill = SubResource("StyleBoxFlat_2yyge")
-max_value = 1.0
-value = 0.49
-show_percentage = false
-script = ExtResource("4_d0oqy")
-fuel_timer = NodePath("../Systems/Timer")
-
 [node name="Systems" type="Node" parent="."]
 
-[node name="Timer" type="Timer" parent="Systems"]
-wait_time = 40.0
-one_shot = true
-autostart = true
-
 [node name="WeaponSystem" parent="Systems" instance=ExtResource("5_expjq")]
-current_weapon = ExtResource("6_yhwmg")
+current_weapon = ExtResource("8_f6c20")
 
-[node name="HitRunAi" type="Node" parent="Systems" node_paths=PackedStringArray("weapon_systems", "area")]
-script = ExtResource("7_c8ovo")
-weapon_systems = [NodePath("../WeaponSystem")]
-break_off_dist = 300.0
-engage_dist = 800.0
-rotation_speed = 50.0
-speed = 50.0
-area = NodePath("../../Area2D")
+[node name="ShootAtPlayer" type="Node" parent="Systems" node_paths=PackedStringArray("weapon_system")]
+script = ExtResource("9_f6c20")
+weapon_system = NodePath("../WeaponSystem")
