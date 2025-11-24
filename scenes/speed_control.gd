@@ -4,6 +4,9 @@ class_name SpeedControl
 @export var linear_acceleration: float = 0.1
 
 var linear_speed: float = 0 # linear speed of 1 = 0.9c, linear speed of 2 = 0.99c
+var relativistic_speed: float:
+	get:
+		return 1 - exp(-linear_speed * log(10))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

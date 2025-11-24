@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=25 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -7,17 +7,39 @@
 [ext_resource type="PackedScene" uid="uid://bw2b7f2rjeelw" path="res://scenes/user_interface/user_interface.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dyk1ykmfc3qsj" path="res://scenes/enemies/spawning/enemy_spawner.gd" id="4_ir15t"]
 [ext_resource type="Script" uid="uid://c76gyrf6d7soo" path="res://scenes/user_interface/ui_event_bus.gd" id="4_iywne"]
-[ext_resource type="Script" path="res://scenes/music_player.gd" id="4_p57ef"]
+[ext_resource type="Script" uid="uid://bmr07kofgmiyi" path="res://scenes/music_player.gd" id="4_p57ef"]
 [ext_resource type="Resource" uid="uid://ckbj4ecgkde82" path="res://resources/enemy_spawn/asteroid_spawn.tres" id="5_ca42v"]
 [ext_resource type="AudioStream" uid="uid://dgpfdmpuf5msg" path="res://assets/music_loop_v1_7_stages/game loop 1.mp3" id="5_kvuet"]
-[ext_resource type="Resource" uid="uid://b5607lmcs0mpp" path="res://resources/enemy_spawn/beginner_enemy_spawn.tres" id="6_rysoc"]
+[ext_resource type="Resource" uid="uid://c0g6bmu0jaby8" path="res://resources/enemy_spawn/enemy_spawn.tres" id="6_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://dp6elfj1pe8lk" path="res://assets/music_loop_v1_7_stages/game loop 2.mp3" id="6_trtic"]
+[ext_resource type="Resource" uid="uid://guj8pcwgg5b5" path="res://resources/enemy_spawn/boss_spawn.tres" id="7_264po"]
 [ext_resource type="AudioStream" uid="uid://dnkr3ff5ilv4j" path="res://assets/music_loop_v1_7_stages/game loop 3.mp3" id="7_ir15t"]
 [ext_resource type="AudioStream" uid="uid://bl5oij6sdeoxn" path="res://assets/music_loop_v1_7_stages/game loop 4.mp3" id="8_ca42v"]
 [ext_resource type="AudioStream" uid="uid://cwms8qaubtj3r" path="res://assets/music_loop_v1_7_stages/game loop 5.mp3" id="9_rysoc"]
 [ext_resource type="AudioStream" uid="uid://7dtqix14vxdd" path="res://assets/music_loop_v1_7_stages/game loop 6.mp3" id="10_ssvqc"]
 [ext_resource type="AudioStream" uid="uid://r7nykiy285hq" path="res://assets/music_loop_v1_7_stages/game loop 7.mp3" id="11_264po"]
-[ext_resource type="PackedScene" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://3khsdlfylfxy" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvqc"]
+size = Vector2(1000, 100)
+
+[sub_resource type="Curve" id="Curve_264po"]
+_limits = [2.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_264po"]
+size = Vector2(500, 0)
+
+[sub_resource type="Curve" id="Curve_ssvqc"]
+_limits = [2.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_1kice"]
+_limits = [2.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0, 30), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
@@ -27,10 +49,35 @@ script = ExtResource("1_yqjtg")
 [node name="Player" parent="." instance=ExtResource("2_lnu2h")]
 unique_name_in_owner = true
 
-[node name="EnemySpawner" type="Node" parent="."]
+[node name="EnemySpawners" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="AsteroidSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_ssvqc")
 script = ExtResource("4_ir15t")
-asteroid_spawn_pattern = ExtResource("5_ca42v")
-beginner_enemy_spawn_pattern = ExtResource("6_rysoc")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = ExtResource("5_ca42v")
+spawn_timer_curve = SubResource("Curve_264po")
+
+[node name="EnemySpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_264po")
+script = ExtResource("4_ir15t")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = ExtResource("6_ssvqc")
+spawn_timer_curve = SubResource("Curve_ssvqc")
+
+[node name="BossSpawner" type="CollisionShape2D" parent="EnemySpawners" node_paths=PackedStringArray("speed_control")]
+position = Vector2(711, 100)
+shape = SubResource("RectangleShape2D_264po")
+script = ExtResource("4_ir15t")
+speed_control = NodePath("../../SpeedControl")
+spawn_pattern = ExtResource("7_264po")
+initial_delay = 0.0
+spawn_timer_curve = SubResource("Curve_1kice")
+min_linear_speed = 2.0
 
 [node name="SpeedControl" type="Node" parent="."]
 script = ExtResource("3_lbhrr")

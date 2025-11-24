@@ -7,7 +7,7 @@ class_name AsteroidSpawnPattern
 @export var max_vertical_speed: float = 200
 @export var linear_speed_scale: float = 1
 
-func do_spawn(parent: Node2D, position: Vector2, rand: RandomNumberGenerator):
+func do_spawn(parent: Node2D, position: Vector2, rand: RandomNumberGenerator, _params: EnemySpawnParams):
 	var asteroid = asteroid_scenes.pick_random().instantiate()
 	var speed_control: SpeedControl = parent.get_node("/root/Game/SpeedControl")
 	
