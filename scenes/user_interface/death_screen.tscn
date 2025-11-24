@@ -1,13 +1,233 @@
-[gd_scene load_steps=5 format=3 uid="uid://3khsdlfylfxy"]
+[gd_scene load_steps=38 format=3 uid="uid://3khsdlfylfxy"]
 
 [ext_resource type="Script" uid="uid://dnqg6c1e0ngk" path="res://scenes/user_interface/death_screen.gd" id="1_0lmbm"]
-[ext_resource type="Theme" uid="uid://ncxo0ht8hb0q" path="res://scenes/user_interface/ui_theme.tres" id="1_58i1h"]
+[ext_resource type="Theme" uid="uid://bypx06u7elhlc" path="res://scenes/user_interface/ui_theme.tres" id="1_58i1h"]
 [ext_resource type="PackedScene" uid="uid://beyp3wv54bpoh" path="res://scenes/user_interface/ui_button_with_sfx.tscn" id="2_7tsl4"]
+[ext_resource type="Texture2D" uid="uid://b4lhc1gkuxghj" path="res://assets/menu_icons/Sherifmovief.png" id="4_nmsxi"]
+[ext_resource type="AudioStream" uid="uid://7225hpep2nkh" path="res://assets/menu_sounds/game_over_short.mp3" id="5_0lmbm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6pv1"]
 font_size = 48
 
-[node name="DeathScreen" type="Control"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lmbm"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(0, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqv8r"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(102, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg3gk"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(204, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y1xd"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(306, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67ep2"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(408, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjllq"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(510, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xicqo"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(612, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqesd"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(714, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5qr6"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(816, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb7wk"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(918, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8b0q"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1020, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q883w"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1122, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3h1v"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1224, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjrdx"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1326, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nslam"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1428, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2orh"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1530, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4clht"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1632, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fjvr"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1734, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwt7k"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1836, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x0ym"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(1938, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlfu7"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2040, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouglt"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2142, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4xxy"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2244, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hpr5"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2346, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpd7b"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2448, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3uq6"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2550, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iix7c"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2652, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeu48"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2754, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odtk6"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2856, 0, 102, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5llr3"]
+atlas = ExtResource("4_nmsxi")
+region = Rect2(2958, 0, 102, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7n3x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lmbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqv8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg3gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y1xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67ep2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjllq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xicqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqesd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5qr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb7wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8b0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q883w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3h1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjrdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nslam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2orh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4clht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fjvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwt7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x0ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlfu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouglt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4xxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hpr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpd7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3uq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iix7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeu48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odtk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5llr3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.5
+}]
+
+[node name="DeathScreen" type="Control" node_paths=PackedStringArray("death_animation")]
 process_mode = 3
 z_index = 2
 layout_mode = 3
@@ -20,6 +240,7 @@ theme = ExtResource("1_58i1h")
 script = ExtResource("1_0lmbm")
 main_menu_scene = "uid://bxqj4iktbgvcj"
 game_scene = "uid://dstd3l06i0olc"
+death_animation = NodePath("PanelContainer/AnimationContainer/MarginContainer/AnimatedSprite2D")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -30,28 +251,47 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"BackdropPanel"
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+[node name="DeathMenuContainer" type="CenterContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/DeathMenuContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/DeathMenuContainer/VBoxContainer"]
 layout_mode = 2
 text = "You Died"
 label_settings = SubResource("LabelSettings_g6pv1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/DeathMenuContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="RestartButton" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_7tsl4")]
+[node name="RestartButton" parent="PanelContainer/DeathMenuContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_7tsl4")]
 layout_mode = 2
 text = "Restart"
 
-[node name="MainMenuButton" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_7tsl4")]
+[node name="MainMenuButton" parent="PanelContainer/DeathMenuContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_7tsl4")]
 layout_mode = 2
 text = "Main Menu"
 
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="_restart_game"]
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_goto_main_menu"]
+[node name="AnimationContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/AnimationContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/AnimationContainer/MarginContainer"]
+scale = Vector2(4.229885, 4.229885)
+sprite_frames = SubResource("SpriteFrames_t7n3x")
+frame = 29
+frame_progress = 1.0
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0lmbm")
+bus = &"Sound Effects"
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="PanelContainer/DeathMenuContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="_restart_game"]
+[connection signal="pressed" from="PanelContainer/DeathMenuContainer/VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_goto_main_menu"]

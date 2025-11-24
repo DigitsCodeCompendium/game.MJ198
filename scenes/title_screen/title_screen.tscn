@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxqj4iktbgvcj"]
+[gd_scene load_steps=22 format=3 uid="uid://bxqj4iktbgvcj"]
 
 [ext_resource type="Script" uid="uid://bnledk4h17ac4" path="res://scenes/title_screen/title_screen.gd" id="1_fgkus"]
 [ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
@@ -6,10 +6,68 @@
 [ext_resource type="Texture2D" uid="uid://b246vg0bnqb6g" path="res://assets/Background_GJ.png" id="3_s4lrb"]
 [ext_resource type="AudioStream" uid="uid://cobmll7e6ayf6" path="res://assets/title screen.mp3" id="5_cxcmr"]
 [ext_resource type="AudioStream" uid="uid://15dcvx6lt7ee" path="res://assets/menu_sounds/menu_option.mp3" id="6_j12ko"]
+[ext_resource type="Texture2D" uid="uid://u3kk7a5meajm" path="res://assets/menu_icons/Supertext6.png" id="6_xetrx"]
 [ext_resource type="AudioStream" uid="uid://cl63greqlj22u" path="res://assets/menu_sounds/menu_select.mp3" id="7_yegqs"]
 [ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
 [ext_resource type="Script" uid="uid://bl24lb5nr04o6" path="res://scenes/title_screen/customize_player.gd" id="9_xoykc"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="10_ju3lf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepnq"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u6ih"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2f8g"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2vsc"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aihkd"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seoxh"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7paur"]
+atlas = ExtResource("6_xetrx")
+region = Rect2(768, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5q4na"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u6ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2f8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2vsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aihkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seoxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7paur")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mgrm8"]
 font_size = 32
@@ -17,7 +75,7 @@ font_size = 32
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yegqs"]
 content_margin_bottom = 1.0
 
-[node name="TitleScreen" type="Control" node_paths=PackedStringArray("main_menu", "options_menu")]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("main_menu", "options_menu", "title_animation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +87,7 @@ script = ExtResource("1_fgkus")
 game_scene = ExtResource("3_mgrm8")
 main_menu = NodePath("MainMenu")
 options_menu = NodePath("OptionsMenu")
+title_animation = NodePath("MainMenu/PanelContainer/MarginContainer/VBoxContainer/Title/AnimatedSprite2D")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -63,12 +122,17 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="RichTextLabel" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="MarginContainer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-bbcode_enabled = true
-text = "[font_size=48][s]Super[/s]luminal[/font_size]"
-fit_content = true
-autowrap_mode = 0
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/Title"]
+position = Vector2(96, 48)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_5q4na")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
