@@ -6,4 +6,5 @@
 script = ExtResource("1_iwijl")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 16
 bus = &"Sound Effects"
