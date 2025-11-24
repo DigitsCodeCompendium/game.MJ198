@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=7 format=3 uid="uid://bytdrnjelth4m"]
+
+[ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_ojjed"]
+[ext_resource type="PackedScene" uid="uid://cs1d4wmub2aox" path="res://scenes/enemies/aliens/energy_alien/energy_alien.tscn" id="2_lhn7b"]
+[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="3_ojjed"]
+[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="5_4o421"]
+
+[sub_resource type="Resource" id="Resource_vomqt"]
+script = ExtResource("3_ojjed")
+enemy = ExtResource("2_lhn7b")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_lnlqv"]
+script = ExtResource("1_ojjed")
+enemy_spawn = SubResource("Resource_vomqt")
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[resource]
+script = ExtResource("5_4o421")
+pattern = Array[ExtResource("1_ojjed")]([SubResource("Resource_lnlqv")])
+metadata/_custom_type_script = "uid://b4rcup02wd1hy"

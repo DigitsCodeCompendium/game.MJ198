@@ -151,7 +151,7 @@ drop_table = ExtResource("5_yhwmg")
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("3_f6c20")
 health_bar = NodePath("../HealthBar")
-max_health = 2000.0
+max_health = 1400.0
 
 [node name="HealthDeath" type="Node" parent="." node_paths=PackedStringArray("health", "animated_sprite")]
 script = ExtResource("5_f6c20")
