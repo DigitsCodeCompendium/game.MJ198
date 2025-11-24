@@ -18,10 +18,10 @@ func save():
 	options_file.store_string(JSON.stringify(_options))
 
 func get_option(option_name: String, default: Variant) -> Variant:
-	if _options.has(name):
+	if _options.has(option_name):
 		return _options[option_name]
 	else:
-		_options[name] = default
+		_options[option_name] = default
 		return default
 
 func set_option(option_name: String, value: Variant, do_save: bool = true):
