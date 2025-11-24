@@ -53,6 +53,7 @@ script = ExtResource("7_smehm")
 module_system = NodePath("../ModuleSystem")
 
 [node name="PowerSystem" parent="Systems" instance=ExtResource("5_qlg0r")]
+_base_max_power = 4
 
 [node name="SoundEffects" type="Node" parent="."]
 
