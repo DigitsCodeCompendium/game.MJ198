@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=24 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module/module.tscn" id="2_l2bgj"]
@@ -17,6 +17,9 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfswy"]
+font_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6pv1"]
 font_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axgoa"]
@@ -156,6 +159,12 @@ custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="LeftPanel/VBoxContainer"]
+layout_mode = 2
+text = "Reactor Power"
+label_settings = SubResource("LabelSettings_g6pv1")
+horizontal_alignment = 1
 
 [node name="Container" type="PanelContainer" parent="LeftPanel/VBoxContainer"]
 layout_mode = 2
