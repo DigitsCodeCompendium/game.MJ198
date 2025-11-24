@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0a184ge5c42w"]
+[gd_scene load_steps=16 format=3 uid="uid://b0a184ge5c42w"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_8garn"]
 [ext_resource type="Texture2D" uid="uid://na61ghi50c0a" path="res://assets/enemies/cop_frigate.png" id="2_xyteu"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="4_vwxvl"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="5_8garn"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_54hoa"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="7_acj8j"]
 [ext_resource type="Resource" uid="uid://dmketgbl0purl" path="res://resources/weapons/enemy/cop/cop_frigate_cannon.tres" id="7_xyteu"]
@@ -64,9 +65,10 @@ corner_detail = 6
 
 [node name="CopFrigate" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health") groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_8garn")
 health = NodePath("../Health")
+hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_wdn6e")
@@ -98,6 +100,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_xyteu")
 max_value = 1.0
 value = 1.0
 show_percentage = false
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8garn")
+volume_db = 5.0
+bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
 

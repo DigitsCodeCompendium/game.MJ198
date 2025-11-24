@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ovol6tu8w0mo"]
+[gd_scene load_steps=20 format=3 uid="uid://ovol6tu8w0mo"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_tp4mi"]
 [ext_resource type="Texture2D" uid="uid://b5rcmhasdurgk" path="res://assets/enemies/deathcruiserSprite-0030.png" id="2_f6c20"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_f6c20"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="5_expjq"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_f6c20"]
+[ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="6_f6c20"]
 [ext_resource type="Resource" uid="uid://xvmoqltyqyy8" path="res://resources/weapons/enemy/cop/cop_cruiser_cannon.tres" id="8_f6c20"]
 [ext_resource type="Script" uid="uid://c3niecotneg53" path="res://scenes/systems/enemies/ai/shoot_at_player_ai.gd" id="9_f6c20"]
 
@@ -126,6 +127,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ph437")
 max_value = 1.0
 value = 1.0
 show_percentage = false
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_f6c20")
+volume_db = 5.0
+bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
 
