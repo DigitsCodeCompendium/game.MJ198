@@ -57,7 +57,7 @@ func set_slot(slot: int):
 	increase_power_label.text = increase_power_binding.as_text().substr(0, 1)
 	decrease_power_label.text = decrease_power_binding.as_text().substr(0, 1)
 	
-	discard_label.text = "Replace: Hold %s" % discard_binding.as_text().substr(0, 1)
+	discard_label.text = "Module %s" % discard_binding.as_text().substr(0, 1)
 	discard_label.visible = false
 	print(increase_power_binding.keycode)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=23 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module/module.tscn" id="2_l2bgj"]
@@ -16,7 +16,21 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6pv1"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axgoa"]
+[sub_resource type="LabelSettings" id="LabelSettings_tfswy"]
+font_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axgoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvuog"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.21176471, 0.21176471, 0.21176471, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_axgoa"]
 
@@ -95,6 +109,22 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g6pv1")
 
+[node name="Label" type="Label" parent="LeftPanel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Weapon"
+label_settings = SubResource("LabelSettings_tfswy")
+
 [node name="CenterContainer" type="CenterContainer" parent="LeftPanel/VBoxContainer"]
 layout_mode = 2
 
@@ -130,29 +160,35 @@ size_flags_vertical = 4
 [node name="Container" type="PanelContainer" parent="LeftPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_axgoa")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_axgoa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/VBoxContainer/Container"]
 layout_mode = 2
 alignment = 2
 
-[node name="MaxLabel" type="Label" parent="LeftPanel/VBoxContainer/Container/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dvuog")
+
+[node name="MaxLabel" type="Label" parent="LeftPanel/VBoxContainer/Container/VBoxContainer/PanelContainer"]
 visible = false
 layout_mode = 2
 text = "Max!"
 label_settings = SubResource("LabelSettings_axgoa")
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer/MaxLabel"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer/PanelContainer/MaxLabel"]
 libraries = {
 &"": SubResource("AnimationLibrary_g6pv1")
 }
 
-[node name="ReactorPowerGrid" type="GridContainer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer" node_paths=PackedStringArray("max_power_label")]
+[node name="ReactorPowerGrid" type="GridContainer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer/PanelContainer" node_paths=PackedStringArray("max_power_label")]
 custom_minimum_size = Vector2(128, 0)
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
