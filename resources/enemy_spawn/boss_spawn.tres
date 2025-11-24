@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=12 format=3 uid="uid://guj8pcwgg5b5"]
+
+[ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_q6v23"]
+[ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="2_jg7v8"]
+[ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="2_lpny3"]
+[ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="3_n52cx"]
+[ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="4_n52cx"]
+
+[sub_resource type="Resource" id="Resource_5fvjl"]
+script = ExtResource("3_n52cx")
+enemy = ExtResource("2_jg7v8")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_q6v23"]
+script = ExtResource("1_q6v23")
+enemy_spawn = SubResource("Resource_5fvjl")
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[sub_resource type="Resource" id="Resource_l8yrd"]
+script = ExtResource("3_n52cx")
+enemy = ExtResource("4_n52cx")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_3hd4f"]
+script = ExtResource("1_q6v23")
+enemy_spawn = SubResource("Resource_l8yrd")
+base_offset = Vector2(100, 0)
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[sub_resource type="Resource" id="Resource_xub10"]
+script = ExtResource("3_n52cx")
+enemy = ExtResource("4_n52cx")
+metadata/_custom_type_script = "uid://20wcajr3o32k"
+
+[sub_resource type="Resource" id="Resource_bfftx"]
+script = ExtResource("1_q6v23")
+enemy_spawn = SubResource("Resource_xub10")
+base_offset = Vector2(-100, 0)
+metadata/_custom_type_script = "uid://c2w1qo8e6vrhw"
+
+[resource]
+script = ExtResource("2_lpny3")
+pattern = Array[ExtResource("1_q6v23")]([SubResource("Resource_q6v23"), SubResource("Resource_3hd4f"), SubResource("Resource_bfftx")])
+metadata/_custom_type_script = "uid://b4rcup02wd1hy"
