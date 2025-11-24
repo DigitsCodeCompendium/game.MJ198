@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	$AnimatedSprite2D.rotation += ang_velocity * delta
-	
+	if $CollisionShape2D != null:
+		$CollisionShape2D.rotation += ang_velocity * delta
 	if _marked_for_death and not death_sound.playing:
 		self.queue_free()
 
