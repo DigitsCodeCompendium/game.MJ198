@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bw2b7f2rjeelw"]
+[gd_scene load_steps=18 format=3 uid="uid://bw2b7f2rjeelw"]
 
 [ext_resource type="Script" uid="uid://c7jscs4fk2o1y" path="res://scenes/user_interface/user_interface.gd" id="1_jbsfc"]
 [ext_resource type="PackedScene" uid="uid://b54uo5otbvimt" path="res://scenes/user_interface/module/module.tscn" id="2_l2bgj"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://7rbgkhea3qms" path="res://assets/power_icons/reserved_power.png" id="5_axgoa"]
 [ext_resource type="Texture2D" uid="uid://bdxfwbwlnlf2j" path="res://assets/power_icons/empty_power.png" id="6_tfswy"]
 [ext_resource type="Texture2D" uid="uid://cj0iuo6vlnbsd" path="res://assets/module_icons/emptyslot.png" id="10_axgoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axgoa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_axgoa"]
 
@@ -75,6 +77,7 @@ anchor_bottom = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -101,6 +104,7 @@ size_flags_horizontal = 4
 layout_mode = 2
 
 [node name="EngineBackgroundSprite" type="TextureRect" parent="LeftPanel/VBoxContainer/CenterContainer2"]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -113,13 +117,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Container" type="MarginContainer" parent="LeftPanel/VBoxContainer"]
+[node name="Container" type="PanelContainer" parent="LeftPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_axgoa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/VBoxContainer/Container"]
 layout_mode = 2
@@ -138,8 +139,10 @@ libraries = {
 }
 
 [node name="ReactorPowerGrid" type="GridContainer" parent="LeftPanel/VBoxContainer/Container/VBoxContainer" node_paths=PackedStringArray("max_power_label")]
+custom_minimum_size = Vector2(128, 0)
 layout_direction = 3
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
