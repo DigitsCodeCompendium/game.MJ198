@@ -8,11 +8,6 @@
 [node name="Pickup" type="Area2D" groups=["pickup"]]
 script = ExtResource("1_p3l0o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-6.16312e-05, -0.03125167)
-scale = Vector2(0.07812597, 0.0786133)
-texture = ExtResource("3_0oso7")
-
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("3_0oso7")
 

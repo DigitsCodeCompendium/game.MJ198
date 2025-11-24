@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FixedEnemySpawnPattern" load_steps=11 format=3 uid="uid://c0g6bmu0jaby8"]
 
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="1_2q41a"]
-[ext_resource type="Script" uid="uid://x5qhqlaqnpod" path="res://scenes/enemies/spawning/random_choice_enemy_spawn_over_time.gd" id="2_h2cyi"]
+[ext_resource type="Script" path="res://scenes/enemies/spawning/random_choice_enemy_spawn_over_time.gd" id="2_h2cyi"]
 [ext_resource type="PackedScene" uid="uid://b28ic5p8jf3k7" path="res://scenes/enemies/exploder_ship.tscn" id="3_x6hsu"]
 [ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="4_vg8ws"]
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="7_a2f0q"]

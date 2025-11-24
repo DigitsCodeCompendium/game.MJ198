@@ -1,18 +1,29 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0a184ge5c42w"]
+[gd_scene load_steps=21 format=3 uid="uid://b0a184ge5c42w"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_8garn"]
+[ext_resource type="Texture2D" uid="uid://cki8wxwsf1pv3" path="res://assets/enemies/death animations/FrigateDeath.png" id="2_tuuf2"]
 [ext_resource type="Texture2D" uid="uid://na61ghi50c0a" path="res://assets/enemies/cop_frigate.png" id="2_xyteu"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="4_54hoa"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="4_vwxvl"]
 [ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="5_8garn"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_54hoa"]
+[ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="5_x6sqs"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="7_acj8j"]
 [ext_resource type="Resource" uid="uid://dmketgbl0purl" path="res://resources/weapons/enemy/cop/cop_frigate_cannon.tres" id="7_xyteu"]
 [ext_resource type="Resource" uid="uid://c6u3qlpg1gsqu" path="res://resources/weapons/enemy/cop/cop_frigate_strafe_cannon.tres" id="8_8garn"]
 [ext_resource type="Script" uid="uid://b6af6jnnlxjh4" path="res://scenes/systems/enemies/ai/cop_frigate_ai.gd" id="8_xyteu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8garn"]
-atlas = ExtResource("2_xyteu")
-region = Rect2(0, 0, 64, 75)
+[sub_resource type="AtlasTexture" id="AtlasTexture_54hoa"]
+atlas = ExtResource("2_tuuf2")
+region = Rect2(0, 0, 65, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6sqs"]
+atlas = ExtResource("2_tuuf2")
+region = Rect2(65, 0, 65, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acj8j"]
+atlas = ExtResource("2_tuuf2")
+region = Rect2(130, 0, 65, 75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuuf2"]
 atlas = ExtResource("2_xyteu")
@@ -30,7 +41,13 @@ region = Rect2(128, 0, 64, 75)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8garn")
+"texture": SubResource("AtlasTexture_54hoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6sqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acj8j")
 }],
 "loop": false,
 "name": &"death",
@@ -79,6 +96,8 @@ autoplay = "default"
 polygon = PackedVector2Array(0, -32, 16, -16, 30, 31, -30, 31, -16, -16)
 
 [node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("4_54hoa")
+drop_table = ExtResource("5_x6sqs")
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("4_vwxvl")
@@ -89,6 +108,7 @@ max_health = 400.0
 script = ExtResource("5_54hoa")
 health = NodePath("../Health")
 animated_sprite = NodePath("../Area2D/AnimatedSprite2D")
+fade_away_time = 1.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -25.0

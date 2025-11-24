@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://ovol6tu8w0mo"]
+[gd_scene load_steps=22 format=3 uid="uid://ovol6tu8w0mo"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_tp4mi"]
 [ext_resource type="Texture2D" uid="uid://b5rcmhasdurgk" path="res://assets/enemies/deathcruiserSprite-0030.png" id="2_f6c20"]
 [ext_resource type="Texture2D" uid="uid://btvfqj8lk25on" path="res://assets/enemies/Cop_Cruiser.png" id="2_ph437"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="3_f6c20"]
+[ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="4_expjq"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="5_expjq"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_f6c20"]
+[ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="5_yhwmg"]
 [ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="6_f6c20"]
 [ext_resource type="Resource" uid="uid://xvmoqltyqyy8" path="res://resources/weapons/enemy/cop/cop_cruiser_cannon.tres" id="8_f6c20"]
 [ext_resource type="Script" uid="uid://c3niecotneg53" path="res://scenes/systems/enemies/ai/shoot_at_player_ai.gd" id="9_f6c20"]
@@ -106,6 +108,8 @@ autoplay = "default"
 polygon = PackedVector2Array(0, -58, 2, -57, 6, -49, 13, -15, 17, -5, 15, 3, 16, 30, 29, 44, 27, 62, -27, 62, -29, 45, -16, 30, -16, 4, -17, -4, -12, -16, -6, -49, -2, -57)
 
 [node name="PickupDropSource" type="Node2D" parent="."]
+script = ExtResource("4_expjq")
+drop_table = ExtResource("5_yhwmg")
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("3_f6c20")

@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cl63greqlj22u" path="res://assets/menu_sounds/menu_select.mp3" id="7_yegqs"]
 [ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
 [ext_resource type="Script" uid="uid://bl24lb5nr04o6" path="res://scenes/title_screen/customize_player.gd" id="9_xoykc"]
-[ext_resource type="Script" uid="uid://cjod1mp1qhhbg" path="res://scenes/title_screen/hide_on_web.gd" id="9_yepnq"]
+[ext_resource type="Script" path="res://scenes/title_screen/hide_on_web.gd" id="9_yepnq"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="10_ju3lf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yepnq"]

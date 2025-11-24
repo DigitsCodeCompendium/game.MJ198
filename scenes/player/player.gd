@@ -11,7 +11,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
 	connect("area_entered", _on_player_collide)
 	UiEventBus.connect("module_pending_added",_on_module_picked_up)
@@ -28,10 +28,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("escape"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif Input.is_action_just_pressed("shoot"):
-		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	#if Input.is_action_just_pressed("escape"):
+	#	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#elif Input.is_action_just_pressed("shoot"):
+	#	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
 	var velocity = Vector2(0, 0)
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -44,8 +44,8 @@ func _process(delta: float) -> void:
 	velocity = (difference.normalized()*speed*delta*speed_mod)
 	velocity = velocity.limit_length(max_speed)
 	
-	if Input.mouse_mode == Input.MOUSE_MODE_CONFINED:
-		position += velocity
+	#if Input.mouse_mode == Input.MOUSE_MODE_CONFINED:
+	position += velocity
 	var margins = get_parent().playable_margins
 	#Clamp player to the screen
 	position.x = clamp(position.x,margins,get_viewport().size.x-margins)
