@@ -15,3 +15,9 @@ func create_pickup() -> Pickup:
 	var pickup_item = pickup_item_scene.instantiate()
 	pickup_item.content = drop_content
 	return pickup_item
+
+
+func _on_health_health_depleted() -> void:
+	var pickup = create_pickup()
+	pickup.position = $"..".position
+	get_node("/root").add_child(pickup)

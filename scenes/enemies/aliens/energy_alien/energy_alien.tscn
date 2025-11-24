@@ -1,12 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://cs1d4wmub2aox"]
+[gd_scene load_steps=39 format=3 uid="uid://cs1d4wmub2aox"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_f42ur"]
+[ext_resource type="Script" uid="uid://cytols0oeep7c" path="res://scenes/enemies/aliens/energy_alien/energy_alien.gd" id="1_hgt7b"]
 [ext_resource type="Texture2D" uid="uid://gubvbsikwlc4" path="res://assets/enemies/death animations/Deathpowerup.png" id="2_hyand"]
 [ext_resource type="Texture2D" uid="uid://cwrnqntlrvbl6" path="res://assets/enemies/alein01.png" id="3_wr1bm"]
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="4_chn8k"]
+[ext_resource type="Texture2D" uid="uid://bgmrxwb0j4140" path="res://assets/enemies/warppowerup.png" id="5_eno8n"]
 [ext_resource type="Resource" uid="uid://clo5nnmye88m7" path="res://resources/pickups/energy_alien_drop_table.tres" id="5_hyand"]
 [ext_resource type="Script" uid="uid://c10pk6udhh4av" path="res://scenes/enemies/enemy_health.gd" id="6_ohcv8"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="7_0l57p"]
+[ext_resource type="Script" path="res://scenes/enemies/fuel_bar.gd" id="8_0wqkk"]
 [ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="8_ih1yg"]
 [ext_resource type="Script" uid="uid://06gaapmnw76v" path="res://scenes/systems/enemies/ai/wander_ai.gd" id="9_wr1bm"]
 
@@ -54,6 +57,54 @@ region = Rect2(128, 0, 64, 64)
 atlas = ExtResource("3_wr1bm")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8bfj"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiy6a"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvid5"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g10bt"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxuis"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6qxa"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5uyg"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrak3"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g12u7"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr561"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdkov"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_385sn"]
+atlas = ExtResource("5_eno8n")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdn6e"]
 animations = [{
 "frames": [{
@@ -98,6 +149,52 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8bfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiy6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvid5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g10bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxuis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6qxa")
+}],
+"loop": false,
+"name": &"warp_in",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5uyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrak3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g12u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr561")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdkov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_385sn")
+}],
+"loop": false,
+"name": &"warp_out",
+"speed": 10.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1rf7"]
@@ -112,7 +209,20 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgt7b"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [node name="EnergyAlien" type="Node2D"]
+script = ExtResource("1_hgt7b")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_f42ur")
@@ -120,11 +230,12 @@ health = NodePath("../Health")
 hit_sound = NodePath("../HitSoundPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)
+polygon = PackedVector2Array(0, -28, 20, 9, 19, 22, -20, 22, -20, 9)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_wdn6e")
-autoplay = "default"
+animation = &"warp_in"
+autoplay = "warp_in"
 
 [node name="PickupDropSource" type="Node2D" parent="."]
 script = ExtResource("4_chn8k")
@@ -141,15 +252,28 @@ health = NodePath("../Health")
 animated_sprite = NodePath("../Area2D/AnimatedSprite2D")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -10.000001
-offset_top = -18.0
-offset_right = 189.99998
-offset_bottom = -8.000015
+offset_left = -16.0
+offset_top = -33.0
+offset_right = 303.99997
+offset_bottom = -13.000015
 scale = Vector2(0.1, 0.1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_p1rf7")
 max_value = 1.0
 value = 1.0
 show_percentage = false
+
+[node name="FuelBar" type="ProgressBar" parent="." node_paths=PackedStringArray("fuel_timer")]
+offset_left = -16.0
+offset_top = -31.0
+offset_right = 293.99997
+offset_bottom = -11.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_hgt7b")
+max_value = 1.0
+value = 0.49
+show_percentage = false
+script = ExtResource("8_0wqkk")
+fuel_timer = NodePath("../Systems/Timer")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ih1yg")
@@ -158,8 +282,17 @@ bus = &"Sound Effects"
 
 [node name="Systems" type="Node" parent="."]
 
+[node name="Timer" type="Timer" parent="Systems"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [node name="WanderAi" type="Node" parent="Systems" node_paths=PackedStringArray("death_sources", "area")]
 script = ExtResource("9_wr1bm")
 death_sources = [NodePath("../../HealthDeath")]
 area = NodePath("../../Area2D")
-speed = 400.0
+speed = 150.0
+
+[connection signal="animation_finished" from="Area2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="health_depleted" from="Health" to="PickupDropSource" method="_on_health_health_depleted"]
+[connection signal="timeout" from="Systems/Timer" to="." method="_on_timer_timeout"]

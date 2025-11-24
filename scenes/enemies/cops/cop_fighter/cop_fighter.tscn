@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://byinyv2ojmdk0"]
+[gd_scene load_steps=27 format=3 uid="uid://byinyv2ojmdk0"]
 
 [ext_resource type="Script" uid="uid://c7vmww7k1dblt" path="res://scenes/enemies/enemy_collision_area.gd" id="1_2yyge"]
+[ext_resource type="Script" uid="uid://bojsoxkf4iig1" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.gd" id="1_l1q6y"]
 [ext_resource type="Texture2D" uid="uid://2fej2ykva2rf" path="res://assets/enemies/cop_fighter.png" id="1_l8aco"]
 [ext_resource type="PackedScene" uid="uid://bt83ghg2tyrgw" path="res://scenes/systems/weapons/weapon_system.tscn" id="2_cdl2y"]
 [ext_resource type="Texture2D" uid="uid://cqx8dii7pwcj5" path="res://assets/enemies/deathfightercop7.png" id="2_mcs0h"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dasya1uaepfuu" path="res://scenes/systems/enemies/pickup_drop_source.gd" id="4_jp41b"]
 [ext_resource type="Resource" uid="uid://f6x6m4dqec2" path="res://resources/pickups/asteroid_drop_table.tres" id="5_5pkkn"]
 [ext_resource type="Script" uid="uid://dpx0buqvsgrne" path="res://scenes/systems/enemies/health_death.gd" id="5_erfpo"]
+[ext_resource type="Texture2D" uid="uid://3rt4bgwyyem0" path="res://assets/enemies/warpfightercop7.png" id="5_ntg3r"]
 [ext_resource type="AudioStream" uid="uid://c81xn3o73s1cs" path="res://assets/sound_effects/enemy hit.mp3" id="7_erfpo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp41b"]
@@ -39,6 +41,22 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1rf7"]
 atlas = ExtResource("1_l8aco")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofeye"]
+atlas = ExtResource("5_ntg3r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa7u2"]
+atlas = ExtResource("5_ntg3r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bie8g"]
+atlas = ExtResource("5_ntg3r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r3wh"]
+atlas = ExtResource("5_ntg3r")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdn6e"]
 animations = [{
@@ -72,6 +90,23 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofeye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa7u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bie8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3wh")
+}],
+"loop": false,
+"name": &"warp_in",
+"speed": 5.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1rf7"]
@@ -87,6 +122,7 @@ corner_radius_bottom_left = 6
 corner_detail = 6
 
 [node name="CopFighter" type="Node2D"]
+script = ExtResource("1_l1q6y")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("health", "hit_sound") groups=["enemy"]]
 script = ExtResource("1_2yyge")
@@ -98,8 +134,7 @@ polygon = PackedVector2Array(0, -15, 13, 6, 10, 11, -10, 11, -13, 6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_wdn6e")
-animation = &"death"
-autoplay = "default"
+autoplay = "warp_in"
 
 [node name="PickupDropSource" type="Node2D" parent="."]
 script = ExtResource("4_jp41b")
@@ -146,3 +181,5 @@ engage_dist = 500.0
 rotation_speed = 300.0
 speed = 100.0
 area = NodePath("../../Area2D")
+
+[connection signal="animation_finished" from="Area2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

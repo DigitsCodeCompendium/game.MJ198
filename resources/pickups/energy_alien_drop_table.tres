@@ -1,8 +1,19 @@
-[gd_resource type="Resource" script_class="PickupDropTable" load_steps=3 format=3 uid="uid://clo5nnmye88m7"]
+[gd_resource type="Resource" script_class="PickupDropTable" load_steps=6 format=3 uid="uid://clo5nnmye88m7"]
 
 [ext_resource type="Script" uid="uid://cjk7x2h4383nf" path="res://scenes/systems/enemies/pickup_drop_table.gd" id="1_7kwhf"]
 [ext_resource type="Script" path="res://scenes/pickups/pickup_content.gd" id="2_yvrya"]
+[ext_resource type="Script" uid="uid://dbd03sbe3mcjm" path="res://scenes/pickups/pickup_content_power.gd" id="3_42cvw"]
+[ext_resource type="PackedScene" uid="uid://du4el3d28wwn1" path="res://scenes/pickups/power_pickup_visu.tscn" id="4_nehhp"]
+
+[sub_resource type="Resource" id="Resource_42cvw"]
+script = ExtResource("3_42cvw")
+amount = 2
+vis_scene = ExtResource("4_nehhp")
+metadata/_custom_type_script = "uid://dbd03sbe3mcjm"
 
 [resource]
 script = ExtResource("1_7kwhf")
+weights = Dictionary[ExtResource("2_yvrya"), float]({
+SubResource("Resource_42cvw"): 1.0
+})
 metadata/_custom_type_script = "uid://cjk7x2h4383nf"

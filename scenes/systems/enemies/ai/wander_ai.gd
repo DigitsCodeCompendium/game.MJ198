@@ -5,8 +5,8 @@ extends Node
 @export var death_sources: Array[Node]
 @export var area: Area2D
 
-@export var speed: float
-@export var pos_threshold: float = 10
+@export var speed: float = 100
+@export var pos_threshold: float = 40
 
 var _brain_dead: bool = false
 var _target_pos: Vector2 = Vector2.ZERO
@@ -28,9 +28,9 @@ func _on_death():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not _brain_dead:
-		var velocity = (_target_pos - area.position).normalized() * speed
-		area.position += velocity * delta
-		area.rotation = velocity.angle()
+		var velocity = (_target_pos - area.owner.position).normalized() * speed
+		area.owner.position += velocity * delta
+		area.rotation = velocity.angle() + PI/2
 		
-		if (area.position - _target_pos).length() < pos_threshold:
+		if (area.owner.position - _target_pos).length() < pos_threshold:
 			_new_random_target()
