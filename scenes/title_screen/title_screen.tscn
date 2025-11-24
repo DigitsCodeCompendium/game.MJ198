@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxqj4iktbgvcj"]
+[gd_scene load_steps=23 format=3 uid="uid://bxqj4iktbgvcj"]
 
 [ext_resource type="Script" uid="uid://bnledk4h17ac4" path="res://scenes/title_screen/title_screen.gd" id="1_fgkus"]
 [ext_resource type="Theme" uid="uid://cnsyav0jqc2kb" path="res://scenes/title_screen/title_screen_theme.tres" id="1_sa3yf"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cl63greqlj22u" path="res://assets/menu_sounds/menu_select.mp3" id="7_yegqs"]
 [ext_resource type="PackedScene" uid="uid://cerm72vxq2f4g" path="res://scenes/title_screen/audio_volume_slider.tscn" id="8_yegqs"]
 [ext_resource type="Script" uid="uid://bl24lb5nr04o6" path="res://scenes/title_screen/customize_player.gd" id="9_xoykc"]
+[ext_resource type="Script" uid="uid://cjod1mp1qhhbg" path="res://scenes/title_screen/hide_on_web.gd" id="9_yepnq"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="10_ju3lf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yepnq"]
@@ -169,6 +170,7 @@ bus = &"User Interface"
 [node name="QuitButton" type="Button" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+script = ExtResource("9_yepnq")
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="MainMenu/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton"]
 stream = ExtResource("6_j12ko")
