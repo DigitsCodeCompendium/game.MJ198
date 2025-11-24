@@ -14,6 +14,11 @@ func _on_player_died():
 	visible = true
 	get_tree().paused = true
 	
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1,1,1,1), 1.5)
+	await tween.finished
+	
+	$PanelContainer/AnimationContainer.visible = true
 	death_animation.play()
 	death_animation_sound.play()
 	await death_animation.animation_finished

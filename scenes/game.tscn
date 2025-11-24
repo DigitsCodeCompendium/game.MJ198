@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dstd3l06i0olc"]
+[gd_scene load_steps=43 format=3 uid="uid://dstd3l06i0olc"]
 
 [ext_resource type="Script" uid="uid://bnrs5mhd1ryqc" path="res://scenes/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cng1hdh4kuxrw" path="res://scenes/player/player.tscn" id="2_lnu2h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dyk1ykmfc3qsj" path="res://scenes/enemies/spawning/enemy_spawner.gd" id="4_ir15t"]
 [ext_resource type="Script" uid="uid://c76gyrf6d7soo" path="res://scenes/user_interface/ui_event_bus.gd" id="4_iywne"]
 [ext_resource type="Script" uid="uid://bmr07kofgmiyi" path="res://scenes/music_player.gd" id="4_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cs1d4wmub2aox" path="res://scenes/enemies/aliens/energy_alien/energy_alien.tscn" id="4_qnb83"]
 [ext_resource type="Resource" uid="uid://ckbj4ecgkde82" path="res://resources/enemy_spawn/asteroid_spawn.tres" id="5_ca42v"]
 [ext_resource type="Resource" uid="uid://c0g6bmu0jaby8" path="res://resources/enemy_spawn/enemy_spawn.tres" id="6_ssvqc"]
 [ext_resource type="Resource" uid="uid://guj8pcwgg5b5" path="res://resources/enemy_spawn/boss_spawn.tres" id="7_264po"]
@@ -171,6 +172,7 @@ script = ExtResource("3_lbhrr")
 linear_acceleration = 0.01
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("speed_control")]
+process_mode = 3
 volume_db = -10.0
 bus = &"Music"
 script = ExtResource("4_p57ef")

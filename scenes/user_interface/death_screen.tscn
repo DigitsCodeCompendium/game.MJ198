@@ -230,6 +230,7 @@ animations = [{
 
 [node name="DeathScreen" type="Control" node_paths=PackedStringArray("death_animation", "death_animation_sound")]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -278,6 +279,7 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="AnimationContainer" type="CenterContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/AnimationContainer"]

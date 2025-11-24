@@ -53,7 +53,15 @@ func _process(delta: float) -> void:
 	
 func _on_player_collide(area: Area2D):
 	if area.is_in_group("enemy") or area.is_in_group("enemy_projectile"):
+		get_tree().paused = true
 		UiEventBus.emit_signal("player_died")
+		$AnimationPlayer.play("death")
+		
+		var music_player: AudioStreamPlayer = get_node("/root/Game/MusicPlayer")
+		var tween = music_player.create_tween()
+		tween.tween_property(music_player, "volume_linear", 0, 1.5)
+		await tween.finished
+		music_player.stop()
 
 func set_engine_style(style:int) -> void:
 	$PlayerVisual.set_engine_style(style)

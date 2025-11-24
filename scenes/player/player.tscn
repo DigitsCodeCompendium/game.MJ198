@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cng1hdh4kuxrw"]
+[gd_scene load_steps=20 format=3 uid="uid://cng1hdh4kuxrw"]
 
 [ext_resource type="Script" uid="uid://bvnk4w5l7f20d" path="res://scenes/player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://b0hpmch812els" path="res://scenes/player/player_visual.tscn" id="2_y4r1p"]
@@ -18,6 +18,43 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ur7pv"]
 points = PackedVector2Array(0, -25, 20, 0, 20, 9, -20, 9, -20, 0)
 
+[sub_resource type="Animation" id="Animation_ugbui"]
+resource_name = "death"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerVisual:visible")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_fcs02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerVisual:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcs02"]
+_data = {
+&"RESET": SubResource("Animation_fcs02"),
+&"death": SubResource("Animation_ugbui")
+}
+
 [sub_resource type="Resource" id="Resource_ur7pv"]
 script = ExtResource("5_smehm")
 base_damage = 10.0
@@ -34,6 +71,12 @@ module_system = NodePath("Systems/ModuleSystem")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_ur7pv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_fcs02")
+}
 
 [node name="Systems" type="Node" parent="."]
 
