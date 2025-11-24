@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcay35y8ayu6y"
+path="res://.godot/imported/enemy destruction.mp3-50dcd0be1241f287856b5e05a26c239f.mp3str"
+
+[deps]
+
+source_file="res://assets/sound_effects/enemy destruction.mp3"
+dest_files=["res://.godot/imported/enemy destruction.mp3-50dcd0be1241f287856b5e05a26c239f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

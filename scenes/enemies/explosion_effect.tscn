@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfb780j6jhgit"]
+[gd_scene load_steps=11 format=3 uid="uid://cfb780j6jhgit"]
 
 [ext_resource type="Texture2D" uid="uid://bri00e14enclo" path="res://assets/weapon_icons/rocket/explosion.png" id="1_8pgid"]
+[ext_resource type="AudioStream" uid="uid://dcay35y8ayu6y" path="res://assets/sound_effects/enemy destruction.mp3" id="2_fvyob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ey8n"]
 radius = 20.0
@@ -66,5 +67,10 @@ sprite_frames = SubResource("SpriteFrames_5iuii")
 autoplay = "default"
 frame = 5
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fvyob")
+autoplay = true
+bus = &"Sound Effects"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="queue_free"]
