@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://beyp3wv54bpoh" path="res://scenes/user_interface/ui_button_with_sfx.tscn" id="2_7tsl4"]
 [ext_resource type="Texture2D" uid="uid://b4lhc1gkuxghj" path="res://assets/menu_icons/Sherifmovief.png" id="4_nmsxi"]
 [ext_resource type="AudioStream" uid="uid://7225hpep2nkh" path="res://assets/menu_sounds/game_over_short.mp3" id="5_0lmbm"]
-[ext_resource type="AudioStream" uid="uid://binmr78qwnsxq" path="res://assets/menu_sounds/ending.mp3" id="6_gqv8r"]
+[ext_resource type="AudioStream" uid="uid://bebihvo445h11" path="res://assets/menu_sounds/endingv3.mp3" id="6_gqv8r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6pv1"]
 font_size = 48
