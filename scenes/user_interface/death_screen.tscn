@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://3khsdlfylfxy"]
+[gd_scene load_steps=39 format=3 uid="uid://3khsdlfylfxy"]
 
 [ext_resource type="Script" uid="uid://dnqg6c1e0ngk" path="res://scenes/user_interface/death_screen.gd" id="1_0lmbm"]
 [ext_resource type="Theme" uid="uid://bypx06u7elhlc" path="res://scenes/user_interface/ui_theme.tres" id="1_58i1h"]
 [ext_resource type="PackedScene" uid="uid://beyp3wv54bpoh" path="res://scenes/user_interface/ui_button_with_sfx.tscn" id="2_7tsl4"]
 [ext_resource type="Texture2D" uid="uid://b4lhc1gkuxghj" path="res://assets/menu_icons/Sherifmovief.png" id="4_nmsxi"]
 [ext_resource type="AudioStream" uid="uid://7225hpep2nkh" path="res://assets/menu_sounds/game_over_short.mp3" id="5_0lmbm"]
+[ext_resource type="AudioStream" uid="uid://binmr78qwnsxq" path="res://assets/menu_sounds/ending.mp3" id="6_gqv8r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6pv1"]
 font_size = 48
@@ -227,7 +228,7 @@ animations = [{
 "speed": 2.5
 }]
 
-[node name="DeathScreen" type="Control" node_paths=PackedStringArray("death_animation")]
+[node name="DeathScreen" type="Control" node_paths=PackedStringArray("death_animation", "death_animation_sound")]
 process_mode = 3
 z_index = 2
 layout_mode = 3
@@ -241,6 +242,7 @@ script = ExtResource("1_0lmbm")
 main_menu_scene = "uid://bxqj4iktbgvcj"
 game_scene = "uid://dstd3l06i0olc"
 death_animation = NodePath("PanelContainer/AnimationContainer/MarginContainer/AnimatedSprite2D")
+death_animation_sound = NodePath("AnimationSound")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -291,7 +293,9 @@ frame_progress = 1.0
 stream = ExtResource("5_0lmbm")
 bus = &"Sound Effects"
 
-[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+[node name="AnimationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gqv8r")
+bus = &"Sound Effects"
 
 [connection signal="pressed" from="PanelContainer/DeathMenuContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="_restart_game"]
 [connection signal="pressed" from="PanelContainer/DeathMenuContainer/VBoxContainer/VBoxContainer/MainMenuButton" to="." method="_goto_main_menu"]

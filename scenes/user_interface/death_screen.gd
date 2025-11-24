@@ -4,6 +4,7 @@ extends Control
 @export_file var game_scene: String
 
 @export var death_animation: AnimatedSprite2D
+@export var death_animation_sound: AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,9 +15,12 @@ func _on_player_died():
 	get_tree().paused = true
 	
 	death_animation.play()
+	death_animation_sound.play()
 	await death_animation.animation_finished
 	$PanelContainer/DeathMenuContainer.visible = true
 	$PanelContainer/AnimationContainer.visible = false
+	death_animation_sound.stop()
+	$GameOverSound.play()
 
 func _restart_game():
 	get_tree().paused = false
@@ -29,3 +33,4 @@ func _goto_main_menu():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		death_animation.speed_scale = 10
+		death_animation_sound.pitch_scale = 10
