@@ -50,6 +50,7 @@ script = ExtResource("1_yqjtg")
 unique_name_in_owner = true
 
 [node name="EnemySpawners" type="Area2D" parent="."]
+process_mode = 1
 monitoring = false
 monitorable = false
 
