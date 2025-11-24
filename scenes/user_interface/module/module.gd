@@ -56,8 +56,11 @@ func set_slot(slot: int):
 	# Super hacky way to get a simplified binding, can't be bothered to figure out how do it properly
 	increase_power_label.text = increase_power_binding.as_text().substr(0, 1)
 	decrease_power_label.text = decrease_power_binding.as_text().substr(0, 1)
+	
 	discard_label.text = "Replace: Hold %s" % discard_binding.as_text().substr(0, 1)
+	discard_label.visible = false
 	print(increase_power_binding.keycode)
+
 func update_module(mod: ModuleSlot) -> void:
 	print("received module update")
 	if mod.module == null:
@@ -67,6 +70,7 @@ func update_module(mod: ModuleSlot) -> void:
 			power_container.get_child(i).queue_free()
 		for child in upgrade_container.get_children():
 			child.free()
+		discard_label.visible = false
 		upgrade_max_label.visible = false
 
 	else:
@@ -81,6 +85,8 @@ func update_module(mod: ModuleSlot) -> void:
 		min_power_display.visible = true
 		min_power_display.texture = active_min_power_tex if mod.is_active else empty_min_power_tex
 		min_power_display.custom_minimum_size = Vector2(mod.activation_power * 20 - 8, 32)
+		
+		discard_label.visible = true
 		
 		for i in range(mod.extra_power_limit):
 			var pip: TextureRect = power_pip_scene.instantiate()
