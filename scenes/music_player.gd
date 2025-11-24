@@ -2,6 +2,7 @@ extends AudioStreamPlayer
 
 @export var speed_control: SpeedControl
 @export var music_sections: Array[AudioStream] = []
+#@export var track_speed_breakpoints: Array[float] = []
 var _track_index = 0
 
 
@@ -14,8 +15,10 @@ func _ready():
 	#_track_index = clamp(index, 0, len(music_sections) - 1)
 
 func _play_next():
-	_track_index = int(speed_control.linear_speed * 0.07)
-	_track_index = clamp(_track_index, 0, len(music_sections))
-	print("next track index %d" % _track_index)
+	if _track_index < len(music_sections) - 1:
+		_track_index += 1
+	#while _track_index < len(music_sections) - 1 and speed_control.linear_speed < track_speed_breakpoints[_track_index]:
+		#_track_index += 1
+	#print("next track index %d" % _track_index)
 	stream = music_sections[_track_index]
 	play()

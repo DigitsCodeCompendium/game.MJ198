@@ -10,23 +10,24 @@
 [ext_resource type="Script" path="res://scenes/music_player.gd" id="4_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cs1d4wmub2aox" path="res://scenes/enemies/aliens/energy_alien/energy_alien.tscn" id="4_qnb83"]
 [ext_resource type="Resource" uid="uid://ckbj4ecgkde82" path="res://resources/enemy_spawn/asteroid_spawn.tres" id="5_ca42v"]
-[ext_resource type="AudioStream" uid="uid://dgpfdmpuf5msg" path="res://assets/music_loop_v1_7_stages/game loop 1.mp3" id="5_kvuet"]
 [ext_resource type="Resource" uid="uid://c0g6bmu0jaby8" path="res://resources/enemy_spawn/enemy_spawn.tres" id="6_ssvqc"]
-[ext_resource type="AudioStream" uid="uid://dp6elfj1pe8lk" path="res://assets/music_loop_v1_7_stages/game loop 2.mp3" id="6_trtic"]
 [ext_resource type="Resource" uid="uid://guj8pcwgg5b5" path="res://resources/enemy_spawn/boss_spawn.tres" id="7_264po"]
 [ext_resource type="Script" uid="uid://c2w1qo8e6vrhw" path="res://scenes/enemies/spawning/enemy_spawn_pattern_entry.gd" id="7_e1j6l"]
-[ext_resource type="AudioStream" uid="uid://dnkr3ff5ilv4j" path="res://assets/music_loop_v1_7_stages/game loop 3.mp3" id="7_ir15t"]
-[ext_resource type="AudioStream" uid="uid://bl5oij6sdeoxn" path="res://assets/music_loop_v1_7_stages/game loop 4.mp3" id="8_ca42v"]
 [ext_resource type="PackedScene" uid="uid://b0a184ge5c42w" path="res://scenes/enemies/cops/cop_frigate/cop_frigate.tscn" id="8_pl11u"]
 [ext_resource type="Script" uid="uid://20wcajr3o32k" path="res://scenes/enemies/spawning/simple_enemy_spawn.gd" id="9_bhx41"]
-[ext_resource type="AudioStream" uid="uid://cwms8qaubtj3r" path="res://assets/music_loop_v1_7_stages/game loop 5.mp3" id="9_rysoc"]
 [ext_resource type="Resource" uid="uid://bwigmsobtekpb" path="res://resources/enemy_spawn/boss_escort_spawn_table.tres" id="10_bhx41"]
 [ext_resource type="PackedScene" uid="uid://byinyv2ojmdk0" path="res://scenes/enemies/cops/cop_fighter/cop_fighter.tscn" id="10_qnb83"]
-[ext_resource type="AudioStream" uid="uid://7dtqix14vxdd" path="res://assets/music_loop_v1_7_stages/game loop 6.mp3" id="10_ssvqc"]
-[ext_resource type="AudioStream" uid="uid://r7nykiy285hq" path="res://assets/music_loop_v1_7_stages/game loop 7.mp3" id="11_264po"]
 [ext_resource type="Script" uid="uid://b4rcup02wd1hy" path="res://scenes/enemies/spawning/fixed_enemy_spawn_pattern.gd" id="11_sww3w"]
 [ext_resource type="PackedScene" uid="uid://ovol6tu8w0mo" path="res://scenes/enemies/cops/cop_cruiser/cop_cruiser.tscn" id="12_pl11u"]
-[ext_resource type="PackedScene" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+[ext_resource type="AudioStream" uid="uid://cjeo0dy7tkjwu" path="res://assets/music_loop_v7_8_stages/loop 1.mp3" id="17_qnb83"]
+[ext_resource type="PackedScene" uid="uid://3khsdlfylfxy" path="res://scenes/user_interface/death_screen.tscn" id="18_ssvqc"]
+[ext_resource type="AudioStream" uid="uid://kq7qmhbyuvjq" path="res://assets/music_loop_v7_8_stages/loop 2.mp3" id="18_sww3w"]
+[ext_resource type="AudioStream" uid="uid://bmj031qx10ec7" path="res://assets/music_loop_v7_8_stages/loop 3.mp3" id="19_suyxu"]
+[ext_resource type="AudioStream" uid="uid://coin4pipnsft1" path="res://assets/music_loop_v7_8_stages/loop 4.mp3" id="20_sgl2t"]
+[ext_resource type="AudioStream" uid="uid://bn05piofkrmoj" path="res://assets/music_loop_v7_8_stages/loop 5.mp3" id="21_qouja"]
+[ext_resource type="AudioStream" uid="uid://bpa3wtde6rxrd" path="res://assets/music_loop_v7_8_stages/loop 6.mp3" id="22_wljb1"]
+[ext_resource type="AudioStream" uid="uid://dyoqo3d4qwokf" path="res://assets/music_loop_v7_8_stages/loop 7.mp3" id="23_v2yb1"]
+[ext_resource type="AudioStream" uid="uid://dyhuw0vym6fnn" path="res://assets/music_loop_v7_8_stages/loop 8.mp3" id="24_js0lu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvqc"]
 size = Vector2(1000, 100)
@@ -170,7 +171,7 @@ volume_db = -10.0
 bus = &"Music"
 script = ExtResource("4_p57ef")
 speed_control = NodePath("../SpeedControl")
-music_sections = Array[AudioStream]([ExtResource("5_kvuet"), ExtResource("6_trtic"), ExtResource("7_ir15t"), ExtResource("8_ca42v"), ExtResource("9_rysoc"), ExtResource("10_ssvqc"), ExtResource("11_264po")])
+music_sections = Array[AudioStream]([ExtResource("17_qnb83"), ExtResource("18_sww3w"), ExtResource("19_suyxu"), ExtResource("20_sgl2t"), ExtResource("21_qouja"), ExtResource("22_wljb1"), ExtResource("23_v2yb1"), ExtResource("24_js0lu")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("4_iywne")
