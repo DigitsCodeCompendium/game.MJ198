@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AsteroidSpawnPattern" load_steps=10 format=3 uid="uid://ckbj4ecgkde82"]
+[gd_resource type="Resource" script_class="AsteroidSpawnPattern" load_steps=12 format=3 uid="uid://ckbj4ecgkde82"]
 
 [ext_resource type="PackedScene" uid="uid://dv5nendv66xb3" path="res://scenes/enemies/asteroids/asteroid1.tscn" id="1_366da"]
 [ext_resource type="Script" uid="uid://b5u4q68x1rpxx" path="res://scenes/enemies/spawning/asteroid_spawn_pattern.gd" id="2_5t86p"]
@@ -10,7 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://bg0avtdgbwoa1" path="res://scenes/enemies/asteroids/asteroid7.tscn" id="7_3ljpl"]
 [ext_resource type="PackedScene" uid="uid://ik02g12suy1x" path="res://scenes/enemies/asteroids/asteroid8.tscn" id="8_ollxh"]
 
+[sub_resource type="Curve" id="Curve_366da"]
+_limits = [2.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 2), nan, 3.0, 1, 1, Vector2(1, 5), 3.0, nan, 1, 1]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ryrru"]
+_limits = [1.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 1.0, 0, 1, Vector2(1, 2), 1.0, 0.0, 1, 0]
+point_count = 2
+
 [resource]
 script = ExtResource("2_5t86p")
 asteroid_scenes = Array[PackedScene]([ExtResource("1_366da"), ExtResource("2_ryrru"), ExtResource("3_a3bpv"), ExtResource("4_t8ix5"), ExtResource("5_x6h57"), ExtResource("6_0xrre"), ExtResource("7_3ljpl"), ExtResource("8_ollxh")])
+min_scale_curve = SubResource("Curve_ryrru")
+max_scale_curve = SubResource("Curve_366da")
 metadata/_custom_type_script = "uid://b4rcup02wd1hy"
